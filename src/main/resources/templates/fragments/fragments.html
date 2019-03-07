@@ -1,0 +1,61 @@
+<!--  *************** fragment du header *************** -->
+<head th:fragment="header">
+<title>Spring Boot Thymeleaf</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/accueil.css}" />
+</head>
+
+<!--  *************** fragment de navigation *************** -->
+<div th:fragment="navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Accueil</a>
+  <button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item dropdown">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="navbarDropdown" href="#" data-toggle="dropdown">
+          Menu
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/products">Liste products</a>
+          <a class="dropdown-item" href="/input_products">Saisie products</a>
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="/">
+        	<span style="text-color:red" th:text="${page}"></span> 
+           <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+</div>
+
+<!--  *************** fragment js *************** -->
+<div th:fragment="scripts">
+	<script type="text/javascript" src="webjars/jquery/dist/jquery.min.js"></script>	
+	<script type="text/javascript" src="webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</div>
+   
+    
+  

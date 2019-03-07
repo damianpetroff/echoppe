@@ -1,0 +1,11 @@
+body{
+	background-color:gray;
+}
+
+.error{
+	color:red;
+}
+
+.card{
+	margin-top:20px;
+}

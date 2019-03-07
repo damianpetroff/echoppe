@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:insert="fragments/fragments.html :: header"/>
+	
+	<body>
+			
+		<div th:replace="fragments/fragments.html :: navigation"></div>
+		
+		<div class="container">
+			<div class="card">
+				  <div class="card-header">
+				    <h2>Liste des products</h2>
+				  </div>
+				  <div class="card-body">
+				    <table class="table">
+				    <thead>
+					    <tr>
+					      <th scope="col">Nom</th>
+					      <th scope="col">Prix</th>
+					    </tr>
+					  </thead>
+				    <tbody>
+					    <tr th:each="product: ${products}">
+					        <td th:text="${product.name}" />
+					        <td th:text="${product.price}" />
+					    </tr>
+					    
+					    <tr>
+					    	<td>
+					    	<a href="/input_products" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Nouveau produit</a>
+		
+					    	</td>
+					    	<td></td>
+					    </tr>
+					</tbody>
+					</table>
+				  </div>
+				  
+				  
+		</div>
+		
+		
+		<div th:replace="fragments/fragments.html :: scripts"></div>
+		
+	</body>
+</html>
