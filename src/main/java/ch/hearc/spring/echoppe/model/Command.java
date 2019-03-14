@@ -22,13 +22,13 @@ public class Command {
 	@NotNull
 	private int quantity;
 
-	@OneToOne
-	@JoinColumn
-	private Paiement paiement;
-
-	@OneToMany
-	@JoinColumn
-	private List<Article> articles;
+//	@OneToOne
+//	@JoinColumn
+//	private Paiement paiement;
+//
+//	@OneToMany
+//	@JoinColumn
+//	private List<Article> articles;
 
 
 	@NotNull
@@ -60,26 +60,26 @@ public class Command {
 		this.quantity = quantity;
 	}
 	
-	public Paiement getPaiement() {
-		return paiement;
-	}
-
-	public void setPaiement(Paiement paiement) {
-		this.paiement = paiement;
-	}
-	
-	public List<Article> getArticles() {
-		return articles;
-	}
-
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
-	}
+//	public Paiement getPaiement() {
+//		return paiement;
+//	}
+//
+//	public void setPaiement(Paiement paiement) {
+//		this.paiement = paiement;
+//	}
+//	
+//	public List<Article> getArticles() {
+//		return articles;
+//	}
+//
+//	public void setArticles(List<Article> articles) {
+//		this.articles = articles;
+//	}
 	
 	@Override
 	public String toString() {
-		String s = "Command [ paiement :"+ paiement + "articles : [";
-		articles.forEach(a->s+=a+", ");
+		String s = "Command [ paiement :articles : [";
+//		articles.forEach(a->s+=a+", ");
 		s += "], quantity :" + quantity + ", price :" + price;
 		return s;
 	}

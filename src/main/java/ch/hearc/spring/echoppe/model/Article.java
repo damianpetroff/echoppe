@@ -27,15 +27,15 @@ public class Article {
 	@DecimalMin("0.0") 
 	private BigDecimal price;
 	
-	@ManyToOne
-    @JoinColumn
-	private Category category;
+//	@ManyToOne
+//    @JoinColumn
+//	private Category category;
 
-	public Article(String name, BigDecimal price, Category category) {
+	public Article(String name, BigDecimal price) {
 		super();
 		this.name = name;
 		this.price = price;
-		this.category = category;
+//		this.category = category;
 	}
 	
 	public Article() {
@@ -59,18 +59,18 @@ public class Article {
 	}
 	
 	
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}	
+//	public Category getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(Category category) {
+//		this.category = category;
+//	}	
 	
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", price=" + price + ", category ="+ category +"]";
+		return "Product [name=" + name + ", price=" + price + ", category =]";
 	}
 
 }
