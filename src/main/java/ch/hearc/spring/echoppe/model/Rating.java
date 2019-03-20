@@ -64,7 +64,7 @@ public class Rating {
 		return id;
 	}
 
-	public Rating(@NotNull int id, @NotNull @Min(1) @Max(5) int rating, @NotNull User user, @NotNull Article article) {
+	public Rating(int id, int rating, User user,Article article) {
 		super();
 		this.id = id;
 		this.rating = rating;

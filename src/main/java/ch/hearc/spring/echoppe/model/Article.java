@@ -29,11 +29,9 @@ public class Article {
 	private BigDecimal price;
 	
 	@ManyToOne
-    @JoinColumn
 	private Category category;
 	
-	@OneToMany
-	private Comment comment;
+
 
 	public Article(String name, BigDecimal price, Category category) {
 		super();

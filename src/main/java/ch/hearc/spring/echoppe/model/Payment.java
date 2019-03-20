@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -27,12 +28,12 @@ public class Payment {
 		this.id = id;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getStatus() {
@@ -60,7 +61,8 @@ public class Payment {
 	}
 
 	@NotNull
-	private Long userId;
+	@ManyToOne
+	private User user;
 	
 	@NotNull
 	private int status;
@@ -98,15 +100,14 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [id=" + id + ", userId=" + userId + ", status=" + status + ", method=" + method + ", price="
+		return "Payment [id=" + id + ", user=" + user + ", status=" + status + ", method=" + method + ", price="
 				+ price + "]";
 	}
 
-	public Payment(Long id, @NotNull Long userId, @NotNull int status, Date date, @NotNull int method,
-			@NotNull @DecimalMax("1000.0") @DecimalMin("0.0") BigDecimal price) {
+	public Payment(Long id,User user, int status, Date date,int method,BigDecimal price) {
 		super();
 		this.id = id;
-		this.userId = userId;
+		this.user = user;
 		this.status = status;
 		this.date = date;
 		this.method = method;
