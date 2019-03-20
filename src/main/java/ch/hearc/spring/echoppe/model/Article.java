@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -30,6 +31,9 @@ public class Article {
 	@ManyToOne
     @JoinColumn
 	private Category category;
+	
+	@OneToMany
+	private Comment comment;
 
 	public Article(String name, BigDecimal price, Category category) {
 		super();

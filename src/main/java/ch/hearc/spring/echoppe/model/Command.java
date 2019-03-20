@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -24,7 +27,7 @@ public class Command {
 
 	@OneToOne
 	@JoinColumn
-	private Paiement paiement;
+	private Payment payment;
 
 	@OneToMany
 	@JoinColumn
@@ -60,12 +63,12 @@ public class Command {
 		this.quantity = quantity;
 	}
 	
-	public Paiement getPaiement() {
-		return paiement;
+	public Payment getPayment() {
+		return payment;
 	}
 
-	public void setPaiement(Paiement paiement) {
-		this.paiement = paiement;
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 	
 	public List<Article> getArticles() {
@@ -78,10 +81,11 @@ public class Command {
 	
 	@Override
 	public String toString() {
-		String s = "Command [ paiement :"+ paiement + "articles : [";
-		articles.forEach(a->s+=a+", ");
-		s += "], quantity :" + quantity + ", price :" + price;
-		return s;
+		StringBuilder s =new StringBuilder( "Command [ payment :");
+		s.append( payment).append( "articles : [");
+		articles.forEach(a->s.append(a).append(", "));
+		s.append("], quantity :").append(quantity ).append( ", price :").append(price);
+		return s.toString();
 	}
 	
 	
