@@ -25,7 +25,7 @@ public class Rating {
 	
 	@NotNull
 	@OneToOne
-	private User user;
+	private Utilisateur Utilisateur;
 	
 	@NotNull
 	@ManyToOne
@@ -33,7 +33,7 @@ public class Rating {
 
 	@Override
 	public String toString() {
-		return "Rating [id=" + id + ", rating=" + rating + ", user=" + user + ", article=" + article + "]";
+		return "Rating [id=" + id + ", rating=" + rating + ", Utilisateur=" + Utilisateur + ", article=" + article + "]";
 	}
 
 	public int getRating() {
@@ -44,12 +44,12 @@ public class Rating {
 		this.rating = rating;
 	}
 
-	public User getUser() {
-		return user;
+	public Utilisateur getUtilisateur() {
+		return Utilisateur;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUtilisateur(Utilisateur Utilisateur) {
+		this.Utilisateur = Utilisateur;
 	}
 
 	public Article getArticle() {
@@ -64,11 +64,11 @@ public class Rating {
 		return id;
 	}
 
-	public Rating(int id, int rating, User user,Article article) {
+	public Rating(int id, int rating, Utilisateur Utilisateur,Article article) {
 		super();
 		this.id = id;
 		this.rating = rating;
-		this.user = user;
+		this.Utilisateur = Utilisateur;
 		this.article = article;
 	}
 	

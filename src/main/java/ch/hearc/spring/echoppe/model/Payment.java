@@ -28,12 +28,12 @@ public class Payment {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public Utilisateur getUtilisateur() {
+		return Utilisateur;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUtilisateur(Utilisateur Utilisateur) {
+		this.Utilisateur = Utilisateur;
 	}
 
 	public int getStatus() {
@@ -62,7 +62,7 @@ public class Payment {
 
 	@NotNull
 	@ManyToOne
-	private User user;
+	private Utilisateur Utilisateur;
 	
 	@NotNull
 	private int status;
@@ -100,14 +100,14 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [id=" + id + ", user=" + user + ", status=" + status + ", method=" + method + ", price="
+		return "Payment [id=" + id + ", Utilisateur=" + Utilisateur + ", status=" + status + ", method=" + method + ", price="
 				+ price + "]";
 	}
 
-	public Payment(Long id,User user, int status, Date date,int method,BigDecimal price) {
+	public Payment(Long id,Utilisateur Utilisateur, int status, Date date,int method,BigDecimal price) {
 		super();
 		this.id = id;
-		this.user = user;
+		this.Utilisateur = Utilisateur;
 		this.status = status;
 		this.date = date;
 		this.method = method;

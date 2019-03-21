@@ -24,7 +24,7 @@ public class Comment {
 	
 	@NotNull
 	@OneToOne
-	private User user;
+	private Utilisateur Utilisateur;
 	
 	@ManyToOne
 	@NotNull
@@ -38,12 +38,12 @@ public class Comment {
 		this.comment = comment;
 	}
 
-	public User getUser() {
-		return user;
+	public Utilisateur getUtilisateur() {
+		return Utilisateur;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUtilisateur(Utilisateur Utilisateur) {
+		this.Utilisateur = Utilisateur;
 	}
 
 	public Article getArticle() {
@@ -60,14 +60,14 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", comment=" + comment + ", user=" + user + ", article=" + article + "]";
+		return "Comment [id=" + id + ", comment=" + comment + ", Utilisateur=" + Utilisateur + ", article=" + article + "]";
 	}
 
-	public Comment(int id, String comment, User user,Article article) {
+	public Comment(int id, String comment, Utilisateur Utilisateur,Article article) {
 		super();
 		this.id = id;
 		this.comment = comment;
-		this.user = user;
+		this.Utilisateur = Utilisateur;
 		this.article = article;
 	}
 	
