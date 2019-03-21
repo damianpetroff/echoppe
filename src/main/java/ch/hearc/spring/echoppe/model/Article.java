@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -27,9 +28,10 @@ public class Article {
 	@DecimalMin("0.0") 
 	private BigDecimal price;
 	
-//	@ManyToOne
-//    @JoinColumn
-//	private Category category;
+	@ManyToOne
+	private Category category;
+	
+
 
 	public Article(String name, BigDecimal price) {
 		super();
@@ -59,18 +61,18 @@ public class Article {
 	}
 	
 	
-//	public Category getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(Category category) {
-//		this.category = category;
-//	}	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}	
 	
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", price=" + price + ", category =]";
+		return "Product [name=" + name + ", price=" + price + ", category ="+category+"]";
 	}
 
 }
