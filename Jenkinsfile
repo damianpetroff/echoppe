@@ -22,7 +22,9 @@ pipeline {
 				}
 			steps {
 				echo 'Testing'
-				sh ./runTestSonar.sh
+				script {
+					sh ./runTestSonar.sh
+				}
 			}
 		}
 
@@ -34,7 +36,9 @@ pipeline {
 			}
 			steps {
 				echo 'Integration Testing'
-				sh ./runTestKatalon.sh
+				script {
+					./runTestKatalon.sh
+				} 
 			}
 		}
 		
