@@ -11,7 +11,6 @@ pipeline {
 			steps {
 				sh 'mvn --version'
 				sh 'mvn clean package'
-				stash name: "app", includes: "**"
 			}
 		}
 		
@@ -21,8 +20,6 @@ pipeline {
 				}
 			steps {
 				echo 'Testing'
-				sh 'mvn clean test'
-				sh 'chmod +x ./runTestSonar.sh'
 				./runTestSonar.sh
 			}
 		}
@@ -35,9 +32,6 @@ pipeline {
 			}
 			steps {
 				echo 'Integration Testing'
-				unstash "app"
-				sh 'sleep 10'
-				sh 'chmod +x ./runTestKatalon.sh'
 				./runTestKatalon.sh
 			}
 		}
