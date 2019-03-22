@@ -23,7 +23,7 @@ pipeline {
 			steps {
 				echo 'Testing'
 				script {
-					sh ./runTestSonar.sh
+					./runTestSonar.sh
 				}
 			}
 		}
