@@ -9,7 +9,7 @@ pipeline {
 			}
 			
 			steps {
-				sh '(cd ./echoppe/; mvn clean package)'
+				sh 'mvn clean package)'
 			}
 		}
 		
