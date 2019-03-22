@@ -22,7 +22,7 @@ pipeline {
 			steps {
 				echo 'Testing'
 				sh 'mvn clean test'
-				sh 'cmod +x ./runTestSonar.sh'
+				sh 'chmod +x ./runTestSonar.sh'
 				./runTestSonar.sh
 			}
 		}
@@ -37,7 +37,7 @@ pipeline {
 				echo 'Integration Testing'
 				unstash "app"
 				sh 'sleep 10'
-				sh 'cmod +x ./runTestKatalon.sh'
+				sh 'chmod +x ./runTestKatalon.sh'
 				./runTestKatalon.sh
 			}
 		}
