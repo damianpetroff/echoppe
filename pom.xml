@@ -100,24 +100,22 @@
 					<argLine> ${jacoco.argLine}</argLine>
 				</configuration>
 			</plugin>		
-		<plugin>
-		    <groupId>org.jacoco</groupId>
-		    <artifactId>jacoco-maven-plugin</artifactId>
-		    <version>0.8.0</version>
-		    <executions>
-			<execution>
-			    <id>jacoco-initialize</id>
-				<goals>
-				    <goal>prepare-agent</goal>
-				</goals>
-				<configuration>
-				    <propertyName>jacoco.argLine</propertyName>
-				</configuration>
-			</execution>
-		    </executions>
-        	</plugin>
-	</plugins>
-</build>
-
-
+			<plugin>
+			    <groupId>org.jacoco</groupId>
+			    <artifactId>jacoco-maven-plugin</artifactId>
+			    <version>0.8.0</version>
+			    <executions>
+				<execution>
+				    <id>jacoco-initialize</id>
+					<goals>
+					    <goal>prepare-agent</goal>
+					</goals>
+					<configuration>
+					    <propertyName>jacoco.argLine</propertyName>
+					</configuration>
+				</execution>
+			    </executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
