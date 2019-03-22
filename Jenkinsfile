@@ -15,8 +15,10 @@ pipeline {
 		}
 		
 		stage('QualityTest') {
-			docker {
-					image 'maven:3-alpine'
+			agent {
+				docker {
+						image 'maven:3-alpine'
+					}
 				}
 			steps {
 				echo 'Testing'
