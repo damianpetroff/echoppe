@@ -22,9 +22,7 @@ pipeline {
 				}
 			steps {
 				echo 'Testing'
-				script {
-					./runTestSonar.sh
-				}
+				sh 'mvn sonar:sonar -Dsonar.projectKey=damianpetroff_echoppe -Dsonar.organization=damianpetroff-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=b372b1d4260ce8995f3963484c30baf2210b809a'
 			}
 		}
 
@@ -36,9 +34,7 @@ pipeline {
 			}
 			steps {
 				echo 'Integration Testing'
-				script {
-					./runTestKatalon.sh
-				} 
+				sh 'katalon -noSplash  -runMode=console -projectPath="./katalonEchoppe/katalonEchoppe.prj" -retry=0 -testSuitePath="Test Suites/New Test Suite" -executionProfile="default" -browserType="Web Service"'
 			}
 		}
 		
