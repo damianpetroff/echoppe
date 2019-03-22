@@ -1,0 +1,1 @@
+mvn sonar:sonar -Dsonar.projectKey=damianpetroff_echoppe -Dsonar.organization=damianpetroff-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=b372b1d4260ce8995f3963484c30baf2210b809a
