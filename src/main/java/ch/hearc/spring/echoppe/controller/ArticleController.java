@@ -24,7 +24,6 @@ public class ArticleController {
 	@Autowired
 	private ArticleDAO pdao;
 	
-	//private ProduitRepository prepo;
 	
 	@GetMapping(value = "/articles")
 	public String findAllarticles(Map<String, Object> model){
@@ -54,5 +53,14 @@ public class ArticleController {
             pdao.save(article);
         }
         return ((errors.hasErrors()) ? "input_articles" : "redirect:articles");
+	}
+	
+	@GetMapping(value = "/payment")
+	public String payCommand(Map<String, Object> model){
+		model.put("articles", pdao.findAll());
+		model.put("article", new Article());
+		
+		
+		return "payment";
 	}
 }

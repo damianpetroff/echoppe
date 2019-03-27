@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/fragments.html :: header" />
+
+<body>
+
+	<div th:replace="fragments/fragments.html :: navigation"></div>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h2>Résumé de votre commande</h2>
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Nom</th>
+							<th scope="col">Prix</th>
+							<th scope="col">Quantité</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="article: ${articles}">
+							<td th:text="${article.name}" />
+							<td th:text="${article.price}" />
+							<!-- TODO: check comment passer de façon maligne le nb d'articles commandé par article -->
+						</tr>
+					<tfoot>
+						<tr>
+							<td>Prix total:</td>
+							<td>XXX</td>
+						</tr>
+					</tfoot>
+					</tbody>
+				</table>
+				<div>
+					Choisir un mode de paiement:
+					<ul>
+						<li><label><input type="radio" name="payment" value="paypal" />PayPal</label></li>
+						<li><label><input type="radio" name="payment" value="rein" />Don de rein</label></li>
+						<li><label><input type="radio" name="payment" value="credit" />Carte de crédit</label></li>
+						<li><label><input type="radio" name="payment" value="facture" />Facture</label></li>
+					</ul>
+					<br />
+					<a href="/" class="btn btn-success btn-lg active" role="button"
+						aria-pressed="true">Payer</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/fragments.html :: scripts"></div>
+</body>
+</html>
