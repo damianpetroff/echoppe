@@ -32,7 +32,6 @@ public class Article {
 	private Category category;
 	
 
-
 	public Article(String name, BigDecimal price) {
 		super();
 		this.name = name;

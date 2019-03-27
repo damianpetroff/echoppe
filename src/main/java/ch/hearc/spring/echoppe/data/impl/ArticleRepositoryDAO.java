@@ -9,20 +9,20 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ch.hearc.spring.echoppe.data.ProductDAO;
-import ch.hearc.spring.echoppe.model.Product;
-import ch.hearc.spring.echoppe.repository.ProductRepository;
+import ch.hearc.spring.echoppe.data.ArticleDAO;
+import ch.hearc.spring.echoppe.model.Article;
+import ch.hearc.spring.echoppe.repository.ArticleRepository;
 
 @Component
-public class ProductRepositoryDAO implements ProductDAO{
+public class ArticleRepositoryDAO implements ArticleDAO{
 
 	@Autowired
-	private ProductRepository prepo;
+	private ArticleRepository prepo;
 	
 	@Override
-	public List<Product> findAll() {
+	public List<Article> findAll() {
 		
-		List<Product> products = new ArrayList<>();
+		List<Article> products = new ArrayList<>();
 		
 		prepo.findAll().forEach(products::add);
 		
@@ -30,7 +30,7 @@ public class ProductRepositoryDAO implements ProductDAO{
 	}
 
 	@Override
-	public void save(@Valid Product product) {
+	public void save(@Valid Article product) {
 		
 		prepo.save(product);
 		

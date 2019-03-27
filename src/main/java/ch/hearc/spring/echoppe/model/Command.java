@@ -30,7 +30,6 @@ public class Command {
 	private Payment payment;
 
 	@OneToMany
-	@JoinColumn
 	private List<Article> articles;
 
 
