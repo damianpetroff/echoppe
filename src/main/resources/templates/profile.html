@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:insert="fragments/fragments.html :: header"/>
+
+	<body>
+
+		<div th:replace="fragments/fragments.html :: navigation"></div>
+	
+		<div class="container">
+			
+			
+			<div class="h3" th:text="${user.nomutilisateur}"></div>
+			
+			
+			<hr>
+			<tr th:each="command ${commands}">
+		        <td th:text="# ${command.id}" />
+		        <td th:text="${command.price}" />
+		    </tr>
+		    <hr>
+			
+		</div>
+		
+		<div th:replace="fragments/fragments.html :: scripts"></div>
+		
+	</body>
+</html>
