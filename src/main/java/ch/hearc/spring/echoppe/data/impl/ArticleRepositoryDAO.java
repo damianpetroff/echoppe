@@ -28,6 +28,11 @@ public class ArticleRepositoryDAO implements ArticleDAO{
 		
 		return products;
 	}
+	
+	@Override
+	public Article findById(long id) {
+		return prepo.findById(id);
+	}
 
 	@Override
 	public void save(@Valid Article product) {

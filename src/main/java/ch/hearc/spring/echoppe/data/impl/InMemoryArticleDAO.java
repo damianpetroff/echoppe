@@ -39,6 +39,13 @@ public class InMemoryArticleDAO implements ArticleDAO{
 	}
 
 
+	@Override
+	public Article findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 	
 	
