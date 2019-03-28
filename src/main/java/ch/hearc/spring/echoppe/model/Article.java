@@ -48,6 +48,10 @@ public class Article {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Long getId() {
+		return id;
+	}
+	
 	public String getName() {
 		return name;
 	}
