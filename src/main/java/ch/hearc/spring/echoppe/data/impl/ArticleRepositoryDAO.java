@@ -1,7 +1,6 @@
 package ch.hearc.spring.echoppe.data.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,27 +16,27 @@ import ch.hearc.spring.echoppe.repository.ArticleRepository;
 public class ArticleRepositoryDAO implements ArticleDAO{
 
 	@Autowired
-	private ArticleRepository prepo;
+	private ArticleRepository articleRepository;
 	
 	@Override
 	public List<Article> findAll() {
 		
 		List<Article> products = new ArrayList<>();
 		
-		prepo.findAll().forEach(products::add);
+		articleRepository.findAll().forEach(products::add);
 		
 		return products;
 	}
 	
 	@Override
 	public Article findById(long id) {
-		return prepo.findById(id);
+		return articleRepository.findById(id);
 	}
 
 	@Override
 	public void save(@Valid Article product) {
 		
-		prepo.save(product);
+		articleRepository.save(product);
 		
 	}
 
