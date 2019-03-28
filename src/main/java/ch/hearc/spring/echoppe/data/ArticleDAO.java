@@ -9,6 +9,8 @@ import ch.hearc.spring.echoppe.model.Article;
 public interface ArticleDAO {
 
 	List<Article> findAll();
+	
+	Article findById(long id);
 
 	void save(@Valid Article product);
 

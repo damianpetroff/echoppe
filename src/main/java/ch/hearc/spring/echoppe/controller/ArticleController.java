@@ -11,7 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import ch.hearc.spring.echoppe.data.ArticleDAO;
 import ch.hearc.spring.echoppe.model.Article;
@@ -34,6 +39,14 @@ public class ArticleController {
 		
 		return "articles";
 	}
+	
+	@RequestMapping(value = "/article/{id}")
+	public String findArticle(@PathVariable("id") long id, Model model) {
+		model.addAttribute("article", pdao.findById(id));
+		return "article";
+	}
+	
+	
 	
 	@GetMapping(value = "/input_articles")
 	public String inputArticles(Map<String, Object> model){
