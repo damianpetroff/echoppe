@@ -1,0 +1,1 @@
+katalon -noSplash  -runMode=console -projectPath="./katalonEchoppe/katalonEchoppe.prj" -retry=0 -testSuitePath="Test Suites/New Test Suite" -executionProfile="default" -browserType="Web Service"

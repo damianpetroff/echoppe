@@ -1,7 +1,9 @@
 package ch.hearc.spring.echoppe.model;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +33,9 @@ public class Article {
 	@ManyToOne
 	private Category category;
 	
-
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private Set<ArticleCommand> articleCommand;
+	
 
 	public Article(String name, BigDecimal price) {
 		super();
