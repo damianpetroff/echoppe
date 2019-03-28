@@ -40,7 +40,7 @@ public class ArticleController {
 		return "articles";
 	}
 	
-	@RequestMapping(value = "/article/{id}")
+	@GetMapping(value = "/article/{id}")
 	public String findArticle(@PathVariable("id") long id, Model model) {
 		model.addAttribute("article", pdao.findById(id));
 		return "article";

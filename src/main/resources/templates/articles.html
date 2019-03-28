@@ -22,10 +22,9 @@
 					</thead>
 					<tbody>
 						<tr th:each="article: ${articles}">
-							<td th:text="${article.name}" />
-							<td th:text="${article.price}" />
+							<a href="/article/${article.id}"><td th:text="${article.name}"/></a>
+							<td th:text="${article.price}"></td>
 						</tr>
-
 						<tr>
 							<td><a href="/input_articles"
 								class="btn btn-primary btn-lg active" role="button"

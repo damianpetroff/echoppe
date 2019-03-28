@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().antMatchers("/h2/**").hasRole("ADMIN").and().formLogin();//.permitAll();
+		http.authorizeRequests().antMatchers("/webjars/**").permitAll().anyRequest();
 		
 		http.csrf().ignoringAntMatchers("/h2/**").and().headers().frameOptions().sameOrigin();;
 		
