@@ -2,7 +2,9 @@ package ch.hearc.spring.echoppe.model;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,16 +24,13 @@ public class Command {
 	@Id
 	private Long id;
 	
-	@NotNull
-	private int quantity;
 
 	@OneToOne
 	@JoinColumn
 	private Payment payment;
 
-	@OneToMany
-	@JoinColumn
-	private List<Article> articles;
+    @OneToMany(mappedBy = "command", cascade = CascadeType.ALL)
+    private Set<ArticleCommand> articleCommand;
 
 
 	@NotNull
@@ -55,13 +54,7 @@ public class Command {
 		return price;
 	}
 	
-	public int getQuantity() {
-		return quantity;
-	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 	
 	public Payment getPayment() {
 		return payment;
@@ -71,20 +64,12 @@ public class Command {
 		this.payment = payment;
 	}
 	
-	public List<Article> getArticles() {
-		return articles;
-	}
 
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
-	}
 	
 	@Override
 	public String toString() {
 		StringBuilder s =new StringBuilder( "Command [ payment :");
-		s.append( payment).append( "articles : [");
-		articles.forEach(a->s.append(a).append(", "));
-		s.append("], quantity :").append(quantity ).append( ", price :").append(price);
+		s.append( payment).append( "], price :").append(price);
 		return s.toString();
 	}
 	

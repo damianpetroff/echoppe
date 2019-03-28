@@ -9,15 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
-
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = false, jsr250Enabled = false)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -28,7 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/h2/**").permitAll().and().authorizeRequests().antMatchers("/admin")
+
+		http.authorizeRequests().antMatchers("/h2/**").hasRole("ADMIN").and().formLogin();//.permitAll();
+		
+		http.csrf().ignoringAntMatchers("/h2/**").and().headers().frameOptions().sameOrigin();;
+		
+		http.authorizeRequests().antMatchers("/admin")
 				.hasRole("ADMIN").and().formLogin();
 
 		http.headers().frameOptions().disable();
