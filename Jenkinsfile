@@ -34,7 +34,7 @@ pipeline {
 			}
 			steps {
 				echo 'Integration Testing'
-				sh 'cd ~/Katalon_Studio_Linux_64-6.1.0; katalon -noSplash  -runMode=console -projectPath="./katalonEchoppe/katalonEchoppe.prj" -retry=0 -testSuitePath="Test Suites/New Test Suite" -executionProfile="default" -browserType="Web Service"'
+				sh 'cd ~/Katalon_Studio_Linux_64-6.1.0; ./katalon -noSplash  -runMode=console -projectPath="./katalonEchoppe/katalonEchoppe.prj" -retry=0 -testSuitePath="Test Suites/New Test Suite" -executionProfile="default" -browserType="Web Service"'
 			}
 		}
 		
