@@ -11,6 +11,8 @@ public interface ArticleDAO {
 	List<Article> findAll();
 	
 	Article findById(long id);
+	
+	Article findByName(String name);
 
 	void save(@Valid Article product);
 

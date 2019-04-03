@@ -83,4 +83,8 @@ public class Article {
 		return "Product [name=" + name + ", price=" + price + ", category ="+category+"]";
 	}
 
+	public void setPrice(double price) {
+		this.setPrice(new BigDecimal(price));
+	}
+
 }

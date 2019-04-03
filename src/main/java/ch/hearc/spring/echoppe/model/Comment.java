@@ -70,6 +70,10 @@ public class Comment {
 		this.Utilisateur = Utilisateur;
 		this.article = article;
 	}
+
+	public Comment() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }
