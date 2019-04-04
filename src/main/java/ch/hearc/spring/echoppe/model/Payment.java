@@ -78,10 +78,18 @@ public class Payment {
 	@DecimalMax("1000.0") @DecimalMin("0.0") 
 	private BigDecimal price;
 	
-	public Payment(String name, BigDecimal price) {
-		super();
-	}
 	
+	public Payment(ch.hearc.spring.echoppe.model.@NotNull Utilisateur utilisateur, @NotNull int status,
+			@NotNull Date date, @NotNull int method,
+			@NotNull @DecimalMax("1000.0") @DecimalMin("0.0") BigDecimal price) {
+		super();
+		Utilisateur = utilisateur;
+		this.status = status;
+		this.date = date;
+		this.method = method;
+		this.price = price;
+	}
+
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
@@ -103,18 +111,5 @@ public class Payment {
 		return "Payment [id=" + id + ", Utilisateur=" + Utilisateur + ", status=" + status + ", method=" + method + ", price="
 				+ price + "]";
 	}
-
-	public Payment(Long id,Utilisateur Utilisateur, int status, Date date,int method,BigDecimal price) {
-		super();
-		this.id = id;
-		this.Utilisateur = Utilisateur;
-		this.status = status;
-		this.date = date;
-		this.method = method;
-		this.price = price;
-	}
-
-
-	
 	
 }

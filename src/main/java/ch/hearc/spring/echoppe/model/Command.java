@@ -37,8 +37,9 @@ public class Command {
 	@DecimalMax("1000.0") @DecimalMin("0.0") 
 	private BigDecimal price;
 	
-	public Command(BigDecimal price) {
+	public Command(Set<ArticleCommand> setArticleCommand, Payment payment, BigDecimal price) {
 		super();
+		this.payment = payment;
 		this.price = price;
 	}
 	

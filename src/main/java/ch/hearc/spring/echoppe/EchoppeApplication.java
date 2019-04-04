@@ -1,5 +1,7 @@
 package ch.hearc.spring.echoppe;
 
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import ch.hearc.spring.echoppe.model.Command;
+import ch.hearc.spring.echoppe.model.Payment;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
 import ch.hearc.spring.echoppe.repository.RoleRepository;
@@ -69,6 +73,17 @@ public class EchoppeApplication {
 		user.setRoles(rolesUser);
 		
 		utilisateurRepo.save(user);
+		
+		Payment payment1 = new Payment(user, 1, new Date(2019,4,4), 0, new BigDecimal(32.20));
+		Payment payment2 = new Payment(user, 1, new Date(2019,4,4), 0, new BigDecimal(32.20));
+		Payment payment3 = new Payment(user, 1, new Date(2019,4,4), 0, new BigDecimal(32.20));
+		
+		Command command1 = new Command();
+		Command command2 = new Command();
+		Command command3 = new Command();
+		command1.setPayment(payment1);
+		
+		
 	}
 	
 }
