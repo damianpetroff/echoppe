@@ -1,6 +1,5 @@
 package ch.hearc.spring.echoppe.model;
 
-import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -9,11 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 public class Utilisateur {
