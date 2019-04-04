@@ -1,5 +1,6 @@
 package ch.hearc.spring.echoppe.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class Role {
 	private Long id;
 	private String nom;
 	@ManyToMany(mappedBy = "roles")
-	private Set<Utilisateur> Utilisateurs;
+	private Set<Utilisateur> utilisateurs;
 
 	// Getters
 	public Long getId() {
@@ -31,7 +32,7 @@ public class Role {
 	}
 
 	public Set<Utilisateur> getUtilisateurs() {
-		return Utilisateurs;
+		return utilisateurs;
 	}
 
 	// Setters
@@ -39,32 +40,36 @@ public class Role {
 		this.nom = nom;
 	}
 
-	public void setUtilisateurs(Set<Utilisateur> Utilisateurs) {
-		this.Utilisateurs = Utilisateurs;
+	public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
 	}
 
 	// Constructors
-	public Role(Long id, String nom, Set<Utilisateur> Utilisateurs) {
+	public Role(String nom) {
 		super();
-		this.id = id;
 		this.nom = nom;
-		this.Utilisateurs = Utilisateurs;
+		this.utilisateurs = new HashSet<Utilisateur>();
 	}
 
 	public Role() {
+	}
+	
+	// Methods
+	public void addUser(Utilisateur user) {
+		
 	}
 
 	// ToString, Hashcode, Equals
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", nom=" + nom + ", Utilisateurs=" + Utilisateurs + "]";
+		return "Role [id=" + id + ", nom=" + nom + ", utilisateurs=" + utilisateurs + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Utilisateurs == null) ? 0 : Utilisateurs.hashCode());
+		result = prime * result + ((utilisateurs == null) ? 0 : utilisateurs.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		return result;
@@ -79,10 +84,10 @@ public class Role {
 		if (getClass() != obj.getClass())
 			return false;
 		Role other = (Role) obj;
-		if (Utilisateurs == null) {
-			if (other.Utilisateurs != null)
+		if (utilisateurs == null) {
+			if (other.utilisateurs != null)
 				return false;
-		} else if (!Utilisateurs.equals(other.Utilisateurs))
+		} else if (!utilisateurs.equals(other.utilisateurs))
 			return false;
 		if (id == null) {
 			if (other.id != null)

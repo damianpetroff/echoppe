@@ -1,6 +1,5 @@
 package ch.hearc.spring.echoppe.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -28,10 +25,6 @@ public class Payment {
 	private Date date;
 	@NotNull
 	private int method;
-	@NotNull
-	@DecimalMax("1000.0")
-	@DecimalMin("0.0")
-	private BigDecimal price;
 
 	// Getters
 	public Long getId() {
@@ -54,10 +47,6 @@ public class Payment {
 		return method;
 	}
 
-	public BigDecimal getPrice() {
-		return price;
-	}
-
 	// Setters
 	public void setUtilisateur(Utilisateur Utilisateur) {
 		this.Utilisateur = Utilisateur;
@@ -75,19 +64,13 @@ public class Payment {
 		this.method = method;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
 	// Constructor
-	public Payment(@NotNull Utilisateur utilisateur, @NotNull int status, @NotNull Date date, @NotNull int method,
-			@NotNull @DecimalMax("1000.0") @DecimalMin("0.0") BigDecimal price) {
+	public Payment(@NotNull Utilisateur utilisateur, @NotNull int status, @NotNull Date date, @NotNull int method) {
 		super();
 		Utilisateur = utilisateur;
 		this.status = status;
 		this.date = date;
 		this.method = method;
-		this.price = price;
 	}
 
 	public Payment() {
@@ -96,8 +79,7 @@ public class Payment {
 	// ToString, Hashcode, Equals
 	@Override
 	public String toString() {
-		return "Payment [id=" + id + ", Utilisateur=" + Utilisateur + ", status=" + status + ", method=" + method
-				+ ", price=" + price + "]";
+		return "Payment [id=" + id + ", Utilisateur=" + Utilisateur + ", status=" + status + ", method=" + method + "]";
 	}
 
 	@Override
@@ -108,7 +90,6 @@ public class Payment {
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + method;
-		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + status;
 		return result;
 	}
@@ -138,11 +119,6 @@ public class Payment {
 		} else if (!id.equals(other.id))
 			return false;
 		if (method != other.method)
-			return false;
-		if (price == null) {
-			if (other.price != null)
-				return false;
-		} else if (!price.equals(other.price))
 			return false;
 		if (status != other.status)
 			return false;

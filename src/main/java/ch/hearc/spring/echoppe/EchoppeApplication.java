@@ -1,7 +1,7 @@
 package ch.hearc.spring.echoppe;
 
-import java.math.BigDecimal;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,11 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import ch.hearc.spring.echoppe.model.Command;
-import ch.hearc.spring.echoppe.model.Payment;
 import ch.hearc.spring.echoppe.model.Article;
-import ch.hearc.spring.echoppe.model.ArticleCommand;
+import ch.hearc.spring.echoppe.model.Command;
 import ch.hearc.spring.echoppe.model.Comment;
+import ch.hearc.spring.echoppe.model.Payment;
 import ch.hearc.spring.echoppe.model.Rating;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
@@ -59,94 +58,66 @@ public class EchoppeApplication {
 
 	@PostConstruct
 	public void initData() {
-		Role roleAdmin = new Role();
-		roleAdmin.setNom("ROLE_ADMIN");
+		// Role
+		Role roleAdmin = new Role("ROLE_ADMIN");
+		Role roleUser = new Role("ROLE_USER");
 		roleRepo.save(roleAdmin);
-
-		Role roleUser = new Role();
-		roleUser.setNom("ROLE_USER");
 		roleRepo.save(roleUser);
 
-		Utilisateur admin = new Utilisateur();
-		admin.setUsername("admin");
-		admin.setMotDePasse(bCryptPasswordEncoder.encode("password"));
+		// User
+		Utilisateur admin = new Utilisateur("admin", "admin@test.ch", bCryptPasswordEncoder.encode("password"));
+		Utilisateur user = new Utilisateur("user", "user@test.ch", bCryptPasswordEncoder.encode("password"));
 
-		Set<Role> roles = new HashSet<>();
-		roles.add(roleAdmin);
-		admin.setRoles(roles);
+		Set<Role> adminRoles = new HashSet<Role>();
+		adminRoles.add(roleAdmin);
+		adminRoles.add(roleUser);
 
+		admin.addRoles(adminRoles);
+		user.addRole(roleUser);
 		utilisateurRepo.save(admin);
-
-		Utilisateur user = new Utilisateur();
-		user.setUsername("user");
-		user.setMotDePasse(bCryptPasswordEncoder.encode("password"));
-
-		Set<Role> rolesUser = new HashSet<>();
-		rolesUser.add(roleUser);
-		user.setRoles(rolesUser);
-
 		utilisateurRepo.save(user);
-	
-		// new ArticleSeeder().seed();
 
-		
-		//TODO: add categories to articles
-		
 		// Article
-		Article article1 = new Article();
-		article1.setName("Banane");
-		article1.setPrice(2.4);
-
+		Article article1 = new Article("Banane", 2.4);
+		Article article2 = new Article("Crayon", 0.5);
+		// TODO: add categories to articles
 		articleRepo.save(article1);
-
-		Article article2 = new Article();
-		article2.setName("Crayon");
-		article2.setPrice(0.5);
-
 		articleRepo.save(article2);
 
 		// Rating
-		Rating rating1 = new Rating();
-		rating1.setArticle(article1);
-		rating1.setRating(5);
-		rating1.setUtilisateur(user);
-
+		Rating rating1 = new Rating(5, user, article1);
+		Rating rating2 = new Rating(2, user, article2);
 		ratingRepo.save(rating1);
-
-		Rating rating2 = new Rating();
-		rating2.setArticle(article2);
-		rating2.setRating(2);
-		rating2.setUtilisateur(user);
-
 		ratingRepo.save(rating2);
-		
+
 		// Comment
-		Comment comment1 = new Comment();
-		comment1.setArticle(article1);
-		comment1.setUtilisateur(user);
-		comment1.setComment("C'est plutôt pas mal");
-
+		Comment comment1 = new Comment("C'est plutôt pas mal", user, article1);
+		Comment comment2 = new Comment("Vraiment nul !", user, article2);
 		commentRepo.save(comment1);
-
-		Comment comment2 = new Comment();
-		comment2.setArticle(article2);
-		comment2.setUtilisateur(user);
-		comment2.setComment("Vraiment nul !");
-
 		commentRepo.save(comment2);
-		
+
 		// Payment
-		Payment payment1 = new Payment(user, 1, new Date(2019,4,4), 0, new BigDecimal(32.20));
-		Payment payment2 = new Payment(user, 1, new Date(2019,4,4), 0, new BigDecimal(32.20));
-		Payment payment3 = new Payment(user, 1, new Date(2019,4,4), 0, new BigDecimal(32.20));
-		
-		
-		
+		Payment payment1 = null;
+		Payment payment2 = null;
+		try {
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+			payment1 = new Payment(user, 1, sdf.parse("04-04-2019 10:30:00"), 0);
+			payment2 = new Payment(user, 1, sdf.parse("04-04-2019 10:30:00"), 0);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 		// Command
 		Command command1 = new Command();
 		Command command2 = new Command();
-		Command command3 = new Command();
+		command1.addContent(article1, 5);
+		command1.addContent(article2, 2);
+		command2.addContent(article1, 3);
+		command2.addContent(article2, 7);
 		command1.setPayment(payment1);
+		command2.setPayment(payment2);
+
 	}
 
 }

@@ -1,6 +1,5 @@
 package ch.hearc.spring.echoppe.model;
 
-import java.math.BigDecimal;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,14 +25,14 @@ public class Article {
 	private String name;
 	@NotNull
 	@DecimalMin("0.0")
-	private BigDecimal price;
+	private double price;
 	@ManyToOne
 	private Category category;
 	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
 	private Set<ArticleCommand> articleCommand;
 
 	// Constructors
-	public Article(String name, BigDecimal price) {
+	public Article(String name, double price) {
 		super();
 		this.name = name;
 		this.price = price;
@@ -51,7 +50,7 @@ public class Article {
 		return name;
 	}
 
-	public BigDecimal getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
@@ -64,7 +63,7 @@ public class Article {
 		this.name = name;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -86,7 +85,9 @@ public class Article {
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -119,11 +120,9 @@ public class Article {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (price == null) {
-			if (other.price != null)
-				return false;
-		} else if (!price.equals(other.price))
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		return true;
 	}
+
 }

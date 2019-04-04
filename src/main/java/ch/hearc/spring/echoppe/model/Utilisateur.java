@@ -62,6 +62,15 @@ public class Utilisateur {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
+	
+	// Methods
+	public void addRole(Role role) {
+		this.roles.add(role);
+		
+	}
+	public void addRoles(Set<Role> roles) {
+		this.roles.addAll(roles);
+	}
 
 	// Constructor
 	public Utilisateur(String nomUtilisateur, String email, String motDePasse) {

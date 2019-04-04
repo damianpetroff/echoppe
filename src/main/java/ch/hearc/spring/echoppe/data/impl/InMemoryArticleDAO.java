@@ -1,6 +1,5 @@
 package ch.hearc.spring.echoppe.data.impl;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,30 +13,26 @@ import ch.hearc.spring.echoppe.model.Article;
 
 @Profile("memory")
 @Component
-public class InMemoryArticleDAO implements ArticleDAO{
+public class InMemoryArticleDAO implements ArticleDAO {
 
 	private static List<Article> DATASOURCE = new ArrayList<>();
-	
-	
-	static{
-		DATASOURCE.add(new Article("produit 1",new BigDecimal("12.50")));
-		DATASOURCE.add(new Article("produit 2",new BigDecimal(18)));
-		
-	}
 
+	static {
+		DATASOURCE.add(new Article("produit 1", 12.50));
+		DATASOURCE.add(new Article("produit 2", 18.0));
+
+	}
 
 	@Override
 	public List<Article> findAll() {
 		return DATASOURCE;
 	}
 
-
 	@Override
 	public void save(@Valid Article product) {
 		DATASOURCE.add(product);
-		
-	}
 
+	}
 
 	@Override
 	public Article findById(long id) {
@@ -45,15 +40,10 @@ public class InMemoryArticleDAO implements ArticleDAO{
 		return null;
 	}
 
-
 	@Override
 	public Article findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	
-	
-	
 }

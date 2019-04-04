@@ -28,9 +28,8 @@ public class Comment {
 	private Article article;
 
 	// Constructors
-	public Comment(int id, String comment, Utilisateur Utilisateur, Article article) {
+	public Comment(String comment, Utilisateur Utilisateur, Article article) {
 		super();
-		this.id = id;
 		this.comment = comment;
 		this.Utilisateur = Utilisateur;
 		this.article = article;

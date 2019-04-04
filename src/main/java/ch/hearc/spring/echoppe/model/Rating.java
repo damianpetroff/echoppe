@@ -60,9 +60,8 @@ public class Rating {
 	}
 
 	// Constructor
-	public Rating(int id, int rating, Utilisateur Utilisateur, Article article) {
+	public Rating(int rating, Utilisateur Utilisateur, Article article) {
 		super();
-		this.id = id;
 		this.rating = rating;
 		this.Utilisateur = Utilisateur;
 		this.article = article;
