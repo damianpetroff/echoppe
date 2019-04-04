@@ -20,23 +20,20 @@ import javax.validation.constraints.Size;
 @Entity
 public class Command {
 	
+	// Attributes
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
-	
-
 	@OneToOne
 	@JoinColumn
 	private Payment payment;
-
     @OneToMany(mappedBy = "command", cascade = CascadeType.ALL)
     private Set<ArticleCommand> articleCommand;
-
-
 	@NotNull
 	@DecimalMax("1000.0") @DecimalMin("0.0") 
 	private BigDecimal price;
 	
+	// Constructors
 	public Command(Set<ArticleCommand> setArticleCommand, Payment payment, BigDecimal price) {
 		super();
 		this.payment = payment;
@@ -47,32 +44,29 @@ public class Command {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-	
+	// Getters
 	public BigDecimal getPrice() {
 		return price;
 	}
 	
-
-	
 	public Payment getPayment() {
 		return payment;
 	}
-
+	
+	// Setters
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
 	
-
-	
+	// ToString
 	@Override
 	public String toString() {
 		StringBuilder s =new StringBuilder( "Command [ payment :");
 		s.append( payment).append( "], price :").append(price);
 		return s.toString();
 	}
-	
-	
 }

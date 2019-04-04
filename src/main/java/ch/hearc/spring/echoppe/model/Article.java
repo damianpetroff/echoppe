@@ -18,36 +18,36 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Article {
+	
+	// Attributes
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
-	
 	@NotNull
     @Size(min=2, max=30)
 	private String name;
-	
 	@NotNull
 	@DecimalMin("0.0") 
 	private BigDecimal price;
-	
 	@ManyToOne
 	private Category category;
-	
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private Set<ArticleCommand> articleCommand;
 	
-
+    // Constructors
 	public Article(String name, BigDecimal price) {
 		super();
 		this.name = name;
 		this.price = price;
-//		this.category = category;
+		//this.category = category;
 	}
 	
 	public Article() {
-		// TODO Auto-generated constructor stub
+		this("Unknown article", new BigDecimal(0.0));
 	}
 	
+	
+	// Getters
 	public Long getId() {
 		return id;
 	}
@@ -55,7 +55,17 @@ public class Article {
 	public String getName() {
 		return name;
 	}
+	
+	public BigDecimal getPrice() {
+		return price;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
 
+	
+	// Setters
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -64,23 +74,18 @@ public class Article {
 		this.price = price;
 	}
 	
-	public BigDecimal getPrice() {
-		return price;
-	}
-	
-	
-	public Category getCategory() {
-		return category;
-	}
-
 	public void setCategory(Category category) {
 		this.category = category;
 	}	
 	
-
+	// ToString
 	@Override
 	public String toString() {
 		return "Product [name=" + name + ", price=" + price + ", category ="+category+"]";
+	}
+
+	public void setPrice(double price) {
+		this.setPrice(new BigDecimal(price));
 	}
 
 }

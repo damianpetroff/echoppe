@@ -17,19 +17,16 @@ public class Comment {
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	@NotNull
 	@Size(min=3)
 	private String comment;
-	
 	@NotNull
 	@OneToOne
 	private Utilisateur Utilisateur;
-	
 	@ManyToOne
 	@NotNull
 	private Article article;
-
+	
 	public String getComment() {
 		return comment;
 	}
@@ -69,6 +66,10 @@ public class Comment {
 		this.comment = comment;
 		this.Utilisateur = Utilisateur;
 		this.article = article;
+	}
+
+	public Comment() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	

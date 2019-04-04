@@ -32,7 +32,12 @@ public class ArticleRepositoryDAO implements ArticleDAO{
 	public Article findById(long id) {
 		return articleRepository.findById(id);
 	}
-
+	
+	@Override
+	public Article findByName(String name) {
+		return articleRepository.findByName(name);
+	}
+	
 	@Override
 	public void save(@Valid Article product) {
 		

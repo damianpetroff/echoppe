@@ -6,4 +6,5 @@ import ch.hearc.spring.echoppe.model.Article;
 
 public interface ArticleRepository extends CrudRepository<Article, Long> {
 	Article findById(long id);
+	Article findByName(String name);
 }

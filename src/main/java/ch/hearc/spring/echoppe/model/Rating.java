@@ -71,6 +71,10 @@ public class Rating {
 		this.Utilisateur = Utilisateur;
 		this.article = article;
 	}
+
+	public Rating() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

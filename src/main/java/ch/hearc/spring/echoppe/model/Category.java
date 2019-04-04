@@ -10,31 +10,35 @@ import javax.validation.constraints.Size;
 @Entity
 public class Category {
 
+	// Attributes
 	@NotNull
 	@Size(min = 2, max = 30)
 	private String name;
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
 
+	// Constructors
 	public Category(String name) {
 		super();
 		this.name = name;
 	}
 
 	public Category() {
-		// TODO Auto-generated constructor stub
+		this("Unknown category");
 	}
 
+	// Getters
+	public String getName() {
+		return name;
+	}
+	
+	// Setters
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getName() {
-		return name;
-	}
-
+	// ToString
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
