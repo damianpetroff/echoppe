@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import ch.hearc.spring.echoppe.model.Article;
+import ch.hearc.spring.echoppe.model.Category;
 import ch.hearc.spring.echoppe.model.Command;
 import ch.hearc.spring.echoppe.model.Comment;
 import ch.hearc.spring.echoppe.model.Payment;
@@ -21,6 +22,7 @@ import ch.hearc.spring.echoppe.model.Rating;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
+import ch.hearc.spring.echoppe.repository.CategoryRepository;
 import ch.hearc.spring.echoppe.repository.CommentRepository;
 import ch.hearc.spring.echoppe.repository.RatingRepository;
 import ch.hearc.spring.echoppe.repository.RoleRepository;
@@ -41,6 +43,9 @@ public class EchoppeApplication {
 
 	@Autowired
 	private RoleRepository roleRepo;
+
+	@Autowired
+	private CategoryRepository categoryRepo;
 
 	@Autowired
 	private ArticleRepository articleRepo;
@@ -77,10 +82,23 @@ public class EchoppeApplication {
 		utilisateurRepo.save(admin);
 		utilisateurRepo.save(user);
 
+		// Category
+		Category c1 = new Category("Nourriture");
+		Category c2 = new Category("Boisson");
+		Category c3 = new Category("Habit");
+		Category c4 = new Category("Gun");
+		Category c5 = new Category("Outil");
+		categoryRepo.save(c1);
+		categoryRepo.save(c2);
+		categoryRepo.save(c3);
+		categoryRepo.save(c4);
+		categoryRepo.save(c5);
+
 		// Article
 		Article article1 = new Article("Banane", 2.4);
 		Article article2 = new Article("Crayon", 0.5);
-		// TODO: add categories to articles
+		article1.setCategory(c1);
+		article2.setCategory(c5);
 		articleRepo.save(article1);
 		articleRepo.save(article2);
 

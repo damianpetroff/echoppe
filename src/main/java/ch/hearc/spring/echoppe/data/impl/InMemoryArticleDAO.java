@@ -45,5 +45,4 @@ public class InMemoryArticleDAO implements ArticleDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
