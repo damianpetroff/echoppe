@@ -12,11 +12,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import ch.hearc.spring.echoppe.model.Article;
+import ch.hearc.spring.echoppe.model.Category;
 import ch.hearc.spring.echoppe.model.Comment;
 import ch.hearc.spring.echoppe.model.Rating;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
+import ch.hearc.spring.echoppe.repository.CategoryRepository;
 import ch.hearc.spring.echoppe.repository.CommentRepository;
 import ch.hearc.spring.echoppe.repository.RatingRepository;
 import ch.hearc.spring.echoppe.repository.RoleRepository;
@@ -37,6 +39,9 @@ public class EchoppeApplication {
 
 	@Autowired
 	private RoleRepository roleRepo;
+	
+	@Autowired
+	private CategoryRepository categoryRepo;
 
 	@Autowired
 	private ArticleRepository articleRepo;
@@ -80,25 +85,45 @@ public class EchoppeApplication {
 		rolesUser.add(roleUser);
 		user.setRoles(rolesUser);
 
-		utilisateurRepo.save(user);
-
+		utilisateurRepo.save(user);	
+		
+		// new CategorySeeder().seed();
+		Category c=new Category();
+		c.setName("Nourriture");	
+		categoryRepo.save(c);
+		
+		Category c2=new Category();
+		c2.setName("Boisson");	
+		categoryRepo.save(c2);
+		
+		Category c3=new Category();
+		c3.setName("Habit");	
+		categoryRepo.save(c3);
+		
+		Category c4=new Category();
+		c4.setName("Gun");	
+		categoryRepo.save(c4);
+		
+		Category c5=new Category();
+		c5.setName("Outil");	
+		categoryRepo.save(c5);
 		
 		// new ArticleSeeder().seed();
-
-		
-		//TODO: add categories to articles
 		Article article1 = new Article();
 		article1.setName("Banane");
 		article1.setPrice(2.4);
+		article1.setCategory(c);
 
 		articleRepo.save(article1);
 
 		Article article2 = new Article();
 		article2.setName("Crayon");
 		article2.setPrice(0.5);
+		article1.setCategory(c5);
 
 		articleRepo.save(article2);
 
+		// new RatingSeeder().seed();
 		Rating rating1 = new Rating();
 		rating1.setArticle(article1);
 		rating1.setRating(5);
@@ -113,6 +138,7 @@ public class EchoppeApplication {
 
 		ratingRepo.save(rating2);
 
+		// new CommentSeeder().seed();
 		Comment comment1 = new Comment();
 		comment1.setArticle(article1);
 		comment1.setUtilisateur(user);

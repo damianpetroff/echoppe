@@ -17,22 +17,22 @@ import ch.hearc.spring.echoppe.repository.CategoryRepository;
 public class CategoryRepositoryDAO implements CategoryDAO{
 
 	@Autowired
-	private CategoryRepository prepo;
+	private CategoryRepository categoryRepository;
 	
 	@Override
 	public List<Category> findAll() {
 		
-		List<Category> products = new ArrayList<>();
+		List<Category> category = new ArrayList<>();
 		
-		prepo.findAll().forEach(products::add);
+		categoryRepository.findAll().forEach(category::add);
 		
-		return products;
+		return category;
 	}
 
 	@Override
 	public void save(@Valid Category product) {
 		
-		prepo.save(product);
+		categoryRepository.save(product);
 		
 	}
 
