@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ch.hearc.spring.echoppe.model.Article;
+import ch.hearc.spring.echoppe.repository.ArticleRepository;
 
 @Controller
 public class ArticleController {
@@ -46,12 +47,12 @@ public class ArticleController {
 
 		if (!errors.hasErrors()) {
 			arepo.save(article);
-        	}
-        	return ((errors.hasErrors()) ? "input_articles" : "redirect:articles");
+		}
+		return ((errors.hasErrors()) ? "input_articles" : "redirect:articles");
 	}
 
 	@GetMapping(value = "/payment")
-	public String payCommand(Map<String, Object> model){
+	public String payCommand(Map<String, Object> model) {
 		model.put("articles", arepo.findAll());
 
 		model.put("article", new Article());
