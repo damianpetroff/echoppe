@@ -7,14 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import ch.hearc.spring.echoppe.data.ArticleDAO;
-
 @Controller
 public class HomeController {
-
-	@Autowired
-	ArticleDAO articleDao;
-
 	@Value("${accueil.message:test}")
 	private String message;
 

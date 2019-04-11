@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import ch.hearc.spring.echoppe.data.ArticleDAO;
 import ch.hearc.spring.echoppe.model.Article;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
 
@@ -27,13 +26,13 @@ public class ArticleController {
 
 	
 	@Autowired
-	private ArticleDAO pdao;
+	private ArticleRepository arepo;
 	
 	
 	@GetMapping(value = "/articles")
 	public String findAllarticles(Map<String, Object> model){
 		System.out.println("/articles GET");
-		model.put("articles", pdao.findAll());
+		model.put("articles", arepo.findAll());
 		model.put("article", new Article());
 		
 		
@@ -42,7 +41,7 @@ public class ArticleController {
 	
 	@GetMapping(value = "/article/{id}")
 	public String findArticle(@PathVariable("id") long id, Model model) {
-		model.addAttribute("article", pdao.findById(id));
+		model.addAttribute("article", arepo.findById(id));
 		return "article";
 	}
 	
@@ -63,14 +62,14 @@ public class ArticleController {
 		
 		
 		if (!errors.hasErrors()) {
-            pdao.save(article);
+			arepo.save(article);
         }
         return ((errors.hasErrors()) ? "input_articles" : "redirect:articles");
 	}
 	
 	@GetMapping(value = "/payment")
 	public String payCommand(Map<String, Object> model){
-		model.put("articles", pdao.findAll());
+		model.put("articles", arepo.findAll());
 		model.put("article", new Article());
 		
 		
