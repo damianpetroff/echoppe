@@ -28,7 +28,7 @@ public class ArticleRepositoryTest {
 	@Test
 	public void givenArticle_whenPersistArticle_theArticleIsPersisted() {
 		Article article = new Article();
-		article.setPrice(BigDecimal.ONE);
+		article.setPrice(1);
 		article.setName("test article");
 		
 		entityManager.persist(article);
