@@ -1,7 +1,6 @@
 package ch.hearc.spring.echoppe.data.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,21 +13,21 @@ import ch.hearc.spring.echoppe.model.Rating;
 import ch.hearc.spring.echoppe.repository.RatingRepository;
 
 @Component
-public class RatingRepositoryDAO implements RatingDAO{
+public class RatingRepositoryDAO implements RatingDAO {
 
 	@Autowired
 	private RatingRepository prepo;
-	
+
 	@Override
 	public List<Rating> findAll() {
-		
+
 		List<Rating> ratings = new ArrayList<>();
-		
+
 		prepo.findAll().forEach(ratings::add);
-		
+
 		return ratings;
 	}
-	
+
 	@Override
 	public Rating findById(long id) {
 		return prepo.findById(id);
@@ -36,9 +35,9 @@ public class RatingRepositoryDAO implements RatingDAO{
 
 	@Override
 	public void save(@Valid Rating rating) {
-		
+
 		prepo.save(rating);
-		
+
 	}
 
 }
