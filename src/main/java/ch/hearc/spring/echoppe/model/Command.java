@@ -1,13 +1,14 @@
 package ch.hearc.spring.echoppe.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -25,8 +26,8 @@ public class Command {
 	@JoinColumn
 	private Payment payment;
 
-	@NotNull
-	private HashMap<Article, Integer> content;
+	@OneToMany
+	private List<ArticleCommand> articleCommand;
 
 	@NotNull
 	@DecimalMax("1000.0")
@@ -35,7 +36,7 @@ public class Command {
 
 	// Constructors
 	public Command() {
-		this.content = new HashMap<Article, Integer>();
+		this.articleCommand = new ArrayList<ArticleCommand>();
 		this.price = 0.0;
 	}
 
@@ -48,8 +49,8 @@ public class Command {
 		return payment;
 	}
 
-	public HashMap<Article, Integer> getContent() {
-		return content;
+	public List<ArticleCommand> getContent() {
+		return articleCommand;
 	}
 
 	// Setters
@@ -61,26 +62,26 @@ public class Command {
 		this.payment = payment;
 	}
 
-	public void setContent(HashMap<Article, Integer> content) {
-		this.content = content;
+	public void setContent(List<ArticleCommand> articleCommand) {
+		this.articleCommand = articleCommand;
 	}
 
 	// Methods
-	public void addContent(Article article, int quantity) {
-		content.put(article, quantity);
+	public void addContent(ArticleCommand newArticleCommand) {
+		articleCommand.add(newArticleCommand);
 		computeCommandPrice();
 	}
 
 	public void clearContent() {
-		content.clear();
+		articleCommand.clear();
 		computeCommandPrice();
 	}
 
 	private void computeCommandPrice() {
 		double sum = 0.0;
-		for (Map.Entry<Article, Integer> entry : content.entrySet()) {
-			Article article = entry.getKey();
-			Integer quantity = entry.getValue();
+		for (ArticleCommand articleCommand : articleCommand) {
+			Article article = articleCommand.getArticle();
+			Integer quantity = articleCommand.getQuantity();
 			sum += article.getPrice() * quantity;
 		}
 		this.price = sum;
@@ -98,7 +99,7 @@ public class Command {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((articleCommand == null) ? 0 : articleCommand.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((payment == null) ? 0 : payment.hashCode());
 		long temp;
@@ -116,10 +117,10 @@ public class Command {
 		if (getClass() != obj.getClass())
 			return false;
 		Command other = (Command) obj;
-		if (content == null) {
-			if (other.content != null)
+		if (articleCommand == null) {
+			if (other.articleCommand != null)
 				return false;
-		} else if (!content.equals(other.content))
+		} else if (!articleCommand.equals(other.articleCommand))
 			return false;
 		if (id == null) {
 			if (other.id != null)

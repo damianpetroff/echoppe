@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import ch.hearc.spring.echoppe.model.Article;
+import ch.hearc.spring.echoppe.model.ArticleCommand;
 import ch.hearc.spring.echoppe.model.Category;
 import ch.hearc.spring.echoppe.model.Command;
 import ch.hearc.spring.echoppe.model.Comment;
@@ -21,9 +22,12 @@ import ch.hearc.spring.echoppe.model.Payment;
 import ch.hearc.spring.echoppe.model.Rating;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
+import ch.hearc.spring.echoppe.repository.ArticleCommandRepository;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
 import ch.hearc.spring.echoppe.repository.CategoryRepository;
+import ch.hearc.spring.echoppe.repository.CommandRepository;
 import ch.hearc.spring.echoppe.repository.CommentRepository;
+import ch.hearc.spring.echoppe.repository.PaymentRepository;
 import ch.hearc.spring.echoppe.repository.RatingRepository;
 import ch.hearc.spring.echoppe.repository.RoleRepository;
 import ch.hearc.spring.echoppe.repository.UserRepository;
@@ -55,6 +59,15 @@ public class EchoppeApplication {
 
 	@Autowired
 	private CommentRepository commentRepo;
+	
+	@Autowired
+	private CommandRepository commandRepo;
+	
+	@Autowired
+	private PaymentRepository paymentRepo;
+	
+	@Autowired
+	private ArticleCommandRepository articleCommandRepo;
 
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -123,6 +136,8 @@ public class EchoppeApplication {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 			payment1 = new Payment(user, 1, sdf.parse("04-04-2019 10:30:00"), 0);
 			payment2 = new Payment(user, 1, sdf.parse("04-04-2019 10:30:00"), 0);
+			paymentRepo.save(payment1);
+			paymentRepo.save(payment2);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -130,13 +145,28 @@ public class EchoppeApplication {
 		// Command
 		Command command1 = new Command();
 		Command command2 = new Command();
-		command1.addContent(article1, 5);
-		command1.addContent(article2, 2);
-		command2.addContent(article1, 3);
-		command2.addContent(article2, 7);
+		
+		ArticleCommand ac1=new ArticleCommand(article1,5);
+		ArticleCommand ac2=new ArticleCommand(article2,5);
+		ArticleCommand ac3=new ArticleCommand(article1,3);
+		ArticleCommand ac4=new ArticleCommand(article2,7);
+		
+		articleCommandRepo.save(ac1);
+		articleCommandRepo.save(ac2);
+		articleCommandRepo.save(ac3);
+		articleCommandRepo.save(ac4);
+		
+		command1.addContent(ac1);
+		command1.addContent(ac2);
+		command2.addContent(ac3);
+		command2.addContent(ac4);
+		
 		command1.setPayment(payment1);
 		command2.setPayment(payment2);
-
+		
+		commandRepo.save(command1);
+		commandRepo.save(command2);
+		
 	}
 
 }

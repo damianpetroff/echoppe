@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Category {
+public class Category  {
 
 	// Attributes
 	@NotNull
