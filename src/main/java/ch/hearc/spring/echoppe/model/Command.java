@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.DecimalMax;
@@ -21,6 +22,10 @@ public class Command {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
+	
+	@NotNull
+	@ManyToOne
+	private Utilisateur Utilisateur;
 
 	@OneToOne
 	@JoinColumn
@@ -42,7 +47,12 @@ public class Command {
 
 	// Getters
 	public double getPrice() {
+		computeCommandPrice();
 		return price;
+	}
+	
+	public Utilisateur getUtilisateur() {
+		return Utilisateur;
 	}
 
 	public Payment getPayment() {
@@ -64,6 +74,11 @@ public class Command {
 
 	public void setContent(List<ArticleCommand> articleCommand) {
 		this.articleCommand = articleCommand;
+	}
+	
+	// Setters
+	public void setUtilisateur(Utilisateur Utilisateur) {
+		this.Utilisateur = Utilisateur;
 	}
 
 	// Methods

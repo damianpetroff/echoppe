@@ -134,8 +134,8 @@ public class EchoppeApplication {
 		try {
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-			payment1 = new Payment(user, 1, sdf.parse("04-04-2019 10:30:00"), 0);
-			payment2 = new Payment(user, 1, sdf.parse("04-04-2019 10:30:00"), 0);
+			payment1 = new Payment( 1, sdf.parse("04-04-2019 10:30:00"), 0);
+			payment2 = new Payment( 1, sdf.parse("04-04-2019 10:30:00"), 0);
 			paymentRepo.save(payment1);
 			paymentRepo.save(payment2);
 		} catch (ParseException e) {
@@ -163,6 +163,9 @@ public class EchoppeApplication {
 		
 		command1.setPayment(payment1);
 		command2.setPayment(payment2);
+		
+		command1.setUtilisateur(user);
+		command2.setUtilisateur(user);
 		
 		commandRepo.save(command1);
 		commandRepo.save(command2);

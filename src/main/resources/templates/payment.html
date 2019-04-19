@@ -22,15 +22,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="article: ${articles}">
-							<td th:text="${article.name}" />
-							<td th:text="${article.price}" />
-							<!-- TODO: check comment passer de façon maligne le nb d'articles commandé par article -->
+						<tr th:each="articleCommand: ${command.content}">
+							<td th:text="${articleCommand.article.name}" />
+							<td th:text="${articleCommand.article.price}" />
+							<td th:text="${articleCommand.quantity}" />
 						</tr>
 					<tfoot>
 						<tr>
 							<td>Prix total:</td>
-							<td>XXX</td>
+							<td th:text="${command.price}"></td>
 						</tr>
 					</tfoot>
 					</tbody>

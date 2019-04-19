@@ -30,6 +30,10 @@ public class ArticleCommand {
 		this.article = article;
 		this.quantity = quantity;
 	}
+	
+	public ArticleCommand() {
+		
+	}
 
 	// Getters
 	public Long getId() {
