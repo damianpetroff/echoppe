@@ -161,7 +161,7 @@ public class EchoppeApplication {
 		command2.addContent(ac3);
 		command2.addContent(ac4);
 		
-		command1.setPayment(payment1);
+		//command1.setPayment(payment1);
 		command2.setPayment(payment2);
 		
 		command1.setUtilisateur(user);

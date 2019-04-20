@@ -10,10 +10,10 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<h2>Résumé de votre paiement</h2>
+				<h2>Résumé de votre commande</h2>
 			</div>
 			<div class="card-body">
-			<table class="table">
+				<table class="table">
 					<thead>
 						<tr>
 							<th scope="col">Nom</th>
@@ -35,28 +35,21 @@
 					</tfoot>
 					</tbody>
 				</table>
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Status</th>
-							<th scope="col">Date</th>
-							<th scope="col">Methode</th>
-							<th scope="col">Montant</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-						 	<td th:if="${command.payment.status} eq '1'">Payé</td>
-							<td th:if="${command.payment.status} eq '0'">Non payé</td>
-							<td th:text="${command.payment.date}" />
-							<td th:if="${command.payment.method} eq '0'">PayPal</td>
-							<td th:if="${command.payment.method} eq '1'">Don de rein</td>
-							<td th:if="${command.payment.method} eq '2'">Carte de crédit</td>
-							<td th:if="${command.payment.method} eq '3'">Facture</td>
-							<td th:text="${command.price}" />
-						</tr>
-					</tbody>
-				</table>
+				<div>
+				 <form action="#" th:action="@{/command}" method="post">
+					Choisir un mode de paiement:
+					<ul>
+						<li><label><input type="radio" name="method" value="0" />PayPal</label></li>
+						<li><label><input type="radio" name="method" value="1" />Don de rein</label></li>
+						<li><label><input type="radio" name="method" value="2" />Carte de crédit</label></li>
+						<li><label><input type="radio" name="method" value="3" />Facture</label></li>
+					</ul>
+					<br />
+					<input type="hidden" name="commandId" th:value="${command.id}"/>
+					 	<button type="submit" class="btn btn-success">Payer</button>
+					 </form>
+
+				</div>
 			</div>
 		</div>
 	</div>

@@ -58,6 +58,10 @@ public class Command {
 	public Payment getPayment() {
 		return payment;
 	}
+	
+	public Long getId() {
+		return id;
+	}
 
 	public List<ArticleCommand> getContent() {
 		return articleCommand;
