@@ -70,6 +70,7 @@ public class ArticleController {
 		return ((errors.hasErrors()) ? "input_articles" : "redirect:articles");
 	}
 	
+	@PreAuthorize("hasRole('ROLE_USER')")
 	@PostMapping("/command")
 	public String saveCommand(HttpServletRequest request, Model model) {
 		Long commandId=Long.parseLong(request.getParameter("commandId"));
