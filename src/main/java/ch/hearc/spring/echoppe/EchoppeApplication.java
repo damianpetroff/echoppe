@@ -3,7 +3,6 @@ package ch.hearc.spring.echoppe;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -59,13 +58,13 @@ public class EchoppeApplication {
 
 	@Autowired
 	private CommentRepository commentRepo;
-	
+
 	@Autowired
 	private CommandRepository commandRepo;
-	
+
 	@Autowired
 	private PaymentRepository paymentRepo;
-	
+
 	@Autowired
 	private ArticleCommandRepository articleCommandRepo;
 
@@ -92,7 +91,7 @@ public class EchoppeApplication {
 
 		admin.addRoles(adminRoles);
 		user.addRole(roleUser);
-		
+
 		utilisateurRepo.save(admin);
 		utilisateurRepo.save(user);
 
@@ -128,48 +127,51 @@ public class EchoppeApplication {
 		commentRepo.save(comment1);
 		commentRepo.save(comment2);
 
+		// Command
+		Command command1 = new Command();
+		Command command2 = new Command();
+
 		// Payment
 		Payment payment1 = null;
 		Payment payment2 = null;
 		try {
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-			payment1 = new Payment( 1, sdf.parse("04-04-2019 10:30:00"), 0);
-			payment2 = new Payment( 1, sdf.parse("04-04-2019 10:30:00"), 0);
+			payment1 = new Payment(1, sdf.parse("04-04-2019 10:30:00"), 0);
+			payment2 = new Payment(1, sdf.parse("04-04-2019 10:30:00"), 0);
 			paymentRepo.save(payment1);
 			paymentRepo.save(payment2);
+			
+			command1.setDate(sdf.parse("04-04-2019 10:30:00"));
+			command2.setDate(sdf.parse("04-04-2019 10:29:00"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
-		// Command
-		Command command1 = new Command();
-		Command command2 = new Command();
-		
-		ArticleCommand ac1=new ArticleCommand(article1,5);
-		ArticleCommand ac2=new ArticleCommand(article2,5);
-		ArticleCommand ac3=new ArticleCommand(article1,3);
-		ArticleCommand ac4=new ArticleCommand(article2,7);
-		
+		ArticleCommand ac1 = new ArticleCommand(article1, 5);
+		ArticleCommand ac2 = new ArticleCommand(article2, 5);
+		ArticleCommand ac3 = new ArticleCommand(article1, 3);
+		ArticleCommand ac4 = new ArticleCommand(article2, 7);
+
 		articleCommandRepo.save(ac1);
 		articleCommandRepo.save(ac2);
 		articleCommandRepo.save(ac3);
 		articleCommandRepo.save(ac4);
-		
+
 		command1.addContent(ac1);
 		command1.addContent(ac2);
 		command2.addContent(ac3);
 		command2.addContent(ac4);
-		
-		//command1.setPayment(payment1);
+
+		// command1.setPayment(payment1);
 		command2.setPayment(payment2);
-		
+
 		command1.setUtilisateur(user);
 		command2.setUtilisateur(user);
-		
+
 		commandRepo.save(command1);
 		commandRepo.save(command2);
-		
+
 	}
 
 }

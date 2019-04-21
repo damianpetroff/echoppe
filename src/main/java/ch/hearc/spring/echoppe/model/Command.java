@@ -1,6 +1,7 @@
 package ch.hearc.spring.echoppe.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,7 +26,10 @@ public class Command {
 	
 	@NotNull
 	@ManyToOne
-	private Utilisateur Utilisateur;
+	private Utilisateur utilisateur;
+	
+	@NotNull
+	private Date date;
 
 	@OneToOne
 	@JoinColumn
@@ -52,7 +56,7 @@ public class Command {
 	}
 	
 	public Utilisateur getUtilisateur() {
-		return Utilisateur;
+		return utilisateur;
 	}
 
 	public Payment getPayment() {
@@ -61,6 +65,10 @@ public class Command {
 	
 	public Long getId() {
 		return id;
+	}
+	
+	public Date getDate() {
+		return date;
 	}
 
 	public List<ArticleCommand> getContent() {
@@ -80,9 +88,12 @@ public class Command {
 		this.articleCommand = articleCommand;
 	}
 	
-	// Setters
-	public void setUtilisateur(Utilisateur Utilisateur) {
-		this.Utilisateur = Utilisateur;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	// Methods
@@ -105,20 +116,24 @@ public class Command {
 		}
 		this.price = sum;
 	}
-
+	
 	// ToString, Hashcode, Equals
+	
+
+
 	@Override
 	public String toString() {
-		StringBuilder s = new StringBuilder("Command [ payment :");
-		s.append(payment).append("], price :").append(price);
-		return s.toString();
+		return "Command [id=" + id + ", utilisateur=" + utilisateur + ", date=" + date + ", payment=" + payment
+				+ ", articleCommand=" + articleCommand + ", price=" + price + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((utilisateur == null) ? 0 : utilisateur.hashCode());
 		result = prime * result + ((articleCommand == null) ? 0 : articleCommand.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((payment == null) ? 0 : payment.hashCode());
 		long temp;
@@ -136,10 +151,20 @@ public class Command {
 		if (getClass() != obj.getClass())
 			return false;
 		Command other = (Command) obj;
+		if (utilisateur == null) {
+			if (other.utilisateur != null)
+				return false;
+		} else if (!utilisateur.equals(other.utilisateur))
+			return false;
 		if (articleCommand == null) {
 			if (other.articleCommand != null)
 				return false;
 		} else if (!articleCommand.equals(other.articleCommand))
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -155,5 +180,8 @@ public class Command {
 			return false;
 		return true;
 	}
+
+	
+	
 
 }
