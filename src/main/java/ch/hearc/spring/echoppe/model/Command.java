@@ -39,7 +39,7 @@ public class Command {
 	private List<ArticleCommand> articleCommand;
 
 	@NotNull
-	@DecimalMax("1000.0")
+	@DecimalMax("1000000.0")
 	@DecimalMin("0.0")
 	private double price;
 

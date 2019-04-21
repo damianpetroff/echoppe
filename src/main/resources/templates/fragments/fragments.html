@@ -27,7 +27,7 @@
 					class="btn btn-secondary dropdown-toggle" role="button"
 					id="navbarDropdown" href="#" data-toggle="dropdown"> Menu </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/articles">Liste articles</a> <a
+						<a class="dropdown-item" href="/articles/1">Liste articles</a> <a
 							class="dropdown-item" href="/input_articles">Saisie articles</a>
 
 						<div class="dropdown-divider"></div>
@@ -50,10 +50,10 @@
 					</form>
 				</div>
 			</div>
-			<form class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0" action="#">
 				<input class="form-control mr-sm-2" type="search"
-					placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					placeholder="Search" aria-label="Search" id="searchQuery">
+				<button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn">Search</button>
 			</form>
 		</div>
 	</nav>
@@ -69,6 +69,19 @@
 		crossorigin="anonymous"></script>
 	<script type="text/javascript"
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script th:inline="javascript">
+
+
+    	document.getElementById("searchBtn").addEventListener("click", function(event){
+    	  event.preventDefault();
+    	  var searchQuery = document.getElementById("searchQuery").value; 
+
+    	    var url = [[@{/search}]] +"/"+ searchQuery+"/1"; 
+
+    	    window.location.href = url;
+    	});
+
+</script>
 </div>
 
 

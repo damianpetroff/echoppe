@@ -25,7 +25,7 @@
 							<td><a th:href="@{'/article/' + ${article.id}}" th:text="${article.name}"/></td>
 							<td th:text="${article.price}"></td>
 						</tr>
-						<tr>
+						<tr sec:authorize="hasRole('ROLE_ADMIN')">
 							<td><a href="/input_articles"
 								class="btn btn-primary btn-lg active" role="button"
 								aria-pressed="true">Nouvel article</a></td>
@@ -33,6 +33,15 @@
 						</tr>
 					</tbody>
 				</table>
+				Page: 
+				<th:block th:if="${search eq '0'}" th:each="i: ${#numbers.sequence(1, pageNb)}">
+				    <a th:href="@{'/articles/' + ${i}}" th:if="${pageNum == i}" class="active" ><strong th:text="${i}"></strong></a>
+				    <a th:href="@{'/articles/' + ${i}}" th:unless="${pageNum == i}" th:text="${i}"></a>
+				</th:block>
+				<th:block th:if="${search eq '1'}" th:each="i: ${#numbers.sequence(1, pageNb)}">
+				    <a th:href="@{'/search/'+${searchQuery}+'/' + ${i}}" th:if="${pageNum == i}" class="active" ><strong th:text="${i}"></strong></a>
+				    <a th:href="@{'/search/'+${searchQuery}+'/' + ${i}}" th:unless="${pageNum == i}" th:text="${i}"></a>
+				</th:block>
 			</div>
 
 

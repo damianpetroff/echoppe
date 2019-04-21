@@ -2,7 +2,10 @@ package ch.hearc.spring.echoppe;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
@@ -106,6 +109,14 @@ public class EchoppeApplication {
 		categoryRepo.save(c3);
 		categoryRepo.save(c4);
 		categoryRepo.save(c5);
+		
+		List<Category> categoryList=new ArrayList<Category>();
+		
+		categoryList.add(c1);
+		categoryList.add(c2);
+		categoryList.add(c3);
+		categoryList.add(c4);
+		categoryList.add(c5);
 
 		// Article
 		Article article1 = new Article("Banane", 2.4);
@@ -171,7 +182,31 @@ public class EchoppeApplication {
 
 		commandRepo.save(command1);
 		commandRepo.save(command2);
+		
+		Random rnd=new Random();
+		
+		//Adding articles with random name and price to test pagination
+		for(int i=0;i<100;i++) {
+			Article a=new Article(randomAlphaNumeric(10),rnd.nextDouble()*100);
+			a.setCategory(categoryList.get(rnd.nextInt(categoryList.size())));
+			articleRepo.save(a);
+		}
 
+	}
+
+	//source: https://dzone.com/articles/generate-random-alpha-numeric
+	private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static String randomAlphaNumeric(int count) {
+		count--;
+		StringBuilder builder = new StringBuilder();
+		int character = (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
+		
+		builder.append(ALPHA_NUMERIC_STRING.charAt(character));
+		while (count-- != 0) {
+			character = (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
+			builder.append(ALPHA_NUMERIC_STRING.toLowerCase().charAt(character));
+		}
+		return builder.toString();
 	}
 
 }

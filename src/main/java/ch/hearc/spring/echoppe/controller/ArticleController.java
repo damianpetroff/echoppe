@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -45,15 +48,20 @@ public class ArticleController {
 
 	@Autowired
 	private UserRepository urepo;
-	
+
 	@Autowired
 	private ArticleCommandRepository acrepo;
 
-	@GetMapping(value = "/articles")
-	public String findAllarticles(Map<String, Object> model) {
-		System.out.println("/articles GET");
-		model.put("articles", arepo.findAll());
-		model.put("article", new Article());
+
+	@GetMapping(value = "/articles/{page}")
+	public String findAllarticlesPage(@PathVariable("page") int pageNum, Map<String, Object> model) {
+
+		Pageable page = PageRequest.of(pageNum - 1, 10);
+		Page<Article> articles = arepo.findAll(page);
+		model.put("articles", articles);
+		model.put("pageNum", page.getPageNumber() + 1);
+		model.put("pageNb", articles.getTotalPages());
+		model.put("search", "0");
 
 		return "articles";
 	}
@@ -64,6 +72,7 @@ public class ArticleController {
 		return "article";
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping(value = "/input_articles")
 	public String inputArticles(Map<String, Object> model) {
 
@@ -81,7 +90,7 @@ public class ArticleController {
 		return ((errors.hasErrors()) ? "input_articles" : "redirect:articles");
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@PostMapping("/command")
 	public String payCommand(HttpServletRequest request, Model model) {
 		Long commandId = Long.parseLong(request.getParameter("commandId"));
@@ -112,7 +121,7 @@ public class ArticleController {
 
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@PostMapping("/buy")
 	public String addArticleToCommand(HttpServletRequest request, Model model) {
 
@@ -122,7 +131,7 @@ public class ArticleController {
 
 		Utilisateur utilisateur = urepo.findByNomUtilisateur(currentUserName);
 
-		List<Command> userCommands = crepo.findByUtilisateur(utilisateur);
+		List<Command> userCommands = crepo.findAllByUtilisateur(utilisateur);
 
 		userCommands = userCommands.stream().filter(c -> c.getPayment() == null).collect(Collectors.toList());
 
@@ -141,18 +150,18 @@ public class ArticleController {
 		int quantity = Integer.valueOf(request.getParameter("quantity"));
 
 		long articleId = Long.valueOf(request.getParameter("articleId"));
-		
-		Article article=arepo.findById(articleId);
-		
-		ArticleCommand articleCommand=new ArticleCommand();
-		
+
+		Article article = arepo.findById(articleId);
+
+		ArticleCommand articleCommand = new ArticleCommand();
+
 		articleCommand.setArticle(article);
 		articleCommand.setQuantity(quantity);
-		
+
 		acrepo.save(articleCommand);
-		
+
 		newestCommand.addContent(articleCommand);
-		
+
 		crepo.save(newestCommand);
 
 		model.addAttribute("command", newestCommand);
@@ -160,7 +169,7 @@ public class ArticleController {
 
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@GetMapping(value = "/command/{id}")
 	public String findPayment(@PathVariable("id") long id, Model model, HttpServletRequest request) {
 
@@ -189,5 +198,21 @@ public class ArticleController {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "La commande spécifiée ne vous concerne pas");
 		}
 
+	}
+
+	@GetMapping("/search/{query}/{page}")
+	public String searchArticles(@PathVariable("query") String query, @PathVariable("page") int pageNum,
+			HttpServletRequest request, Map<String, Object> model) {
+
+		Pageable page = PageRequest.of(pageNum - 1, 10);
+		Page<Article> articles = arepo.findAllByNameIgnoreCaseContaining(query, page);
+
+		model.put("articles", articles.getContent());
+		model.put("pageNum", page.getPageNumber() + 1);
+		model.put("pageNb", articles.getTotalPages());
+		model.put("search", "1");
+		model.put("searchQuery", query);
+
+		return "articles";
 	}
 }
