@@ -37,15 +37,16 @@
 
 					<div class="form-group">
 						<label>Choisir sa catégorie</label>
-						<select class="form-control" th:field="*{category}"
-							id="dropCategories">
+						<select class="form-control" th:field="*{category}">
 							<option th:each="categorie : ${categories}"
 								th:value="${categorie.getId()}" th:text="${categorie.getName()}"></option>
 						</select>
+						<label class="error"
+							th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category
+							Error</label>
 					</div>
 
 					<button type="submit" class="btn btn-primary">Sauvegarder</button>
-
 				</form>
 
 			</div>
