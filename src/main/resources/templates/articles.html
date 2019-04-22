@@ -12,17 +12,34 @@
 			<div class="card-header">
 				<h2>Liste des articles</h2>
 			</div>
-			<div class="card-body">
+			<div class="card-body" th:if="${pageNb != 0 }">
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Nom</th>
-							<th scope="col">Prix</th>
+							<th scope="col">Nom  
+								<a th:href="@{'/articles/name/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
+								<a th:href="@{'/articles/name/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
+								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/name/desc/' + ${pageNum}}" th:if="${search eq '1'}">▾</a>
+								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/name/asc/' + ${pageNum}}" th:if="${search eq '1'}">▴</a>
+							</th>
+							<th scope="col">Catégorie 
+								<a th:href="@{'/articles/category/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
+								<a th:href="@{'/articles/category/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
+								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/category/desc/' + ${pageNum}}" th:if="${search eq '1'}">▾</a>
+								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/category/asc/' + ${pageNum}}" th:if="${search eq '1'}">▴</a>
+							</th>
+							<th scope="col">Prix 
+								<a th:href="@{'/articles/price/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
+								<a th:href="@{'/articles/price/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
+								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/price/desc/' + ${pageNum}}" th:if="${search eq '1'}">▾</a>
+								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/price/asc/' + ${pageNum}}" th:if="${search eq '1'}">▴</a>
+							</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="article: ${articles}">
 							<td><a th:href="@{'/article/' + ${article.id}}" th:text="${article.name}"/></td>
+							<td th:text="${article.category.name}"></td>
 							<td th:text="${article.price}"></td>
 						</tr>
 						<tr sec:authorize="hasRole('ROLE_ADMIN')">
@@ -35,13 +52,16 @@
 				</table>
 				Page: 
 				<th:block th:if="${search eq '0'}" th:each="i: ${#numbers.sequence(1, pageNb)}">
-				    <a th:href="@{'/articles/' + ${i}}" th:if="${pageNum == i}" class="active" ><strong th:text="${i}"></strong></a>
-				    <a th:href="@{'/articles/' + ${i}}" th:unless="${pageNum == i}" th:text="${i}"></a>
+				    <a th:href="@{'/articles/'+${sort}+'/'+${order}+'/' + ${i}}" th:if="${pageNum == i}" class="active" ><strong th:text="${i}"></strong></a>
+				    <a th:href="@{'/articles/'+${sort}+'/'+${order}+'/' + ${i}}" th:unless="${pageNum == i}" th:text="${i}"></a>
 				</th:block>
 				<th:block th:if="${search eq '1'}" th:each="i: ${#numbers.sequence(1, pageNb)}">
-				    <a th:href="@{'/search/'+${searchQuery}+'/' + ${i}}" th:if="${pageNum == i}" class="active" ><strong th:text="${i}"></strong></a>
-				    <a th:href="@{'/search/'+${searchQuery}+'/' + ${i}}" th:unless="${pageNum == i}" th:text="${i}"></a>
+				    <a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/'+${sort}+'/'+${order}+'/' + ${i}}" th:if="${pageNum == i}" class="active" ><strong th:text="${i}"></strong></a>
+				    <a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/'+${sort}+'/'+${order}+'/' + ${i}}" th:unless="${pageNum == i}" th:text="${i}"></a>
 				</th:block>
+			</div>
+			<div class="card-body" th:unless="${pageNb != 0 }">
+			Aucun article ne correspond à votre critère de recherche
 			</div>
 
 

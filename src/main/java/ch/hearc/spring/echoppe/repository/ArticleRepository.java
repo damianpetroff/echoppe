@@ -12,4 +12,7 @@ public interface ArticleRepository extends PagingAndSortingRepository<Article, L
 	Article findById(long id);
 	Article findByName(String name);
 	Page<Article> findAllByNameIgnoreCaseContaining(String name, Pageable pageable);
+	Page<Article> findAllByCategoryNameIgnoreCaseContaining(String query, Pageable page);
+	Page<Article> findAllByPriceLessThan(Double double1, Pageable page);
+	Page<Article> findAllByPriceGreaterThan(Double double1, Pageable page);
 }

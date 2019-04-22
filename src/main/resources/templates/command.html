@@ -18,6 +18,7 @@
 						<tr>
 							<th scope="col">Nom</th>
 							<th scope="col">Prix</th>
+							<th scope="col">Catégorie</th>
 							<th scope="col">Quantité</th>
 						</tr>
 					</thead>
@@ -25,6 +26,7 @@
 						<tr th:each="articleCommand: ${command.content}">
 							<td th:text="${articleCommand.article.name}" />
 							<td th:text="${articleCommand.article.price}" />
+							<td th:text="${articleCommand.article.category.name}" />
 							<td th:text="${articleCommand.quantity}" />
 						</tr>
 					<tfoot>

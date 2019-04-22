@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/fragments.html :: header" />
+
+<body>
+
+	<div th:replace="fragments/fragments.html :: navigation"></div>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h2>Recherche avancée</h2>
+			</div>
+			<div class="card-body">
+
+				<form action="#">
+					Critère de recherche:<br> <label><input type="radio"
+						name="what" value="name" checked class="whatString"> Nom
+						contient...</label><br> <label><input type="radio"
+						name="what" value="priceLess" class="whatNumber"> Prix
+						inférieur à...</label><br> <label><input type="radio"
+						name="what" value="priceGreater" class="whatNumber"> Prix
+						supérieur à...</label><br> <label><input type="radio"
+						name="what" value="category" class="whatString"> Nom de
+						catégorie contient... </label><br> <br /> ...<input type="text"
+						id="advancedSearchQuery" /><br> Tri:<br> <label><input
+						type="radio" name="sort" value="asc" checked> Ascendant</label><br>
+					<label><input type="radio" name="sort" value="desc">
+						Descendant</label><br>
+					<button type="submit" class="btn btn-success"
+						id="advancedSearchBtn">Rechercher</button>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/fragments.html :: scripts"></div>
+	<script th:inline="javascript">
+
+
+    	document.getElementById("advancedSearchBtn").addEventListener("click", event =>{
+    	  event.preventDefault();
+    	  var radiosWhat = document.getElementsByName('what');
+    	  
+    	  var what="name";
+
+    	  for (var i = 0, length = radiosWhat.length; i < length; i++)
+    	  {
+    	   if (radiosWhat[i].checked)
+    	   {
+    	    what=radiosWhat[i].value;
+    	    break;
+    	   }
+    	  }
+    	  
+    	  var radiosSort = document.getElementsByName('sort');
+    	  
+    	  var sort="asc";
+    	  
+    	  for (var i = 0, length = radiosSort.length; i < length; i++)
+    	  {
+    	   if (radiosSort[i].checked)
+    	   {
+    	    sort=radiosSort[i].value;
+    	    break;
+    	   }
+    	  }
+    	  
+    	  var advancedSearchQuery = document.getElementById("advancedSearchQuery").value; 
+    	  
+    	  var sortBy=what;
+    	  if(what.includes("price"))
+    		  sortBy="price";
+
+    	    var url = [[@{/search}]] +"/"+what+"/"+ advancedSearchQuery+"/"+sortBy+"/"+sort+"/1"; 
+
+    	    if(advancedSearchQuery!="")
+    	    	window.location.href = url;
+    	});
+    	
+    	Array.from(document.getElementsByClassName("whatString")).forEach(el=>{
+    		el.addEventListener("click", event =>{
+    			document.getElementById("advancedSearchQuery").type="text";
+    		});
+    	});
+    	
+    	Array.from(document.getElementsByClassName("whatNumber")).forEach(el=>{
+    		el.addEventListener("click", event =>{
+    			document.getElementById("advancedSearchQuery").type="number";
+    			document.getElementById("advancedSearchQuery").min="0";
+    		});
+    	});
+
+</script>
+</body>
+</html>

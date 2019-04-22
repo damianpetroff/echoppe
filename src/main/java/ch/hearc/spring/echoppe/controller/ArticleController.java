@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -52,15 +53,40 @@ public class ArticleController {
 	@Autowired
 	private ArticleCommandRepository acrepo;
 
+	@GetMapping(value = "/articles/{sort}/{order}/{page}")
+	public String findAllarticlesPage( @PathVariable("sort") String sort,
+			@PathVariable("order") String order,@PathVariable("page") int pageNum, Map<String, Object> model) {
+		
+		Sort sortBy = null;
+		switch (sort) {
+			case "name":
+				sortBy = Sort.by("name");
+				break;
+			case "price":
+				sortBy = Sort.by("price");
+				break;
+			case "category":
+				sortBy = Sort.by("category.name");
+				break;
+		}
+		
+		switch(order) {
+			case "asc":
+				sortBy=sortBy.ascending();
+				break;
+			case "desc":
+				sortBy=sortBy.descending();
+				break;
+		}
 
-	@GetMapping(value = "/articles/{page}")
-	public String findAllarticlesPage(@PathVariable("page") int pageNum, Map<String, Object> model) {
-
-		Pageable page = PageRequest.of(pageNum - 1, 10);
+		Pageable page = PageRequest.of(pageNum - 1, 10, sortBy);
+		
 		Page<Article> articles = arepo.findAll(page);
 		model.put("articles", articles);
 		model.put("pageNum", page.getPageNumber() + 1);
 		model.put("pageNb", articles.getTotalPages());
+		model.put("sort", sort);
+		model.put("order", order);
 		model.put("search", "0");
 
 		return "articles";
@@ -70,6 +96,11 @@ public class ArticleController {
 	public String findArticle(@PathVariable("id") long id, Model model) {
 		model.addAttribute("article", arepo.findById(id));
 		return "article";
+	}
+	
+	@GetMapping(value = "/advancedSearch")
+	public String advancedSearchPage() {
+		return "advancedSearch";
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -200,18 +231,60 @@ public class ArticleController {
 
 	}
 
-	@GetMapping("/search/{query}/{page}")
-	public String searchArticles(@PathVariable("query") String query, @PathVariable("page") int pageNum,
-			HttpServletRequest request, Map<String, Object> model) {
+	@GetMapping("/search/{what}/{query}/{sort}/{order}/{page}")
+	public String searchArticles(@PathVariable("what") String what,@PathVariable("query") String query, @PathVariable("sort") String sort,
+			@PathVariable("order") String order,@PathVariable("page") int pageNum, HttpServletRequest request, Map<String, Object> model) {
 
-		Pageable page = PageRequest.of(pageNum - 1, 10);
-		Page<Article> articles = arepo.findAllByNameIgnoreCaseContaining(query, page);
+		Sort sortBy = null;
+		switch (sort) {
+			case "name":
+				sortBy = Sort.by("name");
+				break;
+			case "price":
+				sortBy = Sort.by("price");
+				break;
+			case "category":
+				sortBy = Sort.by("category.name");
+				break;
+		}
+		
+		switch(order) {
+			case "asc":
+				sortBy=sortBy.ascending();
+				break;
+			case "desc":
+				sortBy=sortBy.descending();
+				break;
+		}
+
+		Pageable page = PageRequest.of(pageNum - 1, 10, sortBy);
+		
+		Page<Article> articles=null;
+		
+		switch(what) {
+			case "name":
+				articles = arepo.findAllByNameIgnoreCaseContaining(query, page);
+				break;
+			case "category":
+				articles = arepo.findAllByCategoryNameIgnoreCaseContaining(query, page);
+				break;
+			case "priceLess":
+				articles = arepo.findAllByPriceLessThan(Double.valueOf(query), page);
+				break;
+			case "priceGreater":
+				articles = arepo.findAllByPriceGreaterThan(Double.valueOf(query), page);
+				break;
+		}
+		
 
 		model.put("articles", articles.getContent());
 		model.put("pageNum", page.getPageNumber() + 1);
 		model.put("pageNb", articles.getTotalPages());
 		model.put("search", "1");
 		model.put("searchQuery", query);
+		model.put("what", what);
+		model.put("sort", sort);
+		model.put("order", order);
 
 		return "articles";
 	}
