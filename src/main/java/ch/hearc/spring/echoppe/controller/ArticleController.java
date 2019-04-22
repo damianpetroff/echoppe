@@ -26,11 +26,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 import ch.hearc.spring.echoppe.model.Article;
 import ch.hearc.spring.echoppe.model.ArticleCommand;
+import ch.hearc.spring.echoppe.model.Category;
 import ch.hearc.spring.echoppe.model.Command;
 import ch.hearc.spring.echoppe.model.Payment;
 import ch.hearc.spring.echoppe.model.Utilisateur;
 import ch.hearc.spring.echoppe.repository.ArticleCommandRepository;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
+import ch.hearc.spring.echoppe.repository.CategoryRepository;
 import ch.hearc.spring.echoppe.repository.CommandRepository;
 import ch.hearc.spring.echoppe.repository.PaymentRepository;
 import ch.hearc.spring.echoppe.repository.UserRepository;
@@ -40,6 +42,9 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleRepository arepo;
+	
+	@Autowired
+	private CategoryRepository catrepo;
 
 	@Autowired
 	private CommandRepository crepo;
@@ -106,15 +111,15 @@ public class ArticleController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping(value = "/input_articles")
 	public String inputArticles(Map<String, Object> model) {
-
 		model.put("article", new Article());
-
+		model.put("categories", catrepo.findAll());
+		
 		return "input_articles";
 	}
 
 	@PostMapping("/articles")
 	public String savearticles(Article article, BindingResult errors, Model model) {
-
+		
 		if (!errors.hasErrors()) {
 			arepo.save(article);
 		}

@@ -14,6 +14,7 @@ public class Category  {
 	@NotNull
 	@Size(min = 2, max = 30)
 	private String name;
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
@@ -26,6 +27,8 @@ public class Category  {
 
 	public Category() {
 	}
+	
+	
 
 	// Getters
 	public String getName() {
@@ -35,6 +38,14 @@ public class Category  {
 	// Setters
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	// ToString, Hashcode, Equals
