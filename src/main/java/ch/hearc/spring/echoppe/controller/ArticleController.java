@@ -34,6 +34,7 @@ import ch.hearc.spring.echoppe.repository.ArticleCommandRepository;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
 import ch.hearc.spring.echoppe.repository.CategoryRepository;
 import ch.hearc.spring.echoppe.repository.CommandRepository;
+import ch.hearc.spring.echoppe.repository.CommentRepository;
 import ch.hearc.spring.echoppe.repository.PaymentRepository;
 import ch.hearc.spring.echoppe.repository.UserRepository;
 
@@ -45,6 +46,9 @@ public class ArticleController {
 	
 	@Autowired
 	private CategoryRepository catrepo;
+	
+	@Autowired
+	private CommentRepository comrepo;
 
 	@Autowired
 	private CommandRepository crepo;
@@ -100,6 +104,7 @@ public class ArticleController {
 	@GetMapping(value = "/article/{id}")
 	public String findArticle(@PathVariable("id") long id, Model model) {
 		model.addAttribute("article", arepo.findById(id));
+		// model.addAttribute("comments", ); TAKE ALL COMMENT FROM THE ARTICLE (ADD method to comment repo ?)
 		return "article";
 	}
 	
@@ -115,6 +120,15 @@ public class ArticleController {
 		model.put("categories", catrepo.findAll());
 		
 		return "input_articles";
+	}
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping(value = "/alter_article/{id}")
+	public String alterArticles(Map<String, Object> model, @PathVariable("id") long id) {
+		model.put("categories", catrepo.findAll());
+		model.put("article", arepo.findById(id));
+		
+		return "alter_article";
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")

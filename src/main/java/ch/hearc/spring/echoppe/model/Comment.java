@@ -9,6 +9,9 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Comment {
 
@@ -17,13 +20,17 @@ public class Comment {
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@NotNull
 	@Size(min = 3)
 	private String comment;
+	
 	@NotNull
 	@OneToOne
 	private Utilisateur Utilisateur;
+	
 	@ManyToOne
+	@Cascade({CascadeType.DELETE})
 	@NotNull
 	private Article article;
 

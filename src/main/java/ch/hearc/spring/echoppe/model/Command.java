@@ -16,6 +16,9 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Command {
 
@@ -36,6 +39,7 @@ public class Command {
 	private Payment payment;
 
 	@OneToMany
+	@Cascade({CascadeType.DELETE})
 	private List<ArticleCommand> articleCommand;
 
 	@NotNull

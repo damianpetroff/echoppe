@@ -41,7 +41,10 @@
 							<td><a th:href="@{'/article/' + ${article.id}}" th:text="${article.name}"/></td>
 							<td th:text="${article.category.name}"></td>
 							<td th:text="${article.price}"></td>
-							<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/delete_article/' + ${article.id}}" class="btn btn-info"/a>Delete</a></td>
+							<div sec:authorize="hasRole('ROLE_ADMIN')">
+								<td><a th:href="@{'/delete_article/' + ${article.id}}" class="btn btn-info"/a>Delete</a></td>
+								<td><a th:href="@{'/alter_article/' + ${article.id}}" class="btn btn-info"/a>Alter</a></td>
+							</div>
 						</tr>
 						<tr sec:authorize="hasRole('ROLE_ADMIN')">
 							<td><a href="/input_articles"

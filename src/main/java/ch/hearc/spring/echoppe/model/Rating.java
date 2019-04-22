@@ -10,6 +10,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Rating {
 
@@ -27,6 +30,7 @@ public class Rating {
 	private Utilisateur Utilisateur;
 	@NotNull
 	@ManyToOne
+	@Cascade({CascadeType.DELETE})
 	private Article article;
 
 	// Getters

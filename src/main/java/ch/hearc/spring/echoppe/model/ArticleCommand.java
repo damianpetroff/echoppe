@@ -9,6 +9,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class ArticleCommand {
 
@@ -18,6 +21,7 @@ public class ArticleCommand {
 	private Long id;
 	
 	@OneToOne
+	@Cascade({CascadeType.DELETE})
 	private Article article;
 	
 	
