@@ -116,6 +116,14 @@ public class ArticleController {
 		
 		return "input_articles";
 	}
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping(value = "/delete_article/{id}")
+	public String deleteArticle(@PathVariable("id") long id) {
+		arepo.delete(arepo.findById(id));
+		
+		return "redirect:/articles/name/asc/1";
+	}
 
 	@PostMapping("/articles")
 	public String savearticles(Article article, BindingResult errors, Model model) {
@@ -123,7 +131,7 @@ public class ArticleController {
 		if (!errors.hasErrors()) {
 			arepo.save(article);
 		}
-		return ((errors.hasErrors()) ? "input_articles" : "redirect:articles");
+		return ((errors.hasErrors()) ? "input_articles" : "redirect:/articles/name/asc/1");
 	}
 
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
