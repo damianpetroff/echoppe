@@ -21,13 +21,16 @@ public class Rating {
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@NotNull
 	@Min(1)
 	@Max(5)
 	private int rating;
+	
 	@NotNull
 	@OneToOne
 	private Utilisateur Utilisateur;
+	
 	@NotNull
 	@ManyToOne
 	@Cascade({CascadeType.DELETE})

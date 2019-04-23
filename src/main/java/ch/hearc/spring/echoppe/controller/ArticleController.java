@@ -104,7 +104,8 @@ public class ArticleController {
 	@GetMapping(value = "/article/{id}")
 	public String findArticle(@PathVariable("id") long id, Model model) {
 		model.addAttribute("article", arepo.findById(id));
-		// model.addAttribute("comments", ); TAKE ALL COMMENT FROM THE ARTICLE (ADD method to comment repo ?)
+		model.addAttribute("comments", comrepo.findAllByArticleId(id));
+
 		return "article";
 	}
 	

@@ -27,14 +27,19 @@
 					</tbody>
 				</table>
 			</div>
-		 <form action="#" th:action="@{/buy}" method="post">
-			Quantité:
-			<input type="number" name="quantity" min="1">
-			
-			<input type="hidden" name="articleId" th:value="${article.id}"/>
-		 	<button type="submit" class="btn btn-success">Ajouter au panier</button>
-		 </form>
-
+			 <form action="#" th:action="@{/buy}" method="post">
+				Quantité:
+				<input type="number" name="quantity" min="1">
+				
+				<input type="hidden" name="articleId" th:value="${article.id}"/>
+			 	<button type="submit" class="btn btn-success">Ajouter au panier</button>
+			 </form>
+			 <div>
+			 	<tr th:each="comment: ${comments}">
+					<td th:text="${comment.getUtilisateur().getUsername()}"></td>
+					<td th:text="${comment.getComment()}"></td>
+				</tr>
+			 </div>
 		</div>
 
 
