@@ -17,9 +17,8 @@ public class Comment {
 
 	// Attributes
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@NotNull
 	@Size(min = 3)
@@ -46,7 +45,7 @@ public class Comment {
 	}
 
 	// Getters
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -81,6 +80,7 @@ public class Comment {
 		return "Comment [id=" + id + ", comment=" + comment + ", Utilisateur=" + Utilisateur + ", article=" + article
 				+ "]";
 	}
+	
 
 	@Override
 	public int hashCode() {
@@ -89,7 +89,7 @@ public class Comment {
 		result = prime * result + ((Utilisateur == null) ? 0 : Utilisateur.hashCode());
 		result = prime * result + ((article == null) ? 0 : article.hashCode());
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -117,7 +117,10 @@ public class Comment {
 				return false;
 		} else if (!comment.equals(other.comment))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
