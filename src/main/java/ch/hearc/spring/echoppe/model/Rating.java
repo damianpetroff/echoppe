@@ -106,17 +106,20 @@ public class Rating {
 		if (Utilisateur == null) {
 			if (other.Utilisateur != null)
 				return false;
-		} else if (!Utilisateur.equals(other.Utilisateur))
+		} 
+		else if (!Utilisateur.equals(other.Utilisateur))
 			return false;
 		if (article == null) {
 			if (other.article != null)
 				return false;
-		} else if (!article.equals(other.article))
+		} 
+		else if (!article.equals(other.article))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+		else if (!id.equals(other.id))
 			return false;
 		if (rating != other.rating)
 			return false;

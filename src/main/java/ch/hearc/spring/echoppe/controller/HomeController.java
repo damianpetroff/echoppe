@@ -45,8 +45,8 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(Map<String, Object> model) {
 		model.put("page", "Home");
-		List<Article> articles = (List<Article>) arepo.findAll();
-		List<Article> randomArticles = new ArrayList<Article>();
+		List<Article> articles = arepo.findAll();
+		List<Article> randomArticles = new ArrayList<>();
 
 		int numberOfElements = 4;
 

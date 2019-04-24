@@ -155,27 +155,32 @@ public class Command {
 		if (utilisateur == null) {
 			if (other.utilisateur != null)
 				return false;
-		} else if (!utilisateur.equals(other.utilisateur))
+		} 
+		else if (!utilisateur.equals(other.utilisateur))
 			return false;
 		if (articleCommand == null) {
 			if (other.articleCommand != null)
 				return false;
-		} else if (!articleCommand.equals(other.articleCommand))
+		} 
+		else if (!articleCommand.equals(other.articleCommand))
 			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;
-		} else if (!date.equals(other.date))
+		} 
+		else if (!date.equals(other.date))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+		else if (!id.equals(other.id))
 			return false;
 		if (payment == null) {
 			if (other.payment != null)
 				return false;
-		} else if (!payment.equals(other.payment))
+		} 
+		else if (!payment.equals(other.payment))
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;

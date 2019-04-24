@@ -84,13 +84,15 @@ public class ArticleCommand {
 		if (article == null) {
 			if (other.article != null)
 				return false;
-		} else if (!article.equals(other.article))
+		} 
+		else if (!article.equals(other.article))
 			return false;
 
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		}
+		else if (!id.equals(other.id))
 			return false;
 
 		if (quantity != other.quantity)

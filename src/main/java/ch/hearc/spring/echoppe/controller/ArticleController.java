@@ -44,6 +44,15 @@ import ch.hearc.spring.echoppe.repository.UserRepository;
 
 @Controller
 public class ArticleController {
+	private static final String NAME = "name";
+	private static final String PRICE = "price";
+	private static final String CATEGORY = "category";
+	private static final String ARTICLES = "articles";
+	private static final String ARTICLE = "article";
+	private static final String COMMAND = "command";
+	
+	private static final String ARTICLES_ROUTE = "articles";
+	private static final String ARTICLE_ROUTE = "article";
 
 	@Autowired
 	private ArticleRepository arepo;
@@ -73,56 +82,31 @@ public class ArticleController {
 	public String findAllarticlesPage(@PathVariable("sort") String sort, @PathVariable("order") String order,
 			@PathVariable("page") int pageNum, Map<String, Object> model) {
 
-		Sort sortBy = Sort.by("name");
-		switch (sort) {
-		case "name":
-			sortBy = Sort.by("name");
-			break;
-		case "price":
-			sortBy = Sort.by("price");
-			break;
-		case "category":
-			sortBy = Sort.by("category.name");
-			break;
-		default:
-			sortBy = Sort.by("name");
-			break;
-		}
-
-		switch (order) {
-		case "asc":
-			sortBy = sortBy.ascending();
-			break;
-		case "desc":
-			sortBy = sortBy.descending();
-			break;
-		default:
-			sortBy = sortBy.ascending();
-			break;
-		}
+		Sort sortBy = getSortByAndOrder(sort, order);
+		
 		Pageable page = PageRequest.of(pageNum - 1, 10, sortBy);
 
 		Page<Article> articles = arepo.findAll(page);
-		model.put("articles", articles);
+		model.put(ARTICLES, articles);
 		model.put("pageNum", page.getPageNumber() + 1);
 		model.put("pageNb", articles.getTotalPages());
 		model.put("sort", sort);
 		model.put("order", order);
 		model.put("search", "0");
 
-		return "articles";
+		return ARTICLES_ROUTE;
 	}
 
 	@GetMapping(value = "/article/{id}")
 	public String findArticle(@PathVariable("id") long id, Model model) {
-		model.addAttribute("article", arepo.findById(id));
+		model.addAttribute(ARTICLE, arepo.findById(id));
 
 		List<Comment> lcom = comrepo.findAllByArticleId(id);
 		List<Rating> lrat = raterepo.findAllByArticleId(id);
 		int sumRating = 0;
 		int nRating = 0;
 
-		Map<Comment, Rating> map = new HashMap<Comment, Rating>();
+		Map<Comment, Rating> map = new HashMap<>();
 
 		for (Rating rate : lrat) {
 			for (Comment com : lcom) {
@@ -139,7 +123,7 @@ public class ArticleController {
 		}
 		model.addAttribute("averageRating", sumRating / (float) nRating);
 		model.addAttribute("comments", map);
-		return "article";
+		return ARTICLE_ROUTE;
 	}
 
 	@GetMapping(value = "/advancedSearch")
@@ -175,14 +159,13 @@ public class ArticleController {
 
 	@PostMapping("/articles")
 	public String savearticles(Article article, BindingResult errors, Model model) {
-
 		if (!errors.hasErrors()) {
 			arepo.save(article);
 		}
 		return ((errors.hasErrors()) ? "input_articles" : "redirect:/articles/name/asc/1");
 	}
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@PostMapping("/comment")
 	public String commentArticles(HttpServletRequest request, Model model) {
 		Long articleId = Long.parseLong(request.getParameter("articleId"));
@@ -201,9 +184,8 @@ public class ArticleController {
 		String comment = request.getParameter("comment");
 
 		Optional<Article> articleOpt = arepo.findById(articleId);
-		
-		if(articleOpt.isPresent())
-		{
+
+		if (articleOpt.isPresent()) {
 			Article a = articleOpt.get();
 			Rating r = new Rating();
 			r.setArticle(a);
@@ -231,27 +213,26 @@ public class ArticleController {
 	public String payCommand(HttpServletRequest request, Model model) {
 		Long commandId = Long.parseLong(request.getParameter("commandId"));
 
-		Optional<Command> commandOpt = crepo.findById(commandId);		
-		if(commandOpt.isPresent())
-		{
+		Optional<Command> commandOpt = crepo.findById(commandId);
+		if (commandOpt.isPresent()) {
 			Command command = commandOpt.get();
-	
+
 			Principal principal = request.getUserPrincipal();
-	
+
 			String currentUserName = principal.getName();
-	
+
 			String commandUserName = command.getUtilisateur().getUsername();
-	
+
 			// Workaround, otherwise currentUserName==commandUserName didn't work
 			if (commandUserName.compareTo(currentUserName) == 0) {
-	
+
 				Payment payment = new Payment(1, new Date(), Integer.parseInt(request.getParameter("method")));
-	
+
 				prepo.save(payment);
 				command.setPayment(payment);
 				crepo.save(command);
-	
-				model.addAttribute("command", command);
+
+				model.addAttribute(COMMAND, command);
 				return "payment";
 			}
 		}
@@ -284,9 +265,9 @@ public class ArticleController {
 			newestCommand = userCommands.get(userCommands.size() - 1);
 		}
 
-		int quantity = Integer.valueOf(request.getParameter("quantity"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-		long articleId = Long.valueOf(request.getParameter("articleId"));
+		long articleId = Long.parseLong(request.getParameter("articleId"));
 
 		Article article = arepo.findById(articleId);
 
@@ -302,8 +283,8 @@ public class ArticleController {
 		crepo.save(newestCommand);
 
 		model.addAttribute("command", newestCommand);
-		
-		return "redirect:command/"+newestCommand.getId();
+
+		return "redirect:command/" + newestCommand.getId();
 
 	}
 
@@ -343,42 +324,17 @@ public class ArticleController {
 			@PathVariable("sort") String sort, @PathVariable("order") String order, @PathVariable("page") int pageNum,
 			HttpServletRequest request, Map<String, Object> model) {
 
-		Sort sortBy = Sort.by("name");
-		switch (sort) {
-		case "name":
-			sortBy = Sort.by("name");
-			break;
-		case "price":
-			sortBy = Sort.by("price");
-			break;
-		case "category":
-			sortBy = Sort.by("category.name");
-			break;
-		default:
-			sortBy = Sort.by("name");
-			break;
-		}
-
-		switch (order) {
-		case "asc":
-			sortBy = sortBy.ascending();
-			break;
-		case "desc":
-			sortBy = sortBy.descending();
-			break;
-		default:
-			sortBy = sortBy.ascending();
-			break;
-		}
+		Sort sortBy = getSortByAndOrder(sort, order);
+		
 		Pageable page = PageRequest.of(pageNum - 1, 10, sortBy);
 
 		Page<Article> articles = null;
 
 		switch (what) {
-		case "name":
+		case NAME:
 			articles = arepo.findAllByNameIgnoreCaseContaining(query, page);
 			break;
-		case "category":
+		case CATEGORY:
 			articles = arepo.findAllByCategoryNameIgnoreCaseContaining(query, page);
 			break;
 		case "priceLess":
@@ -392,7 +348,7 @@ public class ArticleController {
 			break;
 		}
 
-		model.put("articles", articles.getContent());
+		model.put(ARTICLES, articles.getContent());
 		model.put("pageNum", page.getPageNumber() + 1);
 		model.put("pageNb", articles.getTotalPages());
 		model.put("search", "1");
@@ -400,6 +356,44 @@ public class ArticleController {
 		model.put("what", what);
 		model.put("sort", sort);
 		model.put("order", order);
-		return "articles";
+		return ARTICLES_ROUTE;
+	}
+
+	private Sort getSortByAndOrder(String sort, String order) {
+		Sort sortBy = null;
+		
+		try {
+			switch (sort) {
+			case NAME:
+				sortBy = Sort.by(PRICE);
+				break;
+			case PRICE:
+				sortBy = Sort.by(PRICE);
+				break;
+			case CATEGORY:
+				sortBy = Sort.by("category.name");
+				break;
+			default:
+				sortBy = Sort.by(NAME);
+				break;
+			}
+		
+			switch (order) {
+			case "asc":
+				sortBy = sortBy.ascending();
+				break;
+			case "desc":
+				sortBy = sortBy.descending();
+				break;
+			default:
+				sortBy = sortBy.ascending();
+				break;
+			}
+		}
+		catch(NullPointerException e)
+		{
+			e.printStackTrace();
+		}
+		return sortBy;
 	}
 }

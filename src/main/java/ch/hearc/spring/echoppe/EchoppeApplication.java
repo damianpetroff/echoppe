@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 
@@ -37,7 +38,7 @@ import ch.hearc.spring.echoppe.repository.UserRepository;
 @SpringBootApplication
 public class EchoppeApplication {
 	
-	public static Random rnd = new Random();
+	public static final Random rnd = new Random();
 
 	public static void main(String[] args) {
 		SpringApplication.run(EchoppeApplication.class, args);
@@ -90,7 +91,7 @@ public class EchoppeApplication {
 		Utilisateur admin = new Utilisateur("admin", "admin@test.ch", bCryptPasswordEncoder.encode("password"));
 		Utilisateur user = new Utilisateur("user", "user@test.ch", bCryptPasswordEncoder.encode("password"));
 
-		HashSet<Role> adminRoles = new HashSet<Role>();
+		HashSet<Role> adminRoles = new HashSet<>();
 		adminRoles.add(roleAdmin);
 		adminRoles.add(roleUser);
 
@@ -112,7 +113,7 @@ public class EchoppeApplication {
 		categoryRepo.save(c4);
 		categoryRepo.save(c5);
 
-		List<Category> categoryList = new ArrayList<Category>();
+		List<Category> categoryList = new ArrayList<>();
 
 		categoryList.add(c1);
 		categoryList.add(c2);
@@ -151,12 +152,12 @@ public class EchoppeApplication {
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 			payment1 = new Payment(1, sdf.parse("04-04-2019 10:30:00"), 0);
-			payment2 = new Payment(1, sdf.parse("04-04-2019 10:30:00"), 0);
+			payment2 = new Payment(1, sdf.parse("04-04-2019 10:40:00"), 0);
 			paymentRepo.save(payment1);
 			paymentRepo.save(payment2);
 
-			command1.setDate(sdf.parse("04-04-2019 10:30:00"));
-			command2.setDate(sdf.parse("04-04-2019 10:29:00"));
+			command1.setDate(sdf.parse("04-04-2019 10:40:00"));
+			command2.setDate(sdf.parse("04-04-2019 10:50:00"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

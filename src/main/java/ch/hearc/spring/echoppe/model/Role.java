@@ -43,11 +43,6 @@ public class Role {
 
 	public Role() {
 	}
-	
-	// Methods
-	public void addUser(Utilisateur user) {
-		
-	}
 
 	// ToString, Hashcode, Equals
 	@Override
@@ -76,12 +71,14 @@ public class Role {
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+		else if (!id.equals(other.id))
 			return false;
 		if (nom == null) {
 			if (other.nom != null)
 				return false;
-		} else if (!nom.equals(other.nom))
+		} 
+		else if (!nom.equals(other.nom))
 			return false;
 		
 		return true;
