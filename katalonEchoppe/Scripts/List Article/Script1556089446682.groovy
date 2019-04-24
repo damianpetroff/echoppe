@@ -17,31 +17,9 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://localhost:9090/')
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Accueil'))
-
 WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/span_Accueil_navbar-toggler-icon'))
 
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Liste products'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Nouveau produit'))
-
-WebUI.setText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_nom du produit_name'), 'abc')
-
-WebUI.setText(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/input_prix du produit_price'), '32')
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/button_Sauvegarder'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/td_abc'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/td_3200'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/span_Accueil_navbar-toggler-icon'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Saisie products'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/span_Accueil_navbar-toggler-icon'))
-
-WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Menu'))
+WebUI.click(findTestObject('Object Repository/Page_Spring Boot Thymeleaf/a_Liste articles'))
 
 WebUI.closeBrowser()
 
