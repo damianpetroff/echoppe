@@ -12,37 +12,65 @@
 				<h2 th:text="${article.name}" />
 			</div>
 			<div class="card-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Prix</th>
-							<th scope="col">Categorie</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td th:text="${article.price}" />
-							<td th:text="${article.category.name}" />
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			 <form action="#" th:action="@{/buy}" method="post">
-				Quantité:
-				<input type="number" name="quantity" min="1">
+				<div class="row">
+			 		<div class="col-md-1 col-sm-12"></div>
+			 		<div class="col-md-10 col-sm-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Prix</th>
+								<th scope="col">Categorie</th>
+								<th scope="col">Rating</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td th:text="${article.price}" />
+								<td th:text="${article.category.name}" />
+								<td th:text="${averageRating}" />
+							</tr>
+						</tbody>
+					</table>
 				
-				<input type="hidden" name="articleId" th:value="${article.id}"/>
-			 	<button type="submit" class="btn btn-success">Ajouter au panier</button>
-			 </form>
-			 <div>
-			 	<tr th:each="comment: ${comments}">
-					<td th:text="${comment.getUtilisateur().getUsername()}"></td>
-					<td th:text="${comment.getComment()}"></td>
-				</tr>
-			 </div>
+					<form action="#" th:action="@{/buy}" method="post">
+						Quantité
+						<input type="number" name="quantity" min="1">
+						<input type="hidden" name="articleId" th:value="${article.id}"/>
+					 	<button type="submit" class="btn btn-success">Ajouter au panier</button>
+					</form>
+					<hr>
+					<h4>Commentaires</h4>
+					<div class="card" th:each="comment : ${comments}">						
+					 	<div class="card-body">
+					    	<h5 class="card-title" th:text="${comment.key.getUtilisateur().getUsername()}">Username</h5>
+					    	<h6 class="card-subtitle mb-2 text-muted" th:text="${comment.value.rating}"></h6>
+					    	<p class="card-text" th:text="${comment.key.getComment()}">Comment</p>
+					    	<button type="button" class="btn btn-outline-success btn-sm">👍
+					    	</button>
+					    	<button type="button" class="btn btn-outline-danger btn-sm">👎
+					    	</button>
+					 	</div>
+					</div>
+			 	 	<hr>
+			 	 	 
+					<h4>Noter et commenter</h4>
+					
+					<form action='#' th:action="@{/comment}" method="post">
+						<input type="hidden" name="articleId" th:value="${article.id}"/>
+						<div class="form-group">
+					    	<label for="ratingRange">Note</label>
+							<input type="range" class="custom-range" min="1" max="5" id="ratingRange" name="rating" width="20%">
+						</div>
+						<div class="form-group">
+					    	<label for="commentTextArea">Commentaire</label>
+							<textarea class="form-control" id="commentTextArea" name="comment" rows="3"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary">Noter et commenter</button>
+					</form>
+				</div>
+			 	<div class="col-md-1 col-sm-12"></div>
+			</div>
 		</div>
-
-
 		<div th:replace="fragments/fragments.html :: scripts"></div>
 </body>
 </html>
