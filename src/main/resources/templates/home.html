@@ -1,21 +1,43 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head th:insert="fragments/fragments.html :: header"/>
+<head th:insert="fragments/fragments.html :: header" />
 
-	<body>
+<body>
 
-		<div th:replace="fragments/fragments.html :: navigation"></div>
-	
-		<div class="container">
-			<div class="jumbotron">
-			  <h1 class="display-4">Bienvenue dans l'ECHOPPE</h1>
-			  <p class="lead">Ici vous pourrez faire votre petit marché en trouvant toute sorte d'article divers et varié</p>
-			  <hr class="my-4">
-			</div>			
+	<div th:replace="fragments/fragments.html :: navigation"></div>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="display-4">Bienvenue dans l'ECHOPPE</h1>
+			<p class="lead">Ici vous pourrez faire votre petit marché en
+				trouvant toute sorte d'article divers et varié</p>
+
+			<hr class="my-4">
+
+			<h2>Voici quelques articles aléatoires de ce super shop !</h2>
+
+			<div class="d-flex flex-row">
+				<div th:each="article: ${randomArticles}" class="card" style="width: 18rem;">
+					<img class="card-img-top" src="..." alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title"><a th:href="@{'/article/' + ${article.id}}" th:text="${article.name}"/></h5>
+						<p class="card-text">
+							Prix : <span th:text="${article.price}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<hr class="my-4">
+			
+			<div>
+				<p><small>Nous déclinons toutes résponsabilitées en cas d'accident provoqué par l'un de nos articles</small></p>
+			</div>
 		</div>
-		
-		<div th:replace="fragments/fragments.html :: scripts"></div>
-		
-	</body>
+	</div>
+
+	<div th:replace="fragments/fragments.html :: scripts"></div>
+
+</body>
 </html>
