@@ -17,26 +17,26 @@
 				<form action="#" th:action="@{/articles}" th:object="${article}"
 					method="post">
 					<div class="form-group">
-						<label>Insérer le nom de l'article</label> <input type="text"
+						<label>InsÃ©rer le nom de l'article</label> <input type="text"
 							th:field="*{name}" class="form-control" id="name"
 							placeholder="name du article" value="${article.name}"> <small id="nameHelp"
-							class="form-text text-muted">Insérez le name du article</small>
+							class="form-text text-muted">InsÃ©rez le nom du article</small>
 						<label class="error" th:if="${#fields.hasErrors('name')}"
 							th:errors="*{name}">Name Error</label>
 					</div>
 
 					<div class="form-group">
-						<label>Insérer son prix</label> <input type="number" min="1"
+						<label>InsÃ©rer son prix</label> <input type="number" min="1"
 							max="1000" step="0.05" th:field="*{price}" class="form-control"
 							id="price" placeholder="price du article" value="${article.price}"> <small
-							id="nameHelp" class="form-text text-muted">Insérez le
-							price du article</small> <label class="error"
+							id="nameHelp" class="form-text text-muted">InsÃ©rez le
+							prix du article</small> <label class="error"
 							th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price
 							Error</label>
 					</div>
 
 					<div class="form-group">
-						<label>Choisir sa catégorie</label>
+						<label>Choisir sa catï¿½gorie</label>
 						<select class="form-control" th:field="*{category}">						
 							<option th:each="categorie : ${categories}"
 								th:value="${categorie.getId()}" th:text="${categorie.getName()}"></option>

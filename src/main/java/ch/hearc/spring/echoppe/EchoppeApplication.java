@@ -193,6 +193,7 @@ public class EchoppeApplication {
 				a.setCategory(categoryList.get(rnd.nextInt(categoryList.size())));
 				articleRepo.save(a);
 			}
+		
 		}
 
 	}
