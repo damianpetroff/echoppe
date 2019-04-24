@@ -10,4 +10,5 @@ import ch.hearc.spring.echoppe.model.Utilisateur;
 public interface CommandRepository extends CrudRepository<Command, Long>{
 	Command findById(long id);
 	List<Command> findAllByUtilisateur(Utilisateur utilisateur);
+	List<Command> findAllByUtilisateurOrderByDateDesc(Utilisateur utilisateur);
 }

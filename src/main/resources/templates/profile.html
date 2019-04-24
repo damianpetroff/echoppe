@@ -7,20 +7,40 @@
 
 		<div th:replace="fragments/fragments.html :: navigation"></div>
 	
+		
 		<div class="container">
-			
-			
-			<div class="h3" th:text="${user.nomutilisateur}"></div>
-			
-			
-			<hr>
-			<tr th:each="command ${commands}">
-		        <td th:text="# ${command.id}" />
-		        <td th:text="${command.price}" />
-		    </tr>
-		    <hr>
-			
+		<div class="card">
+			<div class="card-header">
+				<h2>Liste des commandes passées</h2>
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Prix</th>
+							<th scope="col">Date</th>
+							<th scope="col">Status</th>
+							<th scope="col">Détails</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr th:each="command: ${commands}">
+							<td th:text="${command.price}"></td>
+							<td th:text="${command.date}"></td>
+							<td th:if="${command.payment} == null">Non payé</td>
+							<td th:unless="${command.payment} == null">Payé</td>
+							<td><a th:if="${command.payment} == null" th:href="@{'/command/'+${command.id}}">Voir détails/payer</a>
+							<a th:unless="${command.payment} == null" th:href="@{'/command/'+${command.id}}">Voir détails</a></td>
+							
+						</tr>
+					
+					</tbody>
+				</table>
+				
+			</div>
 		</div>
+	</div>
 		
 		<div th:replace="fragments/fragments.html :: scripts"></div>
 		

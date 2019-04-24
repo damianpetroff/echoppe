@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>Login</name>
+   <name>Article Detail</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>ba46f926-9514-4ded-b0d4-72d28c69a88c</testCaseGuid>
+   <testCaseGuid>053ac2e5-242c-4b6f-bcb6-fbcff5d9b95c</testCaseGuid>
 </TestCaseEntity>

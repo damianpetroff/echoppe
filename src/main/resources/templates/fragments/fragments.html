@@ -33,20 +33,21 @@
 					</div>
 				</li>
 			</ul>
-			<div class="logout" sec:authorize="isAuthenticated()">
-				Utilisateur: <span sec:authentication="name">[]</span>
-				<div>
-					<a href="/logout" class="btn btn-warning ml-1">Logout</a>
-				</div>
-			</div>
+			
 			<form class="form-inline my-2 my-lg-0" action="#">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search" id="searchQuery">
 				<button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn">Search</button>
 			</form>
 			<div class="login" sec:authorize="!isAuthenticated()">
-				<a href="/login" class="btn btn-info ml-1">Login</a>
+				<a id="login_link" href="/login" class="btn btn-info ml-1">Login</a>
 				<a href="/register" class="btn btn-info ml-1">Inscription</a>
+			</div>
+			<div class="d-inline logout" sec:authorize="isAuthenticated()">
+				Utilisateur: <span sec:authentication="name">[]</span>
+				<a href="/profil" class="btn btn-info ml-1">Profil</a>
+					<a href="/logout" class="btn btn-warning ml-1">Logout</a>
+				
 			</div>
 		</div>
 	</nav>

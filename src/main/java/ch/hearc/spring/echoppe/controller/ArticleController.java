@@ -230,8 +230,7 @@ public class ArticleController {
 	public String payCommand(HttpServletRequest request, Model model) {
 		Long commandId = Long.parseLong(request.getParameter("commandId"));
 
-		Optional<Command> commandOpt = crepo.findById(commandId);
-		
+		Optional<Command> commandOpt = crepo.findById(commandId);		
 		if(commandOpt.isPresent())
 		{
 			Command command = commandOpt.get();
@@ -302,7 +301,8 @@ public class ArticleController {
 		crepo.save(newestCommand);
 
 		model.addAttribute("command", newestCommand);
-		return "command";
+		
+		return "redirect:command/"+newestCommand.getId();
 
 	}
 

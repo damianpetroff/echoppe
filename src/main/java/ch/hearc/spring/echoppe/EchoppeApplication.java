@@ -191,7 +191,9 @@ public class EchoppeApplication {
 
 			// Adding articles with random name and price to test pagination
 			for (int i = 0; i < 100; i++) {
-				Article a = new Article(randomAlphaNumeric(10), rnd.nextDouble() * 100);
+				double price=(rnd.nextDouble() * 100);
+				
+				Article a = new Article(randomAlphaNumeric(10),  Math.round(price * 20.0) / 20.0);
 				a.setCategory(categoryList.get(rnd.nextInt(categoryList.size())));
 				articleRepo.save(a);
 			}
