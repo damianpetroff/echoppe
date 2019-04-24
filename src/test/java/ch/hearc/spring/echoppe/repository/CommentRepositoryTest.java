@@ -73,11 +73,15 @@ public class CommentRepositoryTest {
 		Optional<Comment> commentRecherche = commentRepository.findById(comment.getId());
 
 		assertTrue(commentRecherche.isPresent());
-		assertTrue(commentRecherche.get().getId().equals(comment.getId()));
-		assertTrue(commentRecherche.get().getArticle().equals(comment.getArticle()));
-		assertTrue(commentRecherche.get().getComment().equals(comment.getComment()));
-		assertTrue(commentRecherche.get().getUtilisateur().equals(comment.getUtilisateur()));
-
-		assertThat(commentRecherche.get()).isNotNull();
+		
+		Comment comment2 = commentRecherche.get();
+		assertTrue(comment2.getId().equals(comment.getId()));
+		assertTrue(comment2.getArticle().equals(comment.getArticle()));
+		assertTrue(comment2.getComment().equals(comment.getComment()));
+		assertTrue(comment2.getUtilisateur().equals(comment.getUtilisateur()));
+		assertTrue(comment2.toString() == comment.toString());
+		assertTrue(comment2.hashCode() == comment.hashCode());
+		assertTrue(comment2.equals(comment));
+		assertThat(comment2).isNotNull();
 	}
 }

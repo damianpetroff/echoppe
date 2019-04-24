@@ -45,12 +45,16 @@ public class PaymentRepositoryTest {
 
 		Optional<Payment> paymentRecherche = payementRepository.findById(payment.getId());
 
+		
 		assertTrue(paymentRecherche.isPresent());
-		assertTrue(paymentRecherche.get().getId().equals(payment.getId()));
-		assertTrue(paymentRecherche.get().getDate().equals(payment.getDate()));
-		assertTrue(paymentRecherche.get().getMethod() == payment.getMethod());
-		assertTrue(paymentRecherche.get().getStatus() == payment.getStatus());
-
-		assertThat(paymentRecherche.get()).isNotNull();
+		Payment payment2 = paymentRecherche.get();
+		assertTrue(payment2.getId().equals(payment.getId()));
+		assertTrue(payment2.getDate().equals(payment.getDate()));
+		assertTrue(payment2.getMethod() == payment.getMethod());
+		assertTrue(payment2.getStatus() == payment.getStatus());
+		assertTrue(payment2.toString() == payment.toString());
+		assertTrue(payment2.hashCode() == payment.hashCode());
+		assertTrue(payment2.equals(payment));
+		assertThat(payment2).isNotNull();
 	}
 }
