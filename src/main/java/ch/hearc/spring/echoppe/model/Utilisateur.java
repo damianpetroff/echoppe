@@ -18,11 +18,14 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@Size(min = 2)
 	private String nomUtilisateur;
+	
 	@Email
 	private String email;
 	private String motDePasse;
+	
 	@ManyToMany
 	private Set<Role> roles;
 
