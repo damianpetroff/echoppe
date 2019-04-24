@@ -49,6 +49,7 @@ public class Command {
 		this.articleCommand = new ArrayList<ArticleCommand>();
 		this.utilisateur = new Utilisateur();
 		this.price = 0.0;
+		this.date = new Date();
 	}
 
 	// Getters

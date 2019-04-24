@@ -73,7 +73,7 @@ public class ArticleController {
 	public String findAllarticlesPage(@PathVariable("sort") String sort, @PathVariable("order") String order,
 			@PathVariable("page") int pageNum, Map<String, Object> model) {
 
-		Sort sortBy = null;
+		Sort sortBy = Sort.by("name");
 		switch (sort) {
 		case "name":
 			sortBy = Sort.by("name");
@@ -84,21 +84,22 @@ public class ArticleController {
 		case "category":
 			sortBy = Sort.by("category.name");
 			break;
+		default:
+			sortBy = Sort.by("name");
+			break;
 		}
 
-		try {
-			switch (order) {
-			case "asc":
-				sortBy = sortBy.ascending();
-				break;
-			case "desc":
-				sortBy = sortBy.descending();
-				break;
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
+		switch (order) {
+		case "asc":
+			sortBy = sortBy.ascending();
+			break;
+		case "desc":
+			sortBy = sortBy.descending();
+			break;
+		default:
+			sortBy = sortBy.ascending();
+			break;
 		}
-
 		Pageable page = PageRequest.of(pageNum - 1, 10, sortBy);
 
 		Page<Article> articles = arepo.findAll(page);
@@ -342,7 +343,7 @@ public class ArticleController {
 			@PathVariable("sort") String sort, @PathVariable("order") String order, @PathVariable("page") int pageNum,
 			HttpServletRequest request, Map<String, Object> model) {
 
-		Sort sortBy = null;
+		Sort sortBy = Sort.by("name");
 		switch (sort) {
 		case "name":
 			sortBy = Sort.by("name");
@@ -353,21 +354,22 @@ public class ArticleController {
 		case "category":
 			sortBy = Sort.by("category.name");
 			break;
+		default:
+			sortBy = Sort.by("name");
+			break;
 		}
 
-		try {
-			switch (order) {
-			case "asc":
-				sortBy = sortBy.ascending();
-				break;
-			case "desc":
-				sortBy = sortBy.descending();
-				break;
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
+		switch (order) {
+		case "asc":
+			sortBy = sortBy.ascending();
+			break;
+		case "desc":
+			sortBy = sortBy.descending();
+			break;
+		default:
+			sortBy = sortBy.ascending();
+			break;
 		}
-
 		Pageable page = PageRequest.of(pageNum - 1, 10, sortBy);
 
 		Page<Article> articles = null;

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -36,10 +35,10 @@ public class HomeController {
 
 	@Autowired
 	private RoleRepository roleRepo;
-	
+
 	@Autowired
 	private CommandRepository crepo;
-	
+
 	@Autowired
 	private ArticleRepository arepo;
 
@@ -60,21 +59,20 @@ public class HomeController {
 
 		return "home";
 	}
-	
+
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@GetMapping(value = "/profil")
-	public String profil(HttpServletRequest request,Map<String, Object> model) {
+	public String profil(HttpServletRequest request, Map<String, Object> model) {
 		Principal principal = request.getUserPrincipal();
 
 		String currentUserName = principal.getName();
 
 		Utilisateur utilisateur = urepo.findByNomUtilisateur(currentUserName);
-		
-		model.put("user",utilisateur);
+
+		model.put("user", utilisateur);
 		model.put("commands", crepo.findAllByUtilisateurOrderByDateDesc(utilisateur));
 		return "profile";
 	}
-
 
 	@PostMapping("/register")
 	public String register(HttpServletRequest request, Model model) {
