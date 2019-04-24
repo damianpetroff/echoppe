@@ -18,9 +18,8 @@ public class Rating {
 
 	// Attributes
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@NotNull
 	@Min(1)
@@ -37,7 +36,7 @@ public class Rating {
 	private Article article;
 
 	// Getters
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -90,7 +89,7 @@ public class Rating {
 		int result = 1;
 		result = prime * result + ((Utilisateur == null) ? 0 : Utilisateur.hashCode());
 		result = prime * result + ((article == null) ? 0 : article.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + rating;
 		return result;
 	}
@@ -114,7 +113,10 @@ public class Rating {
 				return false;
 		} else if (!article.equals(other.article))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (rating != other.rating)
 			return false;

@@ -13,20 +13,21 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import ch.hearc.spring.echoppe.model.Article;
+import ch.hearc.spring.echoppe.model.ArticleCommand;
 import ch.hearc.spring.echoppe.model.Category;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class ArticleRepositoryTest {
+public class ArticleCommandRepositoryTest {
 
 	@Autowired
 	private TestEntityManager entityManager;
 
 	@Autowired
-	private ArticleRepository articleRepository;
+	private ArticleCommandRepository articleCommandRepository;
 
 	@Test
-	public void givenArticle_whenPersistArticle_theArticleIsPersisted() {
+	public void givenArticleCommand_whenPersistArticleCommand_theArticleCommandIsPersisted() {
 		Category category = new Category();
 		category.setName("category test");
 
@@ -41,14 +42,20 @@ public class ArticleRepositoryTest {
 		entityManager.persist(article);
 		entityManager.flush();
 
-		Optional<Article> articleRecherche = articleRepository.findById(article.getId());
+		ArticleCommand articleCommand = new ArticleCommand();
+		articleCommand.setArticle(article);
+		articleCommand.setQuantity(5);
 
-		assertTrue(articleRecherche.isPresent());
-		assertTrue(articleRecherche.get().getId().equals(article.getId()));
-		assertTrue(articleRecherche.get().getPrice() == article.getPrice());
-		assertTrue(articleRecherche.get().getName().equals(article.getName()));
-		assertTrue(articleRecherche.get().getCategory().equals(article.getCategory()));
+		entityManager.persist(articleCommand);
+		entityManager.flush();
 
-		assertThat(articleRecherche.get()).isNotNull();
+		Optional<ArticleCommand> articleCommandRecherche = articleCommandRepository.findById(articleCommand.getId());
+
+		assertTrue(articleCommandRecherche.isPresent());
+		assertTrue(articleCommandRecherche.get().getId().equals(articleCommand.getId()));
+		assertTrue(articleCommandRecherche.get().getArticle().equals(articleCommand.getArticle()));
+		assertTrue(articleCommandRecherche.get().getQuantity() == articleCommand.getQuantity());
+
+		assertThat(articleCommandRecherche.get()).isNotNull();
 	}
 }

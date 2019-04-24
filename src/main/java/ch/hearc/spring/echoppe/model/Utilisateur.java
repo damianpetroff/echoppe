@@ -17,7 +17,7 @@ public class Utilisateur {
 	// Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Size(min = 2)
 	private String nomUtilisateur;
 	@Email
@@ -27,7 +27,7 @@ public class Utilisateur {
 	private Set<Role> roles;
 
 	// Getters
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -91,12 +91,13 @@ public class Utilisateur {
 				+ "]";
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((motDePasse == null) ? 0 : motDePasse.hashCode());
 		result = prime * result + ((nomUtilisateur == null) ? 0 : nomUtilisateur.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
@@ -117,7 +118,10 @@ public class Utilisateur {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (motDePasse == null) {
 			if (other.motDePasse != null)
