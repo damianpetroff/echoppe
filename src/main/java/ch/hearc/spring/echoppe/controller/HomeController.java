@@ -1,5 +1,6 @@
 package ch.hearc.spring.echoppe.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +23,7 @@ import ch.hearc.spring.echoppe.model.Article;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
+import ch.hearc.spring.echoppe.repository.CommandRepository;
 import ch.hearc.spring.echoppe.repository.RoleRepository;
 import ch.hearc.spring.echoppe.repository.UserRepository;
 
@@ -33,6 +35,9 @@ public class HomeController {
 
 	@Autowired
 	private RoleRepository roleRepo;
+	
+	@Autowired
+	private CommandRepository crepo;
 	
 	@Autowired
 	private ArticleRepository arepo;
@@ -58,7 +63,15 @@ public class HomeController {
 	
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	@GetMapping(value = "/profil")
-	public String profil() {
+	public String profil(HttpServletRequest request,Map<String, Object> model) {
+		Principal principal = request.getUserPrincipal();
+
+		String currentUserName = principal.getName();
+
+		Utilisateur utilisateur = urepo.findByNomUtilisateur(currentUserName);
+		
+		model.put("user",utilisateur);
+		model.put("commands", crepo.findAllByUtilisateurOrderByDateDesc(utilisateur));
 		return "profile";
 	}
 

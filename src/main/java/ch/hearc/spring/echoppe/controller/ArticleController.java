@@ -256,7 +256,7 @@ public class ArticleController {
 			crepo.save(command);
 
 			model.addAttribute("command", command);
-			return "payment";
+			return "redirect:command/"+command.getId();
 		} else {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "La commande spécifiée ne vous concerne pas");
 		}
@@ -307,7 +307,8 @@ public class ArticleController {
 		crepo.save(newestCommand);
 
 		model.addAttribute("command", newestCommand);
-		return "command";
+		
+		return "redirect:command/"+newestCommand.getId();
 
 	}
 
