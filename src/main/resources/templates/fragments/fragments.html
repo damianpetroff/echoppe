@@ -40,7 +40,7 @@
 				<button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn">Search</button>
 			</form>
 			<div class="login" sec:authorize="!isAuthenticated()">
-				<a href="/login" class="btn btn-info ml-1">Login</a>
+				<a id="login_link" href="/login" class="btn btn-info ml-1">Login</a>
 				<a href="/register" class="btn btn-info ml-1">Inscription</a>
 			</div>
 			<div class="d-inline logout" sec:authorize="isAuthenticated()">
