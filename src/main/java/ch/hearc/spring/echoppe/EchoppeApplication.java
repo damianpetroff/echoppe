@@ -109,9 +109,9 @@ public class EchoppeApplication {
 		categoryRepo.save(c3);
 		categoryRepo.save(c4);
 		categoryRepo.save(c5);
-		
-		List<Category> categoryList=new ArrayList<Category>();
-		
+
+		List<Category> categoryList = new ArrayList<Category>();
+
 		categoryList.add(c1);
 		categoryList.add(c2);
 		categoryList.add(c3);
@@ -152,7 +152,7 @@ public class EchoppeApplication {
 			payment2 = new Payment(1, sdf.parse("04-04-2019 10:30:00"), 0);
 			paymentRepo.save(payment1);
 			paymentRepo.save(payment2);
-			
+
 			command1.setDate(sdf.parse("04-04-2019 10:30:00"));
 			command2.setDate(sdf.parse("04-04-2019 10:29:00"));
 		} catch (ParseException e) {
@@ -182,25 +182,29 @@ public class EchoppeApplication {
 
 		commandRepo.save(command1);
 		commandRepo.save(command2);
-		
-		Random rnd=new Random();
-		
-		//Adding articles with random name and price to test pagination
-		for(int i=0;i<100;i++) {
-			Article a=new Article(randomAlphaNumeric(10),rnd.nextDouble()*100);
-			a.setCategory(categoryList.get(rnd.nextInt(categoryList.size())));
-			articleRepo.save(a);
+
+		if (articleRepo.count() < 10) {
+
+			Random rnd = new Random();
+
+			// Adding articles with random name and price to test pagination
+			for (int i = 0; i < 100; i++) {
+				Article a = new Article(randomAlphaNumeric(10), rnd.nextDouble() * 100);
+				a.setCategory(categoryList.get(rnd.nextInt(categoryList.size())));
+				articleRepo.save(a);
+			}
 		}
 
 	}
 
-	//source: https://dzone.com/articles/generate-random-alpha-numeric
+	// source: https://dzone.com/articles/generate-random-alpha-numeric
 	private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 	public static String randomAlphaNumeric(int count) {
 		count--;
 		StringBuilder builder = new StringBuilder();
 		int character = (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
-		
+
 		builder.append(ALPHA_NUMERIC_STRING.charAt(character));
 		while (count-- != 0) {
 			character = (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
