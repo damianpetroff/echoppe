@@ -1,12 +1,16 @@
 package ch.hearc.spring.echoppe.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
+import javax.persistence.Tuple;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +27,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
+import org.thymeleaf.standard.expression.DivisionExpression;
 
 import ch.hearc.spring.echoppe.model.Article;
 import ch.hearc.spring.echoppe.model.ArticleCommand;
 import ch.hearc.spring.echoppe.model.Category;
 import ch.hearc.spring.echoppe.model.Command;
+import ch.hearc.spring.echoppe.model.Comment;
 import ch.hearc.spring.echoppe.model.Payment;
+import ch.hearc.spring.echoppe.model.Rating;
 import ch.hearc.spring.echoppe.model.Utilisateur;
 import ch.hearc.spring.echoppe.repository.ArticleCommandRepository;
 import ch.hearc.spring.echoppe.repository.ArticleRepository;
@@ -36,11 +43,12 @@ import ch.hearc.spring.echoppe.repository.CategoryRepository;
 import ch.hearc.spring.echoppe.repository.CommandRepository;
 import ch.hearc.spring.echoppe.repository.CommentRepository;
 import ch.hearc.spring.echoppe.repository.PaymentRepository;
+import ch.hearc.spring.echoppe.repository.RatingRepository;
 import ch.hearc.spring.echoppe.repository.UserRepository;
 
 @Controller
 public class ArticleController {
-
+	
 	@Autowired
 	private ArticleRepository arepo;
 	
@@ -49,6 +57,9 @@ public class ArticleController {
 	
 	@Autowired
 	private CommentRepository comrepo;
+	
+	@Autowired
+	private RatingRepository raterepo;
 
 	@Autowired
 	private CommandRepository crepo;
@@ -104,8 +115,38 @@ public class ArticleController {
 	@GetMapping(value = "/article/{id}")
 	public String findArticle(@PathVariable("id") long id, Model model) {
 		model.addAttribute("article", arepo.findById(id));
-		model.addAttribute("comments", comrepo.findAllByArticleId(id));
-
+		
+		List<Comment> lcom = comrepo.findAllByArticleId(id);
+		List<Rating> lrat = raterepo.findAllByArticleId(id);
+		int sumRating = 0;
+		int nRating = 0;
+		
+		Map<Comment, Rating> map = new HashMap<Comment, Rating>();
+		
+		for(Rating rate : lrat)
+		{
+			for(Comment com : lcom)
+			{
+				if(rate.getUtilisateur().equals(com.getUtilisateur()))
+				{
+					map.put(com, rate);
+					nRating++;
+					sumRating += rate.getRating();
+				}
+			}
+		}
+		
+		
+		if(nRating==0)
+		{
+			nRating=1;
+		}
+		else
+		{
+		nRating=nRating;
+		}
+		model.addAttribute("averageRating", sumRating/(float)nRating);
+		model.addAttribute("comments", map);
 		return "article";
 	}
 	
@@ -147,6 +188,48 @@ public class ArticleController {
 			arepo.save(article);
 		}
 		return ((errors.hasErrors()) ? "input_articles" : "redirect:/articles/name/asc/1");
+	}
+	
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@PostMapping("/comment")
+	public String commentArticles(HttpServletRequest request, Model model) {
+		Long articleId = Long.parseLong(request.getParameter("articleId"));
+				
+		Utilisateur u = urepo.findByNomUtilisateur(request.getUserPrincipal().getName());
+				
+		List<Comment> lcom = comrepo.findAllByArticleId(articleId);
+		
+		for(Comment com : lcom)
+		{
+			if(com.getUtilisateur() == u)
+			{
+				return "redirect:/article/"+articleId;
+			}
+		}
+		
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		String comment = request.getParameter("comment");
+		
+		Article a = arepo.findById(articleId).get();
+		Rating r = new Rating();
+		r.setArticle(a);
+		r.setRating(rating);
+		r.setUtilisateur(u);
+		raterepo.save(r);
+		
+		Comment c = new Comment();
+		c.setArticle(a);
+		
+		StringBuilder str = new StringBuilder(comment);
+		for(int i = 0; i < new Random().nextInt()%10; i++) {
+			str.append(" ");
+		}
+		c.setComment(str.toString());
+		c.setUtilisateur(u);
+		comrepo.save(c);
+		
+		return "redirect:/article/"+articleId;
+		
 	}
 
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
