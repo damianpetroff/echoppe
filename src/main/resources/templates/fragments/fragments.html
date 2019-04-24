@@ -34,12 +34,9 @@
 				</li>
 			</ul>
 			<div class="logout" sec:authorize="isAuthenticated()">
-				Utilisateur: <span sec:authentication="name">[]</span> Roles: <span
-					sec:authentication="principal.authorities"></span>
+				Utilisateur: <span sec:authentication="name">[]</span>
 				<div>
-					<form action="#" th:action="@{/logout}" method="post">
-						<input type="submit" value="Logout" />
-					</form>
+					<a href="/logout" class="btn btn-warning ml-1">Logout</a>
 				</div>
 			</div>
 			<form class="form-inline my-2 my-lg-0" action="#">
@@ -49,6 +46,7 @@
 			</form>
 			<div class="login" sec:authorize="!isAuthenticated()">
 				<a href="/login" class="btn btn-info ml-1">Login</a>
+				<a href="/register" class="btn btn-info ml-1">Inscription</a>
 			</div>
 		</div>
 	</nav>
