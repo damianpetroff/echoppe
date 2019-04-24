@@ -1,7 +1,10 @@
 package ch.hearc.spring.echoppe.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -14,8 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ch.hearc.spring.echoppe.model.Article;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
+import ch.hearc.spring.echoppe.repository.ArticleRepository;
 import ch.hearc.spring.echoppe.repository.RoleRepository;
 import ch.hearc.spring.echoppe.repository.UserRepository;
 
@@ -27,10 +32,26 @@ public class HomeController {
 
 	@Autowired
 	private RoleRepository roleRepo;
+	
+	@Autowired
+	private ArticleRepository arepo;
 
 	@GetMapping("/")
 	public String home(Map<String, Object> model) {
 		model.put("page", "Home");
+		Random rand = new Random();
+		List<Article> articles = (List<Article>) arepo.findAll();
+		List<Article> randomArticles = new ArrayList();
+
+		int numberOfElements = 4;
+
+		for (int i = 0; i < numberOfElements; i++) {
+			int randomIndex = rand.nextInt(articles.size());
+			randomArticles.add(articles.get(randomIndex));
+		}
+
+		model.put("randomArticles", randomArticles);
+
 		return "home";
 	}
 
