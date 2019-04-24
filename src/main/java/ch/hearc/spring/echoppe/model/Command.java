@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,6 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @Entity
 public class Command {
 
@@ -26,11 +24,11 @@ public class Command {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
-	
+
 	@NotNull
 	@ManyToOne
 	private Utilisateur utilisateur;
-	
+
 	@NotNull
 	private Date date;
 
@@ -38,8 +36,7 @@ public class Command {
 	@JoinColumn
 	private Payment payment;
 
-	@OneToMany
-	@Cascade({CascadeType.DELETE})
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.REMOVE)
 	private List<ArticleCommand> articleCommand;
 
 	@NotNull
@@ -58,7 +55,7 @@ public class Command {
 		computeCommandPrice();
 		return price;
 	}
-	
+
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
@@ -66,11 +63,11 @@ public class Command {
 	public Payment getPayment() {
 		return payment;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public Date getDate() {
 		return date;
 	}
@@ -91,11 +88,11 @@ public class Command {
 	public void setContent(List<ArticleCommand> articleCommand) {
 		this.articleCommand = articleCommand;
 	}
-	
+
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -120,10 +117,8 @@ public class Command {
 		}
 		this.price = sum;
 	}
-	
-	// ToString, Hashcode, Equals
-	
 
+	// ToString, Hashcode, Equals
 
 	@Override
 	public String toString() {
@@ -184,8 +179,5 @@ public class Command {
 			return false;
 		return true;
 	}
-
-	
-	
 
 }
