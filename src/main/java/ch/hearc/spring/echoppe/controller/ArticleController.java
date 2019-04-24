@@ -387,15 +387,12 @@ public class ArticleController {
 		case "priceGreater":
 			articles = arepo.findAllByPriceGreaterThan(Double.valueOf(query), page);
 			break;
+		default:
+			articles = arepo.findAllByNameIgnoreCaseContaining(query, page);
+			break;
 		}
 
-		try {
-			model.put("articles", articles.getContent());
-		}
-		catch(NullPointerException e)
-		{
-			e.printStackTrace();
-		}
+		model.put("articles", articles.getContent());
 		model.put("pageNum", page.getPageNumber() + 1);
 		model.put("pageNb", articles.getTotalPages());
 		model.put("search", "1");
