@@ -55,6 +55,8 @@ public class UserRepositoryTest {
 		assertTrue(utilisateur2.getEmail().equals(utilisateur.getEmail()));
 		assertTrue(utilisateur2.getMotDePasse().equals(utilisateur.getMotDePasse()));
 		assertTrue(utilisateur2.getRoles().equals(utilisateur.getRoles()));
+		assertTrue(utilisateur2.hashCode() == utilisateur.hashCode());
+		assertTrue(utilisateur2.equals(utilisateur));
 		assertThat(utilisateur2).isNotNull();
 	}
 }

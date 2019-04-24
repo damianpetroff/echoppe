@@ -52,10 +52,13 @@ public class ArticleCommandRepositoryTest {
 		Optional<ArticleCommand> articleCommandRecherche = articleCommandRepository.findById(articleCommand.getId());
 
 		assertTrue(articleCommandRecherche.isPresent());
-		assertTrue(articleCommandRecherche.get().getId().equals(articleCommand.getId()));
-		assertTrue(articleCommandRecherche.get().getArticle().equals(articleCommand.getArticle()));
-		assertTrue(articleCommandRecherche.get().getQuantity() == articleCommand.getQuantity());
-
-		assertThat(articleCommandRecherche.get()).isNotNull();
+		
+		ArticleCommand articleCommand2 = articleCommandRecherche.get();
+		assertTrue(articleCommand2.getId().equals(articleCommand.getId()));
+		assertTrue(articleCommand2.getArticle().equals(articleCommand.getArticle()));
+		assertTrue(articleCommand2.getQuantity() == articleCommand.getQuantity());
+		assertTrue(articleCommand2.equals(articleCommand));
+		assertTrue(articleCommand2.hashCode() == articleCommand.hashCode());		
+		assertThat(articleCommand2).isNotNull();
 	}
 }

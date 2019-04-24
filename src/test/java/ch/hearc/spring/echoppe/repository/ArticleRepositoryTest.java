@@ -44,10 +44,14 @@ public class ArticleRepositoryTest {
 		Optional<Article> articleRecherche = articleRepository.findById(article.getId());
 
 		assertTrue(articleRecherche.isPresent());
-		assertTrue(articleRecherche.get().getId().equals(article.getId()));
-		assertTrue(articleRecherche.get().getPrice() == article.getPrice());
-		assertTrue(articleRecherche.get().getName().equals(article.getName()));
-		assertTrue(articleRecherche.get().getCategory().equals(article.getCategory()));
+		
+		Article article2 = articleRecherche.get();
+		assertTrue(article2.getId().equals(article.getId()));
+		assertTrue(article2.getPrice() == article.getPrice());
+		assertTrue(article2.getName().equals(article.getName()));
+		assertTrue(article2.getCategory().equals(article.getCategory()));
+		assertTrue(article2.hashCode() == article.hashCode());
+		assertTrue(article2.equals(article));
 
 		assertThat(articleRecherche.get()).isNotNull();
 	}

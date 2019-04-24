@@ -35,9 +35,13 @@ public class CategoryRepositoryTest {
 		Optional<Category> categoryRecherche = categoryRepository.findById(category.getId());
 
 		assertTrue(categoryRecherche.isPresent());
-		assertTrue(categoryRecherche.get().getId().equals(category.getId()));
-		assertTrue(categoryRecherche.get().getName().equals(category.getName()));
-
-		assertThat(categoryRecherche.get()).isNotNull();
+		
+		Category category2 = categoryRecherche.get();
+		
+		assertTrue(category2.getId().equals(category.getId()));
+		assertTrue(category2.getName().equals(category.getName()));
+		assertTrue(category2.hashCode() == category.hashCode());
+		assertTrue(category2.equals(category));
+		assertThat(category2).isNotNull();
 	}
 }
