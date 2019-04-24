@@ -74,11 +74,14 @@ public class RatingRepositoryTest {
 		Optional<Rating> ratingRecherche = ratingRepository.findById(rating.getId());
 
 		assertTrue(ratingRecherche.isPresent());
-		assertTrue(ratingRecherche.get().getId().equals(rating.getId()));
-		assertTrue(ratingRecherche.get().getArticle().equals(rating.getArticle()));
-		assertTrue(ratingRecherche.get().getRating() == rating.getRating());
-		assertTrue(ratingRecherche.get().getUtilisateur().equals(rating.getUtilisateur()));
-
-		assertThat(ratingRecherche.get()).isNotNull();
+		
+		Rating rating2 = ratingRecherche.get();
+		assertTrue(rating2.getId().equals(rating.getId()));
+		assertTrue(rating2.getArticle().equals(rating.getArticle()));
+		assertTrue(rating2.getRating() == rating.getRating());
+		assertTrue(rating2.getUtilisateur().equals(rating.getUtilisateur()));
+		assertTrue(rating2.hashCode() == rating.hashCode());
+		assertTrue(rating2.equals(rating));
+		assertThat(rating2).isNotNull();
 	}
 }

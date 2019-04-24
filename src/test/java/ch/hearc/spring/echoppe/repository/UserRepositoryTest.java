@@ -48,12 +48,13 @@ public class UserRepositoryTest {
 		Optional<Utilisateur> userRecherche = userRepository.findById(utilisateur.getId());
 
 		assertTrue(userRecherche.isPresent());
-		assertTrue(userRecherche.get().getId().equals(utilisateur.getId()));
-		assertTrue(userRecherche.get().getUsername().equals(utilisateur.getUsername()));
-		assertTrue(userRecherche.get().getEmail().equals(utilisateur.getEmail()));
-		assertTrue(userRecherche.get().getMotDePasse().equals(utilisateur.getMotDePasse()));
-		assertTrue(userRecherche.get().getRoles().equals(utilisateur.getRoles()));
-
-		assertThat(userRecherche.get()).isNotNull();
+		
+		Utilisateur utilisateur2 = userRecherche.get();
+		assertTrue(utilisateur2.getId().equals(utilisateur.getId()));
+		assertTrue(utilisateur2.getUsername().equals(utilisateur.getUsername()));
+		assertTrue(utilisateur2.getEmail().equals(utilisateur.getEmail()));
+		assertTrue(utilisateur2.getMotDePasse().equals(utilisateur.getMotDePasse()));
+		assertTrue(utilisateur2.getRoles().equals(utilisateur.getRoles()));
+		assertThat(utilisateur2).isNotNull();
 	}
 }

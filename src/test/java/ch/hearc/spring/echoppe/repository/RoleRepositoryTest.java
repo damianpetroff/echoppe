@@ -34,9 +34,12 @@ public class RoleRepositoryTest {
 		Optional<Role> roleRecherche = roleRepository.findById(roleTest.getId());
 
 		assertTrue(roleRecherche.isPresent());
-		assertTrue(roleRecherche.get().getId().equals(roleTest.getId()));
-		assertTrue(roleRecherche.get().getNom().equals(roleTest.getNom()));
-
-		assertThat(roleRecherche.get()).isNotNull();
+		
+		Role role2 = roleRecherche.get();
+		assertTrue(role2.getId().equals(roleTest.getId()));
+		assertTrue(role2.getNom().equals(roleTest.getNom()));
+		assertTrue(role2.hashCode() == roleTest.hashCode());
+		assertTrue(role2.equals(roleTest));
+		assertThat(role2).isNotNull();
 	}
 }

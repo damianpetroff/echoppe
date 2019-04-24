@@ -79,7 +79,6 @@ public class CommentRepositoryTest {
 		assertTrue(comment2.getArticle().equals(comment.getArticle()));
 		assertTrue(comment2.getComment().equals(comment.getComment()));
 		assertTrue(comment2.getUtilisateur().equals(comment.getUtilisateur()));
-		assertTrue(comment2.toString() == comment.toString());
 		assertTrue(comment2.hashCode() == comment.hashCode());
 		assertTrue(comment2.equals(comment));
 		assertThat(comment2).isNotNull();

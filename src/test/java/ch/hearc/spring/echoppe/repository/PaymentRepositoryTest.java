@@ -52,7 +52,6 @@ public class PaymentRepositoryTest {
 		assertTrue(payment2.getDate().equals(payment.getDate()));
 		assertTrue(payment2.getMethod() == payment.getMethod());
 		assertTrue(payment2.getStatus() == payment.getStatus());
-		assertTrue(payment2.toString() == payment.toString());
 		assertTrue(payment2.hashCode() == payment.hashCode());
 		assertTrue(payment2.equals(payment));
 		assertThat(payment2).isNotNull();

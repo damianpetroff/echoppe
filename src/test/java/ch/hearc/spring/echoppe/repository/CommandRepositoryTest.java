@@ -111,13 +111,17 @@ public class CommandRepositoryTest {
 		Optional<Command> commandRecherche = commandRepository.findById(command.getId());
 
 		assertTrue(commandRecherche.isPresent());
-		assertTrue(commandRecherche.get().getId().equals(command.getId()));
-		assertTrue(commandRecherche.get().getContent().equals(command.getContent()));
-		assertTrue(commandRecherche.get().getDate().equals(command.getDate()));
-		assertTrue(commandRecherche.get().getPayment().equals(command.getPayment()));
-		assertTrue(commandRecherche.get().getPrice() == command.getPrice());
-		assertTrue(commandRecherche.get().getUtilisateur().equals(command.getUtilisateur()));
+		
+		Command command2 = commandRecherche.get();
+		assertTrue(command2.getId().equals(command.getId()));
+		assertTrue(command2.getContent().equals(command.getContent()));
+		assertTrue(command2.getDate().equals(command.getDate()));
+		assertTrue(command2.getPayment().equals(command.getPayment()));
+		assertTrue(command2.getPrice() == command.getPrice());
+		assertTrue(command2.hashCode() == command.hashCode());
+		assertTrue(command2.equals(command));
+		assertTrue(command2.getUtilisateur().equals(command.getUtilisateur()));
 
-		assertThat(commandRecherche.get()).isNotNull();
+		assertThat(command2).isNotNull();
 	}
 }
