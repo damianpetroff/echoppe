@@ -36,6 +36,8 @@ import ch.hearc.spring.echoppe.repository.UserRepository;
 
 @SpringBootApplication
 public class EchoppeApplication {
+	
+	public static Random rnd = new Random();
 
 	public static void main(String[] args) {
 		SpringApplication.run(EchoppeApplication.class, args);
@@ -185,7 +187,7 @@ public class EchoppeApplication {
 
 		if (articleRepo.count() < 10) {
 
-			Random rnd = new Random();
+
 
 			// Adding articles with random name and price to test pagination
 			for (int i = 0; i < 100; i++) {

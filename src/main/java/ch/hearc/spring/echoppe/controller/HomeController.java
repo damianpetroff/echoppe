@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ch.hearc.spring.echoppe.EchoppeApplication;
 import ch.hearc.spring.echoppe.model.Article;
 import ch.hearc.spring.echoppe.model.Role;
 import ch.hearc.spring.echoppe.model.Utilisateur;
@@ -40,14 +41,13 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(Map<String, Object> model) {
 		model.put("page", "Home");
-		Random rand = new Random();
 		List<Article> articles = (List<Article>) arepo.findAll();
-		List<Article> randomArticles = new ArrayList();
+		List<Article> randomArticles = new ArrayList<Article>();
 
 		int numberOfElements = 4;
 
 		for (int i = 0; i < numberOfElements; i++) {
-			int randomIndex = rand.nextInt(articles.size());
+			int randomIndex = EchoppeApplication.rnd.nextInt(articles.size());
 			randomArticles.add(articles.get(randomIndex));
 		}
 

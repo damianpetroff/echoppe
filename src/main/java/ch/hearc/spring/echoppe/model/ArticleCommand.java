@@ -4,9 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
@@ -19,14 +16,12 @@ public class ArticleCommand {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
-	
-	@OneToOne
-	@Cascade({CascadeType.DELETE})
-	private Article article;
-	
-	
-	private int quantity;
 
+	@OneToOne
+	@Cascade({ CascadeType.DELETE })
+	private Article article;
+
+	private int quantity;
 
 	// Constructor
 	public ArticleCommand(Article article, int quantity) {
@@ -34,9 +29,9 @@ public class ArticleCommand {
 		this.article = article;
 		this.quantity = quantity;
 	}
-	
+
 	public ArticleCommand() {
-		
+
 	}
 
 	// Getters
@@ -48,32 +43,23 @@ public class ArticleCommand {
 		return article;
 	}
 
-
-
 	public int getQuantity() {
 		return quantity;
 	}
-
-
 
 	// Setters
 	public void setArticle(Article article) {
 		this.article = article;
 	}
 
-
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-
-
 	// ToString
 	@Override
 	public String toString() {
-		return "ArticleCommand [id=" + id + ", article=" + article + ", quantity=" + quantity
-				+"]";
+		return "ArticleCommand [id=" + id + ", article=" + article + ", quantity=" + quantity + "]";
 	}
 
 	@Override
@@ -100,13 +86,13 @@ public class ArticleCommand {
 				return false;
 		} else if (!article.equals(other.article))
 			return false;
-		
+
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
+
 		if (quantity != other.quantity)
 			return false;
 		return true;

@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,7 +15,7 @@ public class Payment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
-	
+
 	@NotNull
 	private int status;
 	@NotNull
@@ -29,8 +28,6 @@ public class Payment {
 		return id;
 	}
 
-	
-
 	public int getStatus() {
 		return status;
 	}
@@ -42,8 +39,6 @@ public class Payment {
 	public int getMethod() {
 		return method;
 	}
-
-
 
 	public void setStatus(int status) {
 		this.status = status;
@@ -58,7 +53,7 @@ public class Payment {
 	}
 
 	// Constructor
-	public Payment( @NotNull int status, @NotNull Date date, @NotNull int method) {
+	public Payment(@NotNull int status, @NotNull Date date, @NotNull int method) {
 		super();
 		this.status = status;
 		this.date = date;
@@ -78,7 +73,7 @@ public class Payment {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		
+
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + method;

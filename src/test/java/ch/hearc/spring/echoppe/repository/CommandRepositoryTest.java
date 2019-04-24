@@ -43,7 +43,7 @@ public class CommandRepositoryTest {
 		entityManager.persist(category);
 		entityManager.flush();
 
-		List<ArticleCommand> articlesCommand = new ArrayList();
+		List<ArticleCommand> articlesCommand = new ArrayList<ArticleCommand>();
 		for (int i = 0; i < 5; i++) {
 			Article a = new Article();
 			a.setName("article" + Integer.toString(i));

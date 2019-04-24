@@ -50,6 +50,7 @@ public class Command {
 	// Constructors
 	public Command() {
 		this.articleCommand = new ArrayList<ArticleCommand>();
+		this.utilisateur = new Utilisateur();
 		this.price = 0.0;
 	}
 
