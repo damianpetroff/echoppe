@@ -64,8 +64,8 @@ public class RatingRepositoryTest {
 
 		Rating rating = new Rating();
 		rating.setArticle(article);
-		rating.setRating(6); // Won't pass cause the range of rating is 1 to 5
-//		rating.setRating(3); // Right insert 
+//		rating.setRating(6); // Won't pass cause the range of rating is 1 to 5
+		rating.setRating(3); // Right insert 
 		rating.setUtilisateur(utilisateur);
 
 		entityManager.persist(rating);
