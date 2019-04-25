@@ -11,9 +11,21 @@
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <testSuiteGuid>0346bd39-022d-4f0a-9445-e168d882f20f</testSuiteGuid>
    <testCaseLink>
-      <guid>7c1470a0-bbce-41bc-9814-b3ddd509681b</guid>
+      <guid>6b5e3704-3e85-4572-84c8-67f5affc6852</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Login</testCaseId>
+      <testCaseId>Test Cases/Register</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>5dd26c89-da19-42b1-aacd-2f13700b2f6f</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/List Article</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>6bf1ddd6-c8bb-4f21-bfb8-d2e86303f51a</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Article Detail</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

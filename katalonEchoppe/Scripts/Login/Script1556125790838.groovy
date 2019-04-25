@@ -17,9 +17,11 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://localhost:9090/')
 
+WebUI.click(findTestObject('Page_Echoppe/button_Accueil_navbar-toggler'))
+
 WebUI.click(findTestObject('Page_Echoppe/a_Login'))
 
-WebUI.setText(findTestObject('Page_Please sign in/input_Username_username'), 'user')
+WebUI.setText(findTestObject('Page_Please sign in/input_Username_username'), 'usertest')
 
 WebUI.setEncryptedText(findTestObject('Page_Please sign in/input_Password_password'), '8SQVv/p9jVScEs4/2CZsLw==')
 
