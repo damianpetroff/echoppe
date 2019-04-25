@@ -13,3 +13,7 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
+WebUI.click(findTestObject('Page_Echoppe/button_Accueil_navbar-toggler'))
+
+WebUI.click(findTestObject('Page_Confirm Log Out/button_Log Out'))
+

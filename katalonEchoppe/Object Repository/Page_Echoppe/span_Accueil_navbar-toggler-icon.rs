@@ -7,7 +7,6 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -60,5 +59,12 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//span</value>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Saisie articles'])[1]/preceding::span[1]</value>
    </webElementXpaths>
 </WebElementEntity>
