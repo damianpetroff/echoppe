@@ -1,0 +1,28 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+New Test Suite,Chrome 73.0.3683.103,,,2019-04-25 10:16:57,2019-04-25 10:17:46,49.724s,PASSED
+,,,,,,,
+Test Cases/Register,Chrome 73.0.3683.103,,,2019-04-25 10:16:57,2019-04-25 10:17:29,31.509s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,,2019-04-25 10:16:58,2019-04-25 10:17:07,9.014s,PASSED
+"navigateToUrl(""http://localhost:9090/"")",Chrome 73.0.3683.103,,,2019-04-25 10:17:07,2019-04-25 10:17:09,1.878s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,,2019-04-25 10:17:09,2019-04-25 10:17:11,2.215s,PASSED
+"click(findTestObject(""Page_Echoppe/a_Inscription""))",Chrome 73.0.3683.103,,,2019-04-25 10:17:11,2019-04-25 10:17:13,2.228s,PASSED
+"setText(findTestObject(""Page_Echoppe/input_Username_username""), ""usertest"")",Chrome 73.0.3683.103,,,2019-04-25 10:17:13,2019-04-25 10:17:16,3.217s,PASSED
+"setText(findTestObject(""Page_Echoppe/input_Email address_email""), ""usertest@test.com"")",Chrome 73.0.3683.103,,,2019-04-25 10:17:16,2019-04-25 10:17:20,3.290s,PASSED
+"setEncryptedText(findTestObject(""Page_Echoppe/input_Password_password""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,,2019-04-25 10:17:20,2019-04-25 10:17:23,3.265s,PASSED
+"setEncryptedText(findTestObject(""Page_Echoppe/input_Confirm your password_inputPasswordConfirmation""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,,2019-04-25 10:17:23,2019-04-25 10:17:26,3.153s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Submit""))",Chrome 73.0.3683.103,,,2019-04-25 10:17:26,2019-04-25 10:17:29,2.547s,PASSED
+,,,,,,,
+Test Cases/Logout,Chrome 73.0.3683.103,,,2019-04-25 10:17:29,2019-04-25 10:17:29,0.600s,PASSED
+return null,Chrome 73.0.3683.103,,,2019-04-25 10:17:29,2019-04-25 10:17:29,0.000s,PASSED
+,,,,,,,
+Test Cases/List Article,Chrome 73.0.3683.103,,,2019-04-25 10:17:29,2019-04-25 10:17:34,4.913s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,,2019-04-25 10:17:30,2019-04-25 10:17:32,2.100s,PASSED
+"click(findTestObject(""Page_Echoppe/a_Liste articles""))",Chrome 73.0.3683.103,,,2019-04-25 10:17:32,2019-04-25 10:17:34,2.269s,PASSED
+,,,,,,,
+Test Cases/Article Detail,Chrome 73.0.3683.103,,,2019-04-25 10:17:34,2019-04-25 10:17:37,2.815s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/a_Banane""))",Chrome 73.0.3683.103,,,2019-04-25 10:17:35,2019-04-25 10:17:37,2.337s,PASSED
+,,,,,,,
+Test Cases/Comment Article,Chrome 73.0.3683.103,,,2019-04-25 10:17:37,2019-04-25 10:17:44,7.300s,PASSED
+"scrollToPosition(999999, 999999)",Chrome 73.0.3683.103,,,2019-04-25 10:17:38,2019-04-25 10:17:39,1.037s,PASSED
+"setText(findTestObject(""Object Repository/Page_Echoppe/textarea_Commentaire_comment""), ""test"")",Chrome 73.0.3683.103,,,2019-04-25 10:17:39,2019-04-25 10:17:42,3.134s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Noter et commenter""))",Chrome 73.0.3683.103,,,2019-04-25 10:17:42,2019-04-25 10:17:44,2.360s,PASSED

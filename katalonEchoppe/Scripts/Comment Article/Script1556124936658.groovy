@@ -13,7 +13,9 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.setText(findTestObject('Object Repository/Page_Echoppe/textarea_Commentaire_comment'), 'super commentaire')
+WebUI.scrollToPosition(999999, 999999)
 
-WebUI.click(findTestObject('Object Repository/Page_Echoppe/button_Noter et commenter'))
+WebUI.setText(findTestObject('Page_Echoppe/textarea_Commentaire_comment'), 'test commentaire')
+
+WebUI.click(findTestObject('Page_Echoppe/button_Noter et commenter'))
 

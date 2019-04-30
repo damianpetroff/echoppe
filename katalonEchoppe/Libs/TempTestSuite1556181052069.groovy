@@ -28,8 +28,8 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.c
 
 
 
-RunConfiguration.setExecutionSettingFile("C:\\Users\\quentin.michel\\Documents\\hearc\\ANNEE-3\\Java_Entreprise\\Projet\\echoppe\\katalonEchoppe\\Reports\\New Test Suite\\20190424_211135\\execution.properties")
+RunConfiguration.setExecutionSettingFile("C:\\Users\\quentin.michel\\Documents\\hearc\\ANNEE-3\\Java_Entreprise\\Projet\\echoppe\\katalonEchoppe\\Reports\\New Test Suite\\20190425_103052\\execution.properties")
 
 TestCaseMain.beforeStart()
 
-TestCaseMain.startTestSuite('Test Suites/New Test Suite', suiteProperties, [new TestCaseBinding('Test Cases/Register', 'Test Cases/Register',  null), new TestCaseBinding('Test Cases/Logout', 'Test Cases/Logout',  null), new TestCaseBinding('Test Cases/Login', 'Test Cases/Login',  null), new TestCaseBinding('Test Cases/List Article', 'Test Cases/List Article',  null), new TestCaseBinding('Test Cases/Article Detail', 'Test Cases/Article Detail',  null)])
+TestCaseMain.startTestSuite('Test Suites/New Test Suite', suiteProperties, [new TestCaseBinding('Test Cases/Register', 'Test Cases/Register',  null), new TestCaseBinding('Test Cases/Logout', 'Test Cases/Logout',  null), new TestCaseBinding('Test Cases/Login', 'Test Cases/Login',  null), new TestCaseBinding('Test Cases/List Article', 'Test Cases/List Article',  null), new TestCaseBinding('Test Cases/Article Detail', 'Test Cases/Article Detail',  null), new TestCaseBinding('Test Cases/Comment Article', 'Test Cases/Comment Article',  null)])

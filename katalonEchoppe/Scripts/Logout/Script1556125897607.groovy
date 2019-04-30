@@ -15,5 +15,7 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.click(findTestObject('Page_Echoppe/button_Accueil_navbar-toggler'))
 
+WebUI.click(findTestObject('Page_Echoppe/a_Logout'))
+
 WebUI.click(findTestObject('Page_Confirm Log Out/button_Log Out'))
 
