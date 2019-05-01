@@ -1,0 +1,60 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+New Test Suite,Chrome 73.0.3683.103,,2019-05-01 10:06:11,2019-05-01 10:08:35,2m - 23.706s,FAILED
+,,,,,,
+Test Cases/Register,Chrome 73.0.3683.103,,2019-05-01 10:06:12,2019-05-01 10:06:46,34.314s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-01 10:06:13,2019-05-01 10:06:21,8.364s,PASSED
+"navigateToUrl(""http://localhost:9090/"")",Chrome 73.0.3683.103,,2019-05-01 10:06:21,2019-05-01 10:06:24,2.679s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,2019-05-01 10:06:24,2019-05-01 10:06:26,2.180s,PASSED
+"click(findTestObject(""Page_Echoppe/a_Inscription""))",Chrome 73.0.3683.103,,2019-05-01 10:06:26,2019-05-01 10:06:28,2.206s,PASSED
+"setText(findTestObject(""Page_Echoppe/input_Username_username""), ""usertest"")",Chrome 73.0.3683.103,,2019-05-01 10:06:28,2019-05-01 10:06:32,4.180s,PASSED
+"setText(findTestObject(""Page_Echoppe/input_Email address_email""), ""usertest@test.com"")",Chrome 73.0.3683.103,,2019-05-01 10:06:32,2019-05-01 10:06:36,4.200s,PASSED
+"setEncryptedText(findTestObject(""Page_Echoppe/input_Password_password""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,2019-05-01 10:06:36,2019-05-01 10:06:40,3.254s,PASSED
+"setEncryptedText(findTestObject(""Page_Echoppe/input_Confirm your password_inputPasswordConfirmation""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,2019-05-01 10:06:40,2019-05-01 10:06:43,3.156s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Submit""))",Chrome 73.0.3683.103,,2019-05-01 10:06:43,2019-05-01 10:06:46,3.295s,PASSED
+,,,,,,
+Test Cases/Logout,Chrome 73.0.3683.103,,2019-05-01 10:06:46,2019-05-01 10:06:54,7.636s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,2019-05-01 10:06:47,2019-05-01 10:06:49,2.146s,PASSED
+"click(findTestObject(""Page_Echoppe/a_Logout""))",Chrome 73.0.3683.103,,2019-05-01 10:06:49,2019-05-01 10:06:52,2.375s,PASSED
+"click(findTestObject(""Page_Confirm Log Out/button_Log Out""))",Chrome 73.0.3683.103,,2019-05-01 10:06:52,2019-05-01 10:06:54,2.136s,PASSED
+,,,,,,
+Test Cases/Login,Chrome 73.0.3683.103,,2019-05-01 10:06:54,2019-05-01 10:07:09,15.615s,PASSED
+"navigateToUrl(""http://localhost:9090/"")",Chrome 73.0.3683.103,,2019-05-01 10:06:54,2019-05-01 10:06:55,1.156s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,2019-05-01 10:06:55,2019-05-01 10:06:58,2.123s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/a_Login""))",Chrome 73.0.3683.103,,2019-05-01 10:06:58,2019-05-01 10:07:00,2.111s,PASSED
+"setText(findTestObject(""Page_Please sign in/input_Username_username""), ""usertest"")",Chrome 73.0.3683.103,,2019-05-01 10:07:00,2019-05-01 10:07:04,4.158s,PASSED
+"setEncryptedText(findTestObject(""Page_Please sign in/input_Password_password""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,2019-05-01 10:07:04,2019-05-01 10:07:07,3.153s,PASSED
+"click(findTestObject(""Page_Please sign in/button_Sign in""))",Chrome 73.0.3683.103,,2019-05-01 10:07:07,2019-05-01 10:07:09,2.375s,PASSED
+,,,,,,
+Test Cases/List Article,Chrome 73.0.3683.103,,2019-05-01 10:07:09,2019-05-01 10:07:15,5.147s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,2019-05-01 10:07:10,2019-05-01 10:07:12,2.120s,PASSED
+"click(findTestObject(""Page_Echoppe/a_Liste articles""))",Chrome 73.0.3683.103,,2019-05-01 10:07:12,2019-05-01 10:07:15,2.312s,PASSED
+,,,,,,
+Test Cases/Search Article,Chrome 73.0.3683.103,,2019-05-01 10:07:15,2019-05-01 10:07:24,9.073s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,2019-05-01 10:07:15,2019-05-01 10:07:17,2.095s,PASSED
+"setText(findTestObject(""Object Repository/Page_Echoppe/input_Recherche avance_searchQuery""), ""banane"")",Chrome 73.0.3683.103,,2019-05-01 10:07:17,2019-05-01 10:07:21,4.160s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Search""))",Chrome 73.0.3683.103,,2019-05-01 10:07:21,2019-05-01 10:07:24,2.199s,PASSED
+,,,,,,
+Test Cases/Article Detail,Chrome 73.0.3683.103,,2019-05-01 10:07:24,2019-05-01 10:07:27,3.064s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/a_Banane""))",Chrome 73.0.3683.103,,2019-05-01 10:07:24,2019-05-01 10:07:27,2.252s,PASSED
+,,,,,,
+Test Cases/Comment Article,Chrome 73.0.3683.103,,2019-05-01 10:07:27,2019-05-01 10:07:35,8.172s,PASSED
+"scrollToPosition(999999, 999999)",Chrome 73.0.3683.103,,2019-05-01 10:07:27,2019-05-01 10:07:28,1.034s,PASSED
+"setText(findTestObject(""Page_Echoppe/textarea_Commentaire_comment""), ""test commentaire"")",Chrome 73.0.3683.103,,2019-05-01 10:07:28,2019-05-01 10:07:32,4.204s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Noter et commenter""))",Chrome 73.0.3683.103,,2019-05-01 10:07:32,2019-05-01 10:07:35,2.358s,PASSED
+,,,,,,
+Test Cases/Buy Article,Chrome 73.0.3683.103,,2019-05-01 10:07:35,2019-05-01 10:07:48,12.758s,PASSED
+"scrollToPosition(0, 0)",Chrome 73.0.3683.103,,2019-05-01 10:07:36,2019-05-01 10:07:37,1.020s,PASSED
+"setText(findTestObject(""Object Repository/Page_Echoppe/input_Quantit_quantity""), ""2"")",Chrome 73.0.3683.103,,2019-05-01 10:07:37,2019-05-01 10:07:41,4.124s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Ajouter au panier""))",Chrome 73.0.3683.103,,2019-05-01 10:07:41,2019-05-01 10:07:43,2.255s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/input_PayPal_method""))",Chrome 73.0.3683.103,,2019-05-01 10:07:43,2019-05-01 10:07:45,2.078s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Payer""))",Chrome 73.0.3683.103,,2019-05-01 10:07:45,2019-05-01 10:07:48,2.210s,PASSED
+,,,,,,
+Test Cases/Advanced Search,Chrome 73.0.3683.103,,2019-05-01 10:07:48,2019-05-01 10:08:01,13.393s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Accueil_navbar-toggler""))",Chrome 73.0.3683.103,,2019-05-01 10:07:48,2019-05-01 10:07:50,2.100s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/a_Recherche avance""))",Chrome 73.0.3683.103,,2019-05-01 10:07:50,2019-05-01 10:07:53,2.139s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/input_Prixinfrieur _what""))",Chrome 73.0.3683.103,,2019-05-01 10:07:53,2019-05-01 10:07:55,2.108s,PASSED
+"setText(findTestObject(""Object Repository/Page_Echoppe/input_Nom decatgorie contient_advancedSearchQuery""), ""12"")",Chrome 73.0.3683.103,,2019-05-01 10:07:55,2019-05-01 10:07:59,4.132s,PASSED
+"click(findTestObject(""Object Repository/Page_Echoppe/button_Rechercher""))",Chrome 73.0.3683.103,,2019-05-01 10:07:59,2019-05-01 10:08:01,2.223s,PASSED
+,,,,,,
+Test Cases/Sort Article,Chrome 73.0.3683.103,,2019-05-01 10:08:01,2019-05-01 10:08:33,32.330s,FAILED
+"click(findTestObject(""Object Repository/Page_Echoppe/a__19""))",Chrome 73.0.3683.103,,2019-05-01 10:08:02,2019-05-01 10:08:33,31.601s,FAILED

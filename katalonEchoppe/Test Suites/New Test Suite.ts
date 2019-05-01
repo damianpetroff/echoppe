@@ -52,4 +52,22 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Comment Article</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>354e45bb-8132-421b-9fbd-a99fd0e5bf3a</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Buy Article</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>78f28738-0ad0-4527-a51e-0f96cb698034</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Advanced Search</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>698ca80f-4b16-4146-9992-c7086476e83e</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Sort Article</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>

@@ -17,20 +17,20 @@
 					<thead>
 						<tr>
 							<th scope="col">Nom  
-								<a th:href="@{'/articles/name/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
-								<a th:href="@{'/articles/name/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
+								<a id="name_desc" th:href="@{'/articles/name/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
+								<a id="name_asc" th:href="@{'/articles/name/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
 								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/name/desc/' + ${pageNum}}" th:if="${search eq '1'}">▾</a>
 								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/name/asc/' + ${pageNum}}" th:if="${search eq '1'}">▴</a>
 							</th>
 							<th scope="col">Catégorie 
-								<a th:href="@{'/articles/category/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
-								<a th:href="@{'/articles/category/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
+								<a id="category_desc" th:href="@{'/articles/category/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
+								<a id="category_asc" th:href="@{'/articles/category/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
 								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/category/desc/' + ${pageNum}}" th:if="${search eq '1'}">▾</a>
 								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/category/asc/' + ${pageNum}}" th:if="${search eq '1'}">▴</a>
 							</th>
 							<th scope="col">Prix 
-								<a th:href="@{'/articles/price/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
-								<a th:href="@{'/articles/price/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
+								<a id="prix_desc" th:href="@{'/articles/price/desc/' + ${pageNum}}" th:if="${search eq '0'}">▾</a>
+								<a id="prix_asc" th:href="@{'/articles/price/asc/' + ${pageNum}}" th:if="${search eq '0'}">▴</a>
 								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/price/desc/' + ${pageNum}}" th:if="${search eq '1'}">▾</a>
 								<a th:href="@{'/search/'+${what}+'/'+${searchQuery}+'/price/asc/' + ${pageNum}}" th:if="${search eq '1'}">▴</a>
 							</th>

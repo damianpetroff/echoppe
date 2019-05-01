@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="New Test Suite" time="101" tests="8" failures="0" errors="0">
+   <testsuite name="New Test Suite" tests="8" failures="0" errors="0" time="101" timestamp="2019-05-01 09:54:41" hostname="quentin.michel - INF16-MICHELQ.mshome.net" id="Test Suites/New Test Suite">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Users\\quentin.michel\\Documents\\hearc\\ANNEE-3\\Java_Entreprise\\Projet\\echoppe\\katalonEchoppe\\Reports\\New Test Suite\\20190501_095427"/>
+         <property name="logFiles" value="C:\\Users\\quentin.michel\\Documents\\hearc\\ANNEE-3\\Java_Entreprise\\Projet\\echoppe\\katalonEchoppe\\Reports\\New Test Suite\\20190501_095427\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="quentin.michel - INF16-MICHELQ.mshome.net"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="6.1.0.1"/>
+         <property name="browser" value="Chrome 73.0.3683.103"/>
+         <property name="hostAddress" value="172.26.245.241"/>
+         <property name="sessionId" value="a5685f850b60174620c5aabe8579ec2f"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/Register" classname="Test Cases/Register" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:54:42 - [TEST_CASE][PASSED] - Test Cases/Register: Test Cases/Register
+
+2019-05-01 09:54:44 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-01 09:54:44 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-05-01 09:54:45 - [MESSAGE][INFO] - Action delay is set to 1 seconds
+
+2019-05-01 09:54:53 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-01 09:54:53 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:9090/"): Navigate to 'http://localhost:9090/' successfully
+
+2019-05-01 09:54:56 - [MESSAGE][PASSED] - Navigate to 'http://localhost:9090/' successfully
+
+2019-05-01 09:54:56 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/button_Accueil_navbar-toggler")): Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:54:58 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:54:58 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/a_Inscription")): Object: 'Object Repository/Page_Echoppe/a_Inscription' is clicked on
+
+2019-05-01 09:55:01 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/a_Inscription' is clicked on
+
+2019-05-01 09:55:01 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Echoppe/input_Username_username"), "usertest"): Text 'usertest' is set on object 'Object Repository/Page_Echoppe/input_Username_username'
+
+2019-05-01 09:55:05 - [MESSAGE][PASSED] - Text 'usertest' is set on object 'Object Repository/Page_Echoppe/input_Username_username'
+
+2019-05-01 09:55:05 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Echoppe/input_Email address_email"), "usertest@test.com"): Text 'usertest@test.com' is set on object 'Object Repository/Page_Echoppe/input_Email address_email'
+
+2019-05-01 09:55:09 - [MESSAGE][PASSED] - Text 'usertest@test.com' is set on object 'Object Repository/Page_Echoppe/input_Email address_email'
+
+2019-05-01 09:55:09 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Echoppe/input_Password_password"), "8SQVv/p9jVScEs4/2CZsLw=="): Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Password_password'
+
+2019-05-01 09:55:13 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Password_password'
+
+2019-05-01 09:55:13 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Echoppe/input_Confirm your password_inputPasswordConfirmation"), "8SQVv/p9jVScEs4/2CZsLw=="): Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Confirm your password_inputPasswordConfirmation'
+
+2019-05-01 09:55:16 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Confirm your password_inputPasswordConfirmation'
+
+2019-05-01 09:55:16 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/button_Submit")): Object: 'Object Repository/Page_Echoppe/button_Submit' is clicked on
+
+2019-05-01 09:55:19 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Submit' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Logout" classname="Test Cases/Logout" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:55:19 - [TEST_CASE][PASSED] - Test Cases/Logout: Test Cases/Logout
+
+2019-05-01 09:55:20 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/button_Accueil_navbar-toggler")): Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:22 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:22 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/a_Logout")): Object: 'Object Repository/Page_Echoppe/a_Logout' is clicked on
+
+2019-05-01 09:55:25 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/a_Logout' is clicked on
+
+2019-05-01 09:55:25 - [TEST_STEP][PASSED] - click(findTestObject("Page_Confirm Log Out/button_Log Out")): Object: 'Object Repository/Page_Confirm Log Out/button_Log Out' is clicked on
+
+2019-05-01 09:55:27 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Confirm Log Out/button_Log Out' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Login" classname="Test Cases/Login" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:55:27 - [TEST_CASE][PASSED] - Test Cases/Login: Test Cases/Login
+
+2019-05-01 09:55:28 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:9090/"): Navigate to 'http://localhost:9090/' successfully
+
+2019-05-01 09:55:29 - [MESSAGE][PASSED] - Navigate to 'http://localhost:9090/' successfully
+
+2019-05-01 09:55:29 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/button_Accueil_navbar-toggler")): Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:31 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:31 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/a_Login")): Object: 'Object Repository/Page_Echoppe/a_Login' is clicked on
+
+2019-05-01 09:55:33 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/a_Login' is clicked on
+
+2019-05-01 09:55:33 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Please sign in/input_Username_username"), "usertest"): Text 'usertest' is set on object 'Object Repository/Page_Please sign in/input_Username_username'
+
+2019-05-01 09:55:37 - [MESSAGE][PASSED] - Text 'usertest' is set on object 'Object Repository/Page_Please sign in/input_Username_username'
+
+2019-05-01 09:55:37 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Please sign in/input_Password_password"), "8SQVv/p9jVScEs4/2CZsLw=="): Text ****** has been set on object 'Object Repository/Page_Please sign in/input_Password_password'
+
+2019-05-01 09:55:40 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Please sign in/input_Password_password'
+
+2019-05-01 09:55:40 - [TEST_STEP][PASSED] - click(findTestObject("Page_Please sign in/button_Sign in")): Object: 'Object Repository/Page_Please sign in/button_Sign in' is clicked on
+
+2019-05-01 09:55:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Please sign in/button_Sign in' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/List Article" classname="Test Cases/List Article" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:55:43 - [TEST_CASE][PASSED] - Test Cases/List Article: Test Cases/List Article
+
+2019-05-01 09:55:43 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/button_Accueil_navbar-toggler")): Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:45 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:45 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/a_Liste articles")): Object: 'Object Repository/Page_Echoppe/a_Liste articles' is clicked on
+
+2019-05-01 09:55:48 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/a_Liste articles' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Search Article" classname="Test Cases/Search Article" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:55:48 - [TEST_CASE][PASSED] - Test Cases/Search Article: Test Cases/Search Article
+
+2019-05-01 09:55:49 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/button_Accueil_navbar-toggler")): Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:51 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Accueil_navbar-toggler' is clicked on
+
+2019-05-01 09:55:51 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Echoppe/input_Recherche avance_searchQuery"), "banane"): Text 'banane' is set on object 'Object Repository/Page_Echoppe/input_Recherche avance_searchQuery'
+
+2019-05-01 09:55:55 - [MESSAGE][PASSED] - Text 'banane' is set on object 'Object Repository/Page_Echoppe/input_Recherche avance_searchQuery'
+
+2019-05-01 09:55:55 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/button_Search")): Object: 'Object Repository/Page_Echoppe/button_Search' is clicked on
+
+2019-05-01 09:55:57 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Search' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Article Detail" classname="Test Cases/Article Detail" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:55:57 - [TEST_CASE][PASSED] - Test Cases/Article Detail: Test Cases/Article Detail
+
+2019-05-01 09:55:58 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/a_Banane")): Object: 'Object Repository/Page_Echoppe/a_Banane' is clicked on
+
+2019-05-01 09:56:00 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/a_Banane' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Comment Article" classname="Test Cases/Comment Article" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:56:00 - [TEST_CASE][PASSED] - Test Cases/Comment Article: Test Cases/Comment Article
+
+2019-05-01 09:56:01 - [TEST_STEP][PASSED] - scrollToPosition(999999, 999999): Browser is scrolled to position x = 999999, y = 999999
+
+2019-05-01 09:56:02 - [MESSAGE][PASSED] - Browser is scrolled to position x = 999999, y = 999999
+
+2019-05-01 09:56:02 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Echoppe/textarea_Commentaire_comment"), "test commentaire"): Text 'test commentaire' is set on object 'Object Repository/Page_Echoppe/textarea_Commentaire_comment'
+
+2019-05-01 09:56:06 - [MESSAGE][PASSED] - Text 'test commentaire' is set on object 'Object Repository/Page_Echoppe/textarea_Commentaire_comment'
+
+2019-05-01 09:56:06 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/button_Noter et commenter")): Object: 'Object Repository/Page_Echoppe/button_Noter et commenter' is clicked on
+
+2019-05-01 09:56:08 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Noter et commenter' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Buy Article" classname="Test Cases/Buy Article" status="PASSED">
+         <system-out><![CDATA[2019-05-01 09:56:08 - [TEST_CASE][PASSED] - Test Cases/Buy Article: Test Cases/Buy Article
+
+2019-05-01 09:56:09 - [TEST_STEP][PASSED] - scrollToPosition(0, 0): Browser is scrolled to position x = 0, y = 0
+
+2019-05-01 09:56:11 - [MESSAGE][PASSED] - Browser is scrolled to position x = 0, y = 0
+
+2019-05-01 09:56:11 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Echoppe/input_Quantit_quantity"), "2"): Text '2' is set on object 'Object Repository/Page_Echoppe/input_Quantit_quantity'
+
+2019-05-01 09:56:15 - [MESSAGE][PASSED] - Text '2' is set on object 'Object Repository/Page_Echoppe/input_Quantit_quantity'
+
+2019-05-01 09:56:15 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/button_Ajouter au panier")): Object: 'Object Repository/Page_Echoppe/button_Ajouter au panier' is clicked on
+
+2019-05-01 09:56:17 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Ajouter au panier' is clicked on
+
+2019-05-01 09:56:17 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/input_PayPal_method")): Object: 'Object Repository/Page_Echoppe/input_PayPal_method' is clicked on
+
+2019-05-01 09:56:19 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/input_PayPal_method' is clicked on
+
+2019-05-01 09:56:19 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Echoppe/button_Payer")): Object: 'Object Repository/Page_Echoppe/button_Payer' is clicked on
+
+2019-05-01 09:56:21 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Payer' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-05-01 09:54:41 - [TEST_SUITE][PASSED] - New Test Suite: Test Cases/Buy Article]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>
