@@ -29,7 +29,7 @@ public class Comment {
 	private Utilisateur Utilisateur;
 
 	@ManyToOne
-	@Cascade({ CascadeType.DELETE })
+	@Cascade({ CascadeType.ALL })
 	@NotNull
 	private Article article;
 

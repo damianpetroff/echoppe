@@ -32,7 +32,7 @@ public class Rating {
 
 	@NotNull
 	@ManyToOne
-	@Cascade({ CascadeType.DELETE })
+	@Cascade({ CascadeType.ALL })
 	private Article article;
 
 	// Getters

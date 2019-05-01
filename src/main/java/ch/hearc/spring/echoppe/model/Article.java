@@ -9,6 +9,9 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Article {
 
@@ -26,6 +29,7 @@ public class Article {
 	private double price;
 
 	@ManyToOne
+	@Cascade({ CascadeType.ALL })
 	private Category category;
 
 	// Constructors
