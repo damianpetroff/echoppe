@@ -64,10 +64,4 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Advanced Search</testCaseId>
    </testCaseLink>
-   <testCaseLink>
-      <guid>698ca80f-4b16-4146-9992-c7086476e83e</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Sort Article</testCaseId>
-   </testCaseLink>
 </TestSuiteEntity>
