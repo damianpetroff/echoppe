@@ -29,7 +29,6 @@ public class Article {
 	private double price;
 
 	@ManyToOne
-	@Cascade({ CascadeType.ALL })
 	private Category category;
 
 	// Constructors
@@ -58,8 +57,13 @@ public class Article {
 	public Category getCategory() {
 		return category;
 	}
+	
 
 	// Setters
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}

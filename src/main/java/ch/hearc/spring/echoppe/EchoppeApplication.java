@@ -79,7 +79,8 @@ public class EchoppeApplication {
 		return new BCryptPasswordEncoder();
 	}
 
-	@PostConstruct
+	// comment @PostConstruct if testing controller
+	//@PostConstruct
 	public void initData() {
 		// Role
 		Role roleAdmin = new Role("ROLE_ADMIN");

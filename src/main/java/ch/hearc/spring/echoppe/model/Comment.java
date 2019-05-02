@@ -29,7 +29,6 @@ public class Comment {
 	private Utilisateur Utilisateur;
 
 	@ManyToOne
-	@Cascade({ CascadeType.ALL })
 	@NotNull
 	private Article article;
 

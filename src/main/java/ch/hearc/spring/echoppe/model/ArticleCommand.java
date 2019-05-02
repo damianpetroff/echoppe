@@ -18,7 +18,6 @@ public class ArticleCommand {
 	private Long id;
 
 	@OneToOne
-	@Cascade({ CascadeType.DELETE })
 	private Article article;
 
 	private int quantity;
