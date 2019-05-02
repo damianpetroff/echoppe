@@ -80,7 +80,7 @@ public class EchoppeApplication {
 	}
 
 	// comment @PostConstruct if testing controller
-	//@PostConstruct
+	@PostConstruct
 	public void initData() {
 		// Role
 		Role roleAdmin = new Role("ROLE_ADMIN");
