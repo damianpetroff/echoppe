@@ -15,6 +15,8 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.openBrowser('')
 
+WebUI.maximizeWindow()
+
 WebUI.navigateToUrl('http://localhost:9090/')
 
 WebUI.click(findTestObject('Page_Echoppe/a_Inscription'))
