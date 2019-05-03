@@ -19,6 +19,8 @@ WebUI.maximizeWindow()
 
 WebUI.navigateToUrl('http://localhost:9090/')
 
+WebUI.delay(5)
+
 WebUI.click(findTestObject('Page_Echoppe/a_Inscription'))
 
 WebUI.setText(findTestObject('Page_Echoppe/input_Username_username'), 'usertest')
