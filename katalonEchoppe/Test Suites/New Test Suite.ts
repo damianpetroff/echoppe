@@ -28,4 +28,16 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Login D</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>f9975390-12df-434e-b8ef-644bc546e1dc</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/List Article D</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>55d45e91-a9d7-486a-9d55-34ebdf0f99b6</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Article Detail D</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>

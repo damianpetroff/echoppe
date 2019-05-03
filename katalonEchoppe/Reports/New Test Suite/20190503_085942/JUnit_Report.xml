@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="New Test Suite" time="47" tests="3" failures="0" errors="0">
+   <testsuite name="New Test Suite" tests="3" failures="0" errors="0" time="47" timestamp="2019-05-03 08:59:47" hostname="quentin.michel - INF16-MICHELQ.mshome.net" id="Test Suites/New Test Suite">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Users\\quentin.michel\\Documents\\hearc\\ANNEE-3\\Java_Entreprise\\Projet\\echoppe\\katalonEchoppe\\Reports\\New Test Suite\\20190503_085942"/>
+         <property name="logFiles" value="C:\\Users\\quentin.michel\\Documents\\hearc\\ANNEE-3\\Java_Entreprise\\Projet\\echoppe\\katalonEchoppe\\Reports\\New Test Suite\\20190503_085942\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="quentin.michel - INF16-MICHELQ.mshome.net"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="6.1.0.1"/>
+         <property name="browser" value="Chrome 73.0.3683.103"/>
+         <property name="hostAddress" value="172.26.245.241"/>
+         <property name="sessionId" value="49598dd2fcb2ff6a88d89650c64c148a"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/Register D" classname="Test Cases/Register D" status="PASSED">
+         <system-out><![CDATA[2019-05-03 08:59:48 - [TEST_CASE][PASSED] - Test Cases/Register D: Test Cases/Register D
+
+2019-05-03 08:59:48 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 08:59:49 - [MESSAGE][INFO] - Starting 'Chrome (headless)' driver
+
+2019-05-03 08:59:49 - [MESSAGE][INFO] - Action delay is set to 1 seconds
+
+2019-05-03 08:59:57 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 08:59:57 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:9090/register"): Navigate to 'http://localhost:9090/register' successfully
+
+2019-05-03 09:00:00 - [MESSAGE][PASSED] - Navigate to 'http://localhost:9090/register' successfully
+
+2019-05-03 09:00:00 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Echoppe/input_Username_username"), "usertest"): Text 'usertest' is set on object 'Object Repository/Page_Echoppe/input_Username_username'
+
+2019-05-03 09:00:04 - [MESSAGE][PASSED] - Text 'usertest' is set on object 'Object Repository/Page_Echoppe/input_Username_username'
+
+2019-05-03 09:00:04 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Echoppe/input_Email address_email"), "usertest@test.ch"): Text 'usertest@test.ch' is set on object 'Object Repository/Page_Echoppe/input_Email address_email'
+
+2019-05-03 09:00:08 - [MESSAGE][PASSED] - Text 'usertest@test.ch' is set on object 'Object Repository/Page_Echoppe/input_Email address_email'
+
+2019-05-03 09:00:08 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Echoppe/input_Password_password"), "8SQVv/p9jVScEs4/2CZsLw=="): Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Password_password'
+
+2019-05-03 09:00:12 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Password_password'
+
+2019-05-03 09:00:12 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Echoppe/input_Confirm your password_inputPasswordConfirmation"), "8SQVv/p9jVScEs4/2CZsLw=="): Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Confirm your password_inputPasswordConfirmation'
+
+2019-05-03 09:00:15 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Echoppe/input_Confirm your password_inputPasswordConfirmation'
+
+2019-05-03 09:00:15 - [TEST_STEP][PASSED] - click(findTestObject("Page_Echoppe/button_Submit")): Object: 'Object Repository/Page_Echoppe/button_Submit' is clicked on
+
+2019-05-03 09:00:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Echoppe/button_Submit' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Logout D" classname="Test Cases/Logout D" status="PASSED">
+         <system-out><![CDATA[2019-05-03 09:00:18 - [TEST_CASE][PASSED] - Test Cases/Logout D: Test Cases/Logout D
+
+2019-05-03 09:00:18 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:9090/logout"): Navigate to 'http://localhost:9090/logout' successfully
+
+2019-05-03 09:00:19 - [MESSAGE][PASSED] - Navigate to 'http://localhost:9090/logout' successfully
+
+2019-05-03 09:00:19 - [TEST_STEP][PASSED] - click(findTestObject("Page_Confirm Log Out/button_Log Out")): Object: 'Object Repository/Page_Confirm Log Out/button_Log Out' is clicked on
+
+2019-05-03 09:00:21 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Confirm Log Out/button_Log Out' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Login D" classname="Test Cases/Login D" status="PASSED">
+         <system-out><![CDATA[2019-05-03 09:00:21 - [TEST_CASE][PASSED] - Test Cases/Login D: Test Cases/Login D
+
+2019-05-03 09:00:22 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:9090/login"): Navigate to 'http://localhost:9090/login' successfully
+
+2019-05-03 09:00:23 - [MESSAGE][PASSED] - Navigate to 'http://localhost:9090/login' successfully
+
+2019-05-03 09:00:23 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Please sign in/input_Username_username"), "usertest"): Text 'usertest' is set on object 'Object Repository/Page_Please sign in/input_Username_username'
+
+2019-05-03 09:00:27 - [MESSAGE][PASSED] - Text 'usertest' is set on object 'Object Repository/Page_Please sign in/input_Username_username'
+
+2019-05-03 09:00:27 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Please sign in/input_Password_password"), "8SQVv/p9jVScEs4/2CZsLw=="): Text ****** has been set on object 'Object Repository/Page_Please sign in/input_Password_password'
+
+2019-05-03 09:00:30 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Please sign in/input_Password_password'
+
+2019-05-03 09:00:30 - [TEST_STEP][PASSED] - click(findTestObject("Page_Please sign in/button_Sign in")): Object: 'Object Repository/Page_Please sign in/button_Sign in' is clicked on
+
+2019-05-03 09:00:33 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Please sign in/button_Sign in' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-05-03 08:59:47 - [TEST_SUITE][PASSED] - New Test Suite: Test Cases/Login D]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

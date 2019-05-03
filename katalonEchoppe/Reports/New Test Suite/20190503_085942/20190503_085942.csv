@@ -1,0 +1,21 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+New Test Suite,Chrome 73.0.3683.103,,2019-05-03 08:59:47,2019-05-03 09:00:34,47.516s,PASSED
+,,,,,,
+Test Cases/Register D,Chrome 73.0.3683.103,,2019-05-03 08:59:48,2019-05-03 09:00:18,30.096s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-03 08:59:48,2019-05-03 08:59:57,8.803s,PASSED
+"navigateToUrl(""http://localhost:9090/register"")",Chrome 73.0.3683.103,,2019-05-03 08:59:57,2019-05-03 09:00:00,2.602s,PASSED
+"setText(findTestObject(""Page_Echoppe/input_Username_username""), ""usertest"")",Chrome 73.0.3683.103,,2019-05-03 09:00:00,2019-05-03 09:00:04,4.263s,PASSED
+"setText(findTestObject(""Page_Echoppe/input_Email address_email""), ""usertest@test.ch"")",Chrome 73.0.3683.103,,2019-05-03 09:00:04,2019-05-03 09:00:08,4.184s,PASSED
+"setEncryptedText(findTestObject(""Page_Echoppe/input_Password_password""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,2019-05-03 09:00:08,2019-05-03 09:00:12,3.305s,PASSED
+"setEncryptedText(findTestObject(""Page_Echoppe/input_Confirm your password_inputPasswordConfirmation""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,2019-05-03 09:00:12,2019-05-03 09:00:15,3.143s,PASSED
+"click(findTestObject(""Page_Echoppe/button_Submit""))",Chrome 73.0.3683.103,,2019-05-03 09:00:15,2019-05-03 09:00:18,2.888s,PASSED
+,,,,,,
+Test Cases/Logout D,Chrome 73.0.3683.103,,2019-05-03 09:00:18,2019-05-03 09:00:21,3.865s,PASSED
+"navigateToUrl(""http://localhost:9090/logout"")",Chrome 73.0.3683.103,,2019-05-03 09:00:18,2019-05-03 09:00:19,1.134s,PASSED
+"click(findTestObject(""Page_Confirm Log Out/button_Log Out""))",Chrome 73.0.3683.103,,2019-05-03 09:00:19,2019-05-03 09:00:21,2.117s,PASSED
+,,,,,,
+Test Cases/Login D,Chrome 73.0.3683.103,,2019-05-03 09:00:21,2019-05-03 09:00:33,11.355s,PASSED
+"navigateToUrl(""http://localhost:9090/login"")",Chrome 73.0.3683.103,,2019-05-03 09:00:22,2019-05-03 09:00:23,1.042s,PASSED
+"setText(findTestObject(""Page_Please sign in/input_Username_username""), ""usertest"")",Chrome 73.0.3683.103,,2019-05-03 09:00:23,2019-05-03 09:00:27,4.144s,PASSED
+"setEncryptedText(findTestObject(""Page_Please sign in/input_Password_password""), ""8SQVv/p9jVScEs4/2CZsLw=="")",Chrome 73.0.3683.103,,2019-05-03 09:00:27,2019-05-03 09:00:30,3.144s,PASSED
+"click(findTestObject(""Page_Please sign in/button_Sign in""))",Chrome 73.0.3683.103,,2019-05-03 09:00:30,2019-05-03 09:00:33,2.364s,PASSED

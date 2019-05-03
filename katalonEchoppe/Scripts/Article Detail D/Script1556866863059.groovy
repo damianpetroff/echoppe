@@ -13,11 +13,7 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.navigateToUrl('http://localhost:9090/login')
+WebUI.navigateToUrl('http://localhost:9090/articles/name/asc/1')
 
-WebUI.setText(findTestObject('Page_Please sign in/input_Username_username'), 'usertest')
-
-WebUI.setEncryptedText(findTestObject('Page_Please sign in/input_Password_password'), '8SQVv/p9jVScEs4/2CZsLw==')
-
-WebUI.click(findTestObject('Page_Please sign in/button_Sign in'))
+WebUI.click(findTestObject('Page_Echoppe/a_Banane'))
 
