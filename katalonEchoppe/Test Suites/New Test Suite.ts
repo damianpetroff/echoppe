@@ -23,12 +23,6 @@
       <testCaseId>Test Cases/Logout</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>70e4c691-6c65-44c4-98d1-647b6476598d</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Login</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
       <guid>72284f28-86e5-4034-8268-9e28ffa61e1d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
@@ -45,18 +39,6 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Article Detail</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>be165316-b47a-4fc7-9ba2-44f3ac626662</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Comment Article</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>354e45bb-8132-421b-9fbd-a99fd0e5bf3a</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/Buy Article</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>78f28738-0ad0-4527-a51e-0f96cb698034</guid>
